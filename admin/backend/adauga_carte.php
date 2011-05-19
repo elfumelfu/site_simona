@@ -45,7 +45,10 @@ $('#delete').click(function() {
 
 <?php 
 
-$select_editura_insert = mysql_query("SELECT * FROM `baza_librarie`.`editura` where `denumire` = '".$_POST['editura']."' ");
+
+	if(isset($_GET['salveaza'])){
+	
+	$select_editura_insert = mysql_query("SELECT * FROM `baza_librarie`.`editura` where `denumire` = '".$_POST['editura']."' ");
 while($editura_insert = mysql_fetch_array($select_editura_insert)){
 $editura =  $editura_insert['id'];
 
@@ -61,7 +64,6 @@ $insert_carte ="
 		
 		
 	mysql_query($insert_carte);
-	if(isset($_GET['salveaza'])){
 foreach($_POST['selected_autor'] as $aut){
 
 
