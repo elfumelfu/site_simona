@@ -11,7 +11,7 @@
 </form>
 <?php 
 if(isset($_GET['salveaza'])){
-echo $inserare_editura="INSERT INTO `baza_librarie`.`editura` (
+$inserare_editura="INSERT INTO `baza_librarie`.`editura` (
 `id` ,
 `denumire` ,
 `localitate` ,
