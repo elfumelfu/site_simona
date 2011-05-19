@@ -1,5 +1,18 @@
 <?php include('../connect.php');?>
-<form action="index.php?adauga_autor&salveaza" method="post">
+<?php 
+
+$ur = explode('?',$unde);
+var_dump($ur);
+
+echo '<br/>';
+if($ur[1] != "exec=adauga_carte"){
+$unde1 = 'index.php?salveaza_autor';
+}else{
+$unde1 = $unde.'&salveaza_autor';
+}
+
+?>
+<form action="<?php echo $unde1?>" method="post">
  
 	Nume: 	<input type="text" name="nume"/><br/>
 	Prenume:<input type="text" name="prenume"/><br/>
@@ -8,8 +21,3 @@
 	
 
 </form>
-<?php 
-
-
-
-var_dump($_POST);?>

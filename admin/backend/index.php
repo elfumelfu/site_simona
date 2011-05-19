@@ -1,5 +1,6 @@
 <?php session_start();?>
 <?php 
+//insert editura
 if(isset($_GET['salveaza_editura'])){
 echo $inserare_editura="INSERT INTO `baza_librarie`.`editura` (
 `id` ,
@@ -12,9 +13,10 @@ VALUES (
 NULL , '".$_POST['denumire']."', '".$_POST['localitate']."', '".$_POST['numar_telefon']."', '".$_POST['email']."')";
 mysql_query($inserare_editura);
 }
+//insert editura
 
+?>
 
-//var_dump($_POST);?>
 <script type="text/javascript" src="../js/jquery-1.5.1.min.js"></script>
 <script type="text/javascript" src="../js/jquery-ui-1.8.12.custom.min.js"></script>
 <?php include('../connect.php');?>
@@ -43,6 +45,21 @@ echo  $_SESSION['unde'];
 //breadcrumbs
 
 
+//insert autor
+if(isset($_GET['salveaza_autor']) && $_POST){
+ $insert_autor = "INSERT INTO `baza_librarie`.`autor` (
+`id` ,
+`nume` ,
+`prenume` ,
+`origine`
+)
+VALUES (
+NULL , '".$_POST['nume']."', '".$_POST['prenume']."', '".$_POST['origine']."'
+);";
+$test = mysql_query($insert_autor);
+//var_dump($test);
+}
+//insert autor
 
 
 //meniul principal pentru admin
