@@ -2,13 +2,18 @@
 <?php 
 
 $ur = explode('?',$unde);
-var_dump($ur);
 
-echo '<br/>';
-if($ur[1] != "exec=adauga_carte"){
+$url = explode('&',$ur[1]);
+
+
+if($url[0] != "exec=adauga_carte"){
 $unde1 = 'index.php?salveaza_autor';
 }else{
+if(strstr($unde,'salveaza_autor') == false){
 $unde1 = $unde.'&salveaza_autor';
+}else{
+$unde1=$unde;
+}
 }
 
 ?>

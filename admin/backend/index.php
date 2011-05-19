@@ -45,7 +45,7 @@ $test = mysql_query($insert_autor);
 }
 //insert autor
 //insert editura
-if(isset($_GET['salveaza_editura'])){
+if(isset($_GET['salveaza_editura']) && isset($_POST)){
 echo $inserare_editura="INSERT INTO `baza_librarie`.`editura` (
 `id` ,
 `denumire` ,
@@ -55,7 +55,8 @@ echo $inserare_editura="INSERT INTO `baza_librarie`.`editura` (
 )
 VALUES (
 NULL , '".$_POST['denumire']."', '".$_POST['localitate']."', '".$_POST['numar_telefon']."', '".$_POST['email']."')";
-mysql_query($inserare_editura);
+$ts = mysql_query($inserare_editura);
+var_dump($ts);
 }
 //insert editura
 

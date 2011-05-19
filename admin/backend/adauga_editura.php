@@ -1,14 +1,22 @@
 <?php include('../connect.php');
+
+
+
 $ur = explode('?',$unde);
-var_dump($ur);
+
+$url = explode('&',$ur[1]);
 
 
-if($ur[1] != "exec=adauga_carte"){
+if($url[0] != "exec=adauga_carte"){
 $unde1 = 'index.php?salveaza_editura';
 }else{
+if(strstr($unde,'salveaza_editura') == false){
 $unde1 = $unde.'&salveaza_editura';
+}else{
+$unde1=$unde;
 }
-//echo $unde1;
+}
+
 ?>
 
 
