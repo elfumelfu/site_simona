@@ -1,4 +1,4 @@
-<form method="post" action="index.php?adauga_carte&salveaza">
+<form method="post" action="index.php?exec=adauga_carte&salveaza">
 	<pre>ISBN: <input name="isbn" type="text"/></pre>
 	<pre>Titlu: <input name="titlu" value="" type="text"/></pre>
 	<pre>Autor: 
@@ -26,19 +26,23 @@ $('#delete').click(function() {
 			<input id="delete" value="<<" type="button"/>
 			<select name="selected_autor[]" id="selected_autor" multiple="multiple" size="10" style="width:200px">
 			</select>
-	<a href="index.php?adauga_autor">Adauga autor</a>
+	<a href="index.php?exec=adauga_autor">Adauga autor</a>
 	</pre>
 	<pre>Editura: 
 	
 	<?php $select_editura = mysql_query("SELECT * FROM `baza_librarie`.`editura`");	?>
 			<select name="editura" style="float:left;">
 			<?php while($editura = mysql_fetch_array($select_editura)){?>
-				<option>
-					<?php echo  $editura['denumire']?>
+				<option <?php if(isset($_POST['denumire']) && $_POST['denumire'] == $editura['denumire']){ echo "selected='selected'"; }?>>
+					<?php 
+					
+					echo  $editura['denumire']
+					
+					?>
 				</option>
 			<?php }?>
 			</select>
-	<a href="index.php?adauga_editura">Adauga editura</a>
+	<a href="index.php?exec=adauga_editura">Adauga editura</a>
 	</pre>
 	<input onclick='$("#selected_autor option").attr("selected","selected");' type="submit" value="Salveaza"/>
 </form>
@@ -78,6 +82,7 @@ mysql_query($insert_autor_carte);
 }
 }
 }
+//var_dump($_POST);
 
 
 ?>
