@@ -333,6 +333,7 @@ function check_form(form_name) {
             </td>
           </tr>
 <!-- whats_new_eof //-->
+
 <!-- information //-->
           <tr>
             <td>
@@ -360,6 +361,7 @@ function check_form(form_name) {
             </td>
           </tr>
 <!-- information_eof //-->
+
 <!-- left_navigation_eof //-->
     </table></td>
 <!-- body_text //-->
@@ -698,6 +700,7 @@ function check_form(form_name) {
             </td>
           </tr>
 <!-- manufacturers_eof //-->
+
 <!-- best_sellers //-->
           <tr>
             <td valign="top">
@@ -732,6 +735,7 @@ function check_form(form_name) {
             </td>
           </tr>
 <!-- best_sellers_eof //-->
+
 <!-- specials //-->
           <tr>
             <td>
@@ -778,6 +782,7 @@ function check_form(form_name) {
             </td>
           </tr>
 <!-- specials_eof //-->
+
 <!-- right_navigation_eof //-->
     </table></td>
   </tr>
