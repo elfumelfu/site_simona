@@ -145,7 +145,14 @@
   <tr>
     <td  class="boxText">
 	<ul class="categories">
-		<li class="bg_list_un"><a href="index.php-cPath=1.htm">Arte</a></li>
+	<?php	//Listarea categoriilor
+	include("../admin/connect.php");
+	$lista_categorii = "SELECT denumire from `baza_librarie`.`domeniu` ORDER BY denumire ";
+		$test = mysql_query($lista_categorii);
+		while($domeniu = mysql_fetch_array($test)) {
+			echo '<li class="bg_list_un"><a href="index.php?domeniu='.$domeniu['denumire'].'">'.$domeniu['denumire'].'</a></li>';
+		}
+		/*<li class="bg_list_un"><a href="index.php-cPath=1.htm">Arte</a></li>
 		<li class="bg_list"><a href="index.php-cPath=2.htm">Autoeducare</a></li>
 		<li class="bg_list"><a href="index.php-cPath=3.htm">Beletristica</a></li>
 		<li class="bg_list"><a href="index.php-cPath=4.htm">Calculatoare</a></li>
@@ -154,7 +161,8 @@
 		<li class="bg_list"><a href="index.php-cPath=7.htm">Gastronomie</a></li>
 		<li class="bg_list"><a href="index.php-cPath=8.htm">Hobby</a></li>
 		<li class="bg_list"><a href="index.php-cPath=9.htm">Invatamant-Educatie</a></li>
-		<li class="bg_list"><a href="index.php-cPath=10.htm">Istorie</a></li>
+		<li class="bg_list"><a href="index.php-cPath=10.htm">Istorie</a></li>*/
+		?>
 	</ul>
 	</td>
   </tr>
