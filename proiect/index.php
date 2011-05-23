@@ -31,7 +31,7 @@
 					<tr><td>
 						<table cellpadding="0" cellspacing="0" border="0">
 							<tr><td><img src="images/bg_logo2.jpg"  border="0" alt="" width="34" height="127"></td>
-								<td class="logo"><a href="index.php.htm">
+								<td class="logo"><a href="index.php">
 									<img src="images/logo11.gif" border="0" alt="" width="227" height="98"></a>
 								</td>
 								<td class="navigation">
@@ -76,7 +76,7 @@
 											<td class="header_td" style="width:33%; padding-top:2px; padding-bottom:0px; padding-left:3px;">
 <table cellpadding="0" cellspacing="0" border="0" align="center" style="width:140px;">
 	<tr>
-		<td class="z1"><strong>Cosul de cumparaturi:</strong><span> now in your cart </span><a href="shopping_cart.php.htm">43  items</a></td>
+		<td class="z1"><strong>Cosul de cumparaturi:</strong><span> now in your cart </span><a href="shopping_cart.php">43  items</a></td>
 	</tr>
 </table>
 											</td>										
@@ -105,23 +105,24 @@
 								<table cellpadding="0" cellspacing="0" border="0">
 									<tr>
             				<tr>
-							<td id="over_m1" onMouseOut="this.id='over_m1';" onMouseOver="this.id='over_m1';" onClick="document.location='index.php.htm'/*tpa=http://osc3.template-help.com/osc_23506/index.php*/" nowrap="nowrap"> Acasa</td>
+							<td id="over_m1" onMouseOut="this.id='over_m1';" onMouseOver="this.id='over_m1';" onClick="document.location='index.php'" nowrap="nowrap"> Acasa</td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
-							<td id="m2" onMouseOut="this.id='m2';" onMouseOver="this.id='over_m2';" onClick="document.location='products_new.php.htm'/*tpa=http://osc3.template-help.com/osc_23506/products_new.php*/">Noutati</td>
+							<td id="m2" onMouseOut="this.id='m2';" onMouseOver="this.id='over_m2';" onClick="document.location='products_new.php'">Noutati</td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
-							<td id="m3" onMouseOut="this.id='m3';" onMouseOver="this.id='over_m3';" onClick="document.location='specials.php.htm'/*tpa=http://osc3.template-help.com/osc_23506/specials.php*/">Special</td>
+							<td id="m3" onMouseOut="this.id='m3';" onMouseOver="this.id='over_m3';" onClick="document.location='specials.php'">Special</td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
 									                        
-							<td id="m4" onMouseOut="this.id='m4';" onMouseOver="this.id='over_m4';" onClick="document.location='create_account.php.htm'/*tpa=http://osc3.template-help.com/osc_23506/create_account.php*/" nowrap="nowrap">Creare cont nou</td>
+							<td id="m4" onMouseOut="this.id='m4';" onMouseOver="this.id='over_m4';" onClick="document.location='create_account.php'" nowrap="nowrap">Creare cont nou</td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
-							<td id="m6" onMouseOut="this.id='m6';" onMouseOver="this.id='over_m6';" onClick="document.location='contact_us.php.htm'/*tpa=http://osc3.template-help.com/osc_23506/contact_us.php*/">Contact</td>
+							<td id="m6" onMouseOut="this.id='m6';" onMouseOver="this.id='over_m6';" onClick="document.location='contact_us.php'">Contact</td>
 							</tr>
 						</table>
 								</td>
 							</tr>
 						</table>													
 					</td></tr>					
-				</table>			<!-- header_eof //-->
+				</table>			
+<!-- header_eof //-->
 
 <!-- body //-->
 <table border="0" class="main_table" cellspacing="0" cellpadding="0">
@@ -218,7 +219,7 @@
 <table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBoxHeading_table">
   <tr>
     <td><img src="images/corner_top_left.gif" border="0" alt="" width="4" height="4"></td>
-    <td  class="infoBoxHeading_td">Information</td>
+    <td  class="infoBoxHeading_td">Informatii</td>
     <td><img src="images/corner_top_right.gif" border="0" alt="" width="4" height="4"></td>
   </tr>
 </table>
@@ -228,10 +229,10 @@
   <tr>
     <td  class="boxText">
 		<ul class="information">
-  			<li class="bg_list_un"><a href="shipping.php.htm">Shipping & Returns</a></li>
-			<li class="bg_list"><a href="privacy.php.htm">Privacy Notice</a></li>
-			<li class="bg_list"><a href="conditions.php.htm">Conditions of Use</a></li>
-			<li class="bg_list"><a href="contact_us.php.htm">Contact Us</a></li>
+  			<li class="bg_list_un"><a href="shipping.php">Shipping & Returns</a></li>
+			<li class="bg_list"><a href="privacy.php">Privacy Notice</a></li>
+			<li class="bg_list"><a href="conditions.php">Conditions of Use</a></li>
+			<li class="bg_list"><a href="contact_us.php">Contact Us</a></li>
 		</ul>
 	</td>
   </tr>
@@ -372,7 +373,7 @@ if(isset($_GET['pag'])){
 								<td class="button2_padd button_marg">
 									<a href="product_info.php-products_id=70.htm">
 									<img src="includes/languages/english/images/buttons/button_details.gif"border="0" alt="" width="67" height="24"  class="btn1"></a><br />
-									<a href="shopping_cart.php.htm">
+									<a href="shopping_cart.php">
 									<img src="includes/languages/english/images/buttons/button_add_to_cart1.gif" border="0" alt="" width="92" height="24"  class="btn2"></a>
 								</td>
 								<td class="price2_padd"><span class="productSpecialPrice"><?php echo $carte['pret']?> Lei</span></td>
@@ -622,14 +623,14 @@ if(isset($_GET['pag'])){
 					</table>
 					</td>
                     <td class="footer2_td">
-						<span><a href="specials.php.htm">Specials</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
-						<a href="advanced_search.php.htm">Advanced Search</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
-						<a href="reviews.php.htm">Reviews</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
-						<a href="create_account.php.htm">Create an Account</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
-						<a href="login.php.htm">Log In</a></span><br>Copyright &copy; 2011 
-						<a href="index.php.htm">Book Store</a> &nbsp;&nbsp; <b>
-						<a href="privacy.php.htm">Privacy Notice</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
-						<a href="conditions.php.htm">Conditions of Use</a></b>
+						<span><a href="specials.php">Specials</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+						<a href="advanced_search.php">Advanced Search</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+						<a href="reviews.php">Reviews</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+						<a href="create_account.php">Create an Account</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+						<a href="login.php">Log In</a></span><br>Copyright &copy; 2011 
+						<a href="index.php">Book Store</a> &nbsp;&nbsp; <b>
+						<a href="privacy.php">Privacy Notice</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+						<a href="conditions.php">Conditions of Use</a></b>
 					</td>
 				</tr>
 			</table>
