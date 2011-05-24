@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <xbasehref="http://osc3.template-help.com/osc_23506/">
-<title>Book Store</title>
+<title>Librarie Online</title>
 <link rel="stylesheet" type="text/css" href="stylesheet.css" tppabs="http://osc3.template-help.com/osc_23506/stylesheet.css">
 <script type="text/javascript" src="iepngfix_tilebg.js" tppabs="http://osc3.template-help.com/osc_23506/iepngfix_tilebg.js"></script>
 <style type="text/css">
@@ -118,43 +118,53 @@ function popupWindow(url) {
 				<table cellpadding="0" cellspacing="0" border="0">
 					<tr><td>
 						<table cellpadding="0" cellspacing="0" border="0">
-							<tr><td><img src="images/bg_logo2.jpg" tppabs="http://osc3.template-help.com/osc_23506/images/bg_logo2.jpg" border="0" alt="" width="34" height="127"></td>
-								<td class="logo"><a href="index.php.htm" tppabs="http://osc3.template-help.com/osc_23506/index.php"><img src="images/logo.gif" tppabs="http://osc3.template-help.com/osc_23506/images/logo.gif" border="0" alt="" width="227" height="98"></a></td>
+							<tr><td><img src="images/bg_logo2.jpg"  border="0" alt="" width="34" height="127"></td>
+								<td class="logo"><a href="index.php">
+									<img src="images/logo11.gif" border="0" alt="" width="227" height="98"></a>
+								</td>
 								<td class="navigation">
 									<table cellpadding="0" cellspacing="0" border="0"  class="navigation_table">
 										<tr><td style="height:42px; text-align:right; padding-top:5px;">
-<form name="search" action="http://osc3.template-help.com/osc_23506/advanced_search_result.php" method="get"><table border="0" cellspacing="0" cellpadding="0" align="right" class="search">
-<tr>
-	<td>Search:&nbsp;&nbsp;</td>
-	<td style="width:100%; vertical-align:middle;"><input type=text name="keywords" class="go" value=""></td>
-	<td style="padding:0px 20px 0px 6px; vertical-align:middle;"><input type="image" src="includes/languages/english/images/buttons/button_search_prod.gif" tppabs="http://osc3.template-help.com/osc_23506/includes/languages/english/images/buttons/button_search_prod.gif" border="0" alt=""></td>
-</tr>
-</table></form>                                        
+											<form name="search" action="http://osc3.template-help.com/osc_23506/advanced_search_result.php" method="get">
+											<table border="0" cellspacing="0" cellpadding="0" align="right" class="search">
+												<tr>
+												<td>Cautare:&nbsp;&nbsp;</td>
+												<td style="width:100%; vertical-align:middle;">
+													<input type=text name="keywords" class="go" value=""></td>
+												<td style="padding:0px 20px 0px 6px; vertical-align:middle;">
+													<input type="image" src="includes/languages/english/images/buttons/button_search_prod.gif" border="0" alt=""></td>
+												</tr>
+											</table>
+											</form>                                        
 										</td></tr>
 										<tr><td style="background:url(images/header_box_r.gif) 100% 0px repeat-y; height:85px; vertical-align:top;">
-                                        	
-                                           <table cellpadding="0" cellspacing="0" border="0"><tr><td style="padding:0px 20px 0px 40px;background:url(images/navigation_td2.gif) 100% 0px no-repeat;height:85px;">
-                                            
-									<table border="0" cellspacing="0" cellpadding="0" class="header" style="margin:20px 0px 0px 0px;">
-										<tr>
-											<td class="header_td" style="width:33%;">
+                                            <table cellpadding="0" cellspacing="0" border="0">
+											<tr><td style="padding:0px 20px 0px 40px;background:url(images/navigation_td2.gif) 100% 0px no-repeat;height:85px;">
+                                            	<table border="0" cellspacing="0" cellpadding="0" class="header" style="margin:20px 0px 0px 0px;">
+													<tr>
+													<td class="header_td" style="width:33%;">
+	<!--
 	<table border="0" cellspacing="0" cellpadding="0" align="center" style="width:148px;">
-		<tr><td><b>Currencies:</b><form name="currencies" action="http://osc3.template-help.com/osc_23506/advanced_search.php" method="get"><select name="currency" onChange="this.form.submit();" class="select"><option value="USD" SELECTED>US Dollar</option><option value="EUR">Euro</option></select><input type="hidden" name="language" value="en"></form></td>
+		<tr><td><b>Currencies:</b><form name="currencies" action="http://osc3.template-help.com/osc_23506/index.php" method="get"><select name="currency" onChange="this.form.submit();" class="select"><option value="USD" SELECTED>US Dollar</option><option value="EUR">Euro</option></select><input type="hidden" name="language" value="en"></form></td>
 		</tr>
 	</table>
+	-->
 											</td>
-											<td><img src="images/part.gif" tppabs="http://osc3.template-help.com/osc_23506/images/part.gif" border="0" alt="" width="1" height="34"></td>
+											<td><img src="images/part.gif" border="0" alt="" width="1" height="34"></td>
 											<td class="header_td" style="width:33%;">
-									<table border="0" cellspacing="0" cellpadding="0" align="center" style="width:107px">
-										<tr><td><b>&nbsp;&nbsp;Language:</b><a href="advanced_search.php-language=en.htm" tppabs="http://osc3.template-help.com/osc_23506/advanced_search.php?language=en"><img src="includes/languages/english/images/icon.gif" tppabs="http://osc3.template-help.com/osc_23506/includes/languages/english/images/icon.gif" border="0" alt="English" title=" English " width="24" height="15"></a><img src="images/flag_sep2.gif" tppabs="http://osc3.template-help.com/osc_23506/images/flag_sep2.gif" border="0" alt="" width="1" height="10"  style="margin:0px 8px 0px 8px;"><a href="advanced_search.php-language=de.htm" tppabs="http://osc3.template-help.com/osc_23506/advanced_search.php?language=de"><img src="includes/languages/german/images/icon.gif" tppabs="http://osc3.template-help.com/osc_23506/includes/languages/german/images/icon.gif" border="0" alt="Deutsch" title=" Deutsch " width="24" height="15"></a><img src="images/flag_sep2.gif" tppabs="http://osc3.template-help.com/osc_23506/images/flag_sep2.gif" border="0" alt="" width="1" height="10"  style="margin:0px 8px 0px 8px;"><a href="advanced_search.php-language=es.htm" tppabs="http://osc3.template-help.com/osc_23506/advanced_search.php?language=es"><img src="includes/languages/espanol/images/icon.gif" tppabs="http://osc3.template-help.com/osc_23506/includes/languages/espanol/images/icon.gif" border="0" alt="Espa&ntilde;ol" title=" Espa&ntilde;ol " width="24" height="15"></a></td>
-										</tr>
-									</table>
+	<!--
+	<table border="0" cellspacing="0" cellpadding="0" align="center" style="width:107px">
+		<tr><td><b>&nbsp;&nbsp;Language:</b><a href="index.php-language=en.htm">
+		<img src="includes/languages/english/images/icon.gif"  border="0" alt="English" title=" English " width="24" height="15"></a><img src="images/flag_sep2.gif" border="0" alt="" width="1" height="10"  style="margin:0px 8px 0px 8px;"><a href="index.php-language=de.htm" ><img src="includes/languages/german/images/icon.gif" border="0" alt="Deutsch" title=" Deutsch " width="24" height="15"></a><img src="images/flag_sep2.gif" border="0" alt="" width="1" height="10"  style="margin:0px 8px 0px 8px;"><a href="index.php-language=es.htm" tppabs="http://osc3.template-help.com/osc_23506/index.php?language=es"><img src="includes/languages/espanol/images/icon.gif" border="0" alt="Espa&ntilde;ol" title=" Espa&ntilde;ol " width="24" height="15"></a></td>
+		</tr>
+	</table>
+	-->
 											</td>
-											<td><img src="images/part.gif" tppabs="http://osc3.template-help.com/osc_23506/images/part.gif" border="0" alt="" width="1" height="34"></td>
+											<td><img src="images/part.gif" border="0" alt="" width="1" height="34"></td>
 											<td class="header_td" style="width:33%; padding-top:2px; padding-bottom:0px; padding-left:3px;">
 <table cellpadding="0" cellspacing="0" border="0" align="center" style="width:140px;">
 	<tr>
-		<td class="z1"><strong>Shopping Cart:</strong><span> now in your cart </span><a href="shopping_cart.php.htm" tppabs="http://osc3.template-help.com/osc_23506/shopping_cart.php">43  items</a></td>
+		<td class="z1"><strong>Cosul de cumparaturi:</strong><span> now in your cart </span><a href="shopping_cart.php">43  items</a></td>
 	</tr>
 </table>
 											</td>										
@@ -182,48 +192,58 @@ function popupWindow(url) {
 							<tr><td>
 								<table cellpadding="0" cellspacing="0" border="0">
 									<tr>
-            
-		
-							<tr>
-							<td id="m1" onMouseOut="this.id='m1';" onMouseOver="this.id='over_m1';" onClick="document.location='index.php.htm'/*tpa=http://osc3.template-help.com/osc_23506/index.php*/" nowrap="nowrap"> Homepage</td>
-							<td class="menu_separator"><img src="images/menu_separator.gif" tppabs="http://osc3.template-help.com/osc_23506/images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
-							<td id="m2" onMouseOut="this.id='m2';" onMouseOver="this.id='over_m2';" onClick="document.location='products_new.php.htm'/*tpa=http://osc3.template-help.com/osc_23506/products_new.php*/">What's New?</td>
-							<td class="menu_separator"><img src="images/menu_separator.gif" tppabs="http://osc3.template-help.com/osc_23506/images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
-							<td id="m3" onMouseOut="this.id='m3';" onMouseOver="this.id='over_m3';" onClick="document.location='specials.php.htm'/*tpa=http://osc3.template-help.com/osc_23506/specials.php*/">Specials</td>
-							<td class="menu_separator"><img src="images/menu_separator.gif" tppabs="http://osc3.template-help.com/osc_23506/images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
-								
-		                        
-							<td id="m4" onMouseOut="this.id='m4';" onMouseOver="this.id='over_m4';" onClick="document.location='create_account.php.htm'/*tpa=http://osc3.template-help.com/osc_23506/create_account.php*/" nowrap="nowrap">Create an Account</td>
-							<td class="menu_separator"><img src="images/menu_separator.gif" tppabs="http://osc3.template-help.com/osc_23506/images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
-							<td id="m6" onMouseOut="this.id='m6';" onMouseOver="this.id='over_m6';" onClick="document.location='contact_us.php.htm'/*tpa=http://osc3.template-help.com/osc_23506/contact_us.php*/">Contact Us</td>
+            				<tr>
+							<td id="over_m1" onMouseOut="this.id='over_m1';" onMouseOver="this.id='over_m1';" onClick="document.location='index.php'" nowrap="nowrap"> Acasa</td>
+							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
+							<td id="m2" onMouseOut="this.id='m2';" onMouseOver="this.id='over_m2';" onClick="document.location='products_new.php'">Noutati</td>
+							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
+							<td id="m3" onMouseOut="this.id='m3';" onMouseOver="this.id='over_m3';" onClick="document.location='specials.php'">Special</td>
+							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
+									                        
+							<td id="m4" onMouseOut="this.id='m4';" onMouseOver="this.id='over_m4';" onClick="document.location='create_account.php'" nowrap="nowrap">Creare cont nou</td>
+							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
+							<td id="m6" onMouseOut="this.id='m6';" onMouseOver="this.id='over_m6';" onClick="document.location='contact_us.php'">Contact</td>
 							</tr>
 						</table>
 								</td>
 							</tr>
 						</table>													
 					</td></tr>					
-				</table>			<!-- header_eof //-->
+				</table>			
+<!-- header_eof //-->
 
 <!-- body //-->
 <table border="0" class="main_table" cellspacing="0" cellpadding="0">
 <tr>
     <td class="box_width_td_left"><table border="0" class="box_width_left" cellspacing="0" cellpadding="0">
 <!-- left_navigation //-->
+
 <!-- categories //-->
           <tr>
             <td>
 <table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBoxHeading_table">
   <tr>
-    <td><img src="images/corner_top_left.gif" tppabs="http://osc3.template-help.com/osc_23506/images/corner_top_left.gif" border="0" alt="" width="4" height="4"></td>
-    <td  class="infoBoxHeading_td">Categories</td>
-    <td><img src="images/corner_top_right.gif" tppabs="http://osc3.template-help.com/osc_23506/images/corner_top_right.gif" border="0" alt="" width="4" height="4"></td>
+    <td><img src="images/corner_top_left.gif" border="0" alt="" width="4" height="4"></td>
+    <td  class="infoBoxHeading_td">Categorii</td>
+    <td><img src="images/corner_top_right.gif" border="0" alt="" width="4" height="4"></td>
   </tr>
 </table>
 <table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBox2_table">
   <tr>
     <td  class="infoBox2_td"><table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBoxContents2_table">
   <tr>
-    <td  class="boxText"><ul class="categories"><li class="bg_list_un"><a href="index.php-cPath=1.htm" tppabs="http://osc3.template-help.com/osc_23506/index.php?cPath=1">Audio Books</a></li><li class="bg_list"><a href="index.php-cPath=2.htm" tppabs="http://osc3.template-help.com/osc_23506/index.php?cPath=2">Biography-&gt;</a></li><li class="bg_list"><a href="index.php-cPath=3.htm" tppabs="http://osc3.template-help.com/osc_23506/index.php?cPath=3">Business</a></li><li class="bg_list"><a href="index.php-cPath=4.htm" tppabs="http://osc3.template-help.com/osc_23506/index.php?cPath=4">Christianity</a></li><li class="bg_list"><a href="index.php-cPath=5.htm" tppabs="http://osc3.template-help.com/osc_23506/index.php?cPath=5">Computers</a></li><li class="bg_list"><a href="index.php-cPath=6.htm" tppabs="http://osc3.template-help.com/osc_23506/index.php?cPath=6">Cooking and Food</a></li><li class="bg_list"><a href="index.php-cPath=7.htm" tppabs="http://osc3.template-help.com/osc_23506/index.php?cPath=7">Crafts</a></li><li class="bg_list"><a href="index.php-cPath=8.htm" tppabs="http://osc3.template-help.com/osc_23506/index.php?cPath=8">Eastern Religion</a></li><li class="bg_list"><a href="index.php-cPath=9.htm" tppabs="http://osc3.template-help.com/osc_23506/index.php?cPath=9">Engineering</a></li><li class="bg_list"><a href="index.php-cPath=10.htm" tppabs="http://osc3.template-help.com/osc_23506/index.php?cPath=10">Foreign Languages</a></li><li class="bg_list"><a href="index.php-cPath=11.htm" tppabs="http://osc3.template-help.com/osc_23506/index.php?cPath=11">Gay and Lesbian</a></li><li class="bg_list"><a href="index.php-cPath=12.htm" tppabs="http://osc3.template-help.com/osc_23506/index.php?cPath=12">Graphic Novels</a></li><li class="bg_list"><a href="index.php-cPath=13.htm" tppabs="http://osc3.template-help.com/osc_23506/index.php?cPath=13">Health and Medicine</a></li><li class="bg_list"><a href="index.php-cPath=14.htm" tppabs="http://osc3.template-help.com/osc_23506/index.php?cPath=14">History</a></li></ul></td>
+    <td  class="boxText"><ul class="categories">
+		<li class="bg_list_un"><a href="index.php-cPath=1.htm">Arte</a></li>
+		<li class="bg_list"><a href="index.php-cPath=2.htm">Autoeducare</a></li>
+		<li class="bg_list"><a href="index.php-cPath=3.htm">Beletristica</a></li>
+		<li class="bg_list"><a href="index.php-cPath=4.htm">Calculatoare</a></li>
+		<li class="bg_list"><a href="index.php-cPath=5.htm">Carte straina</a></li>
+		<li class="bg_list"><a href="index.php-cPath=6.htm">Economie</a></li>
+		<li class="bg_list"><a href="index.php-cPath=7.htm">Gastronomie</a></li>
+		<li class="bg_list"><a href="index.php-cPath=8.htm">Hobby</a></li>
+		<li class="bg_list"><a href="index.php-cPath=9.htm">Invatamant-Educatie</a></li>
+		<li class="bg_list"><a href="index.php-cPath=10.htm">Istorie</a></li>
+	</ul></td>
   </tr>
 </table>
 </td>
@@ -446,21 +466,32 @@ function popupWindow(url) {
 <!-- body_text_eof //-->
 	<td class="box_width_td_right"><table border="0" class="box_width_right" cellspacing="0" cellpadding="0">
 <!-- right_navigation //-->
-<!-- manufacturers //-->
+<!-- manufacturers 
           <tr>
             <td>
 <table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBoxHeading_table">
   <tr>
-    <td><img src="images/corner_top_left.gif" tppabs="http://osc3.template-help.com/osc_23506/images/corner_top_left.gif" border="0" alt="" width="4" height="4"></td>
+    <td><img src="images/corner_top_left.gif" border="0" alt="" width="4" height="4"></td>
     <td  class="infoBoxHeading_td">Manufacturers</td>
-    <td><img src="images/corner_top_right.gif" tppabs="http://osc3.template-help.com/osc_23506/images/corner_top_right.gif" border="0" alt="" width="4" height="4"></td>
+    <td><img src="images/corner_top_right.gif" border="0" alt="" width="4" height="4"></td>
   </tr>
 </table>
 <table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBox_table">
   <tr>
     <td  class="infoBox_td"><table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBoxContents_table">
   <tr>
-    <td  class="boxText"><form name="manufacturers" action="http://osc3.template-help.com/osc_23506/index.php" method="get"><table cellpadding="0" cellspacing="0" border="0"><tr><td><select name="manufacturers_id" onChange="this.form.submit();" size="1" style="width: 100%"><option value="" SELECTED>Please Select</option><option value="1">Example_1</option><option value="2">Example_2</option><option value="3">Example_3</option></select></td></tr></table></form></td>
+    <td  class="boxText">
+	<form name="manufacturers" action="http://osc3.template-help.com/osc_23506/index.php" method="get">
+	<table cellpadding="0" cellspacing="0" border="0">
+		<tr><td><select name="manufacturers_id" onChange="this.form.submit();" size="1" style="width: 100%">
+			<option value="" SELECTED>Please Select</option><option value="1">Example_1</option>
+			<option value="2">Example_2</option>
+			<option value="3">Example_3</option>
+			</select></td>
+		</tr>
+	</table>
+	</form>
+	</td>
   </tr>
 </table>
 </td>
@@ -469,6 +500,7 @@ function popupWindow(url) {
             </td>
           </tr>
 <!-- manufacturers_eof //-->
+
 <!-- best_sellers //-->
           <tr>
             <td valign="top">
@@ -558,8 +590,19 @@ function popupWindow(url) {
 
 
 			<table cellpadding="0" cellspacing="0" border="0" align="center" class="footer">
-				<tr><td><table cellpadding="0" cellspacing="0" border="0" class="footer_td"><tr><td><img src="images/p1.gif" tppabs="http://osc3.template-help.com/osc_23506/images/p1.gif" border="0" alt="" width="162" height="26"></td></tr></table></td>
-                    <td class="footer2_td"><span><a href="specials.php.htm" tppabs="http://osc3.template-help.com/osc_23506/specials.php">Specials</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="advanced_search.php.htm" tppabs="http://osc3.template-help.com/osc_23506/advanced_search.php">Advanced Search</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="reviews.php.htm" tppabs="http://osc3.template-help.com/osc_23506/reviews.php">Reviews</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="create_account.php.htm" tppabs="http://osc3.template-help.com/osc_23506/create_account.php">Create an Account</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="login.php.htm" tppabs="http://osc3.template-help.com/osc_23506/login.php">Log In</a></span><br>Copyright &copy; 2011 <a href="index.php.htm" tppabs="http://osc3.template-help.com/osc_23506/index.php">Book Store</a> &nbsp;&nbsp; <b><a href="privacy.php.htm" tppabs="http://osc3.template-help.com/osc_23506/privacy.php">Privacy Notice</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="conditions.php.htm" tppabs="http://osc3.template-help.com/osc_23506/conditions.php">Conditions of Use</a></b></td>
+				<tr><td>
+					<table cellpadding="0" cellspacing="0" border="0" class="footer_td">
+					<tr><td><img src="images/p1.gif" border="0" alt="" width="162" height="26"></td></tr>
+					</table>
+					</td>
+                    <td class="footer2_td"><span><a href="specials.php">Special</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+					<a href="advanced_search.php">Cautare avansata</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+					<a href="reviews.php">Reviews</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+					<a href="create_account.php">Creare cont</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+					<a href="login.php">Log In</a></span><br>Copyright &copy; 2011 
+					<a href="index.php">Book Store</a> &nbsp;&nbsp; <b>
+					<a href="privacy.php">Privacy Notice</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+					<a href="conditions.php">Conditions of Use</a></b></td>
 				</tr>
 			</table>
 </td></tr></table>

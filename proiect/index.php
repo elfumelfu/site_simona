@@ -37,7 +37,7 @@
 								<td class="navigation">
 									<table cellpadding="0" cellspacing="0" border="0"  class="navigation_table">
 										<tr><td style="height:42px; text-align:right; padding-top:5px;">
-											<form name="search" action="http://osc3.template-help.com/osc_23506/advanced_search_result.php" method="get">
+											<form name="search" action="advanced_search_result.php" method="get">
 											<table border="0" cellspacing="0" cellpadding="0" align="right" class="search">
 												<tr>
 												<td>Cautare:&nbsp;&nbsp;</td>
@@ -460,7 +460,7 @@ if(isset($_GET['pag'])){
 				</td>
 				<td class="box_width_td_right"><table border="0" class="box_width_right" cellspacing="0" cellpadding="0">
 <!-- right_navigation //-->
-<!-- manufacturers //-->
+<!-- manufacturers 
           <tr>
             <td>
 <table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBoxHeading_table">
