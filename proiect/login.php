@@ -2,7 +2,7 @@
 <html dir="LTR" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>Librarie Online</title>
+<title>Book Store</title>
 <xbasehref="http://osc3.template-help.com/osc_23506/">
 <link rel="stylesheet" type="text/css" href="stylesheet.css" tppabs="http://osc3.template-help.com/osc_23506/stylesheet.css">
 <script type="text/javascript" src="iepngfix_tilebg.js" tppabs="http://osc3.template-help.com/osc_23506/iepngfix_tilebg.js"></script>
@@ -17,6 +17,11 @@
        ie_png.fix('.png');
    </script>
 <![endif]-->
+<script language="javascript"><!--
+function session_win() {
+  window.open("info_shopping_cart.php"/*tpa=http://osc3.template-help.com/osc_23506/info_shopping_cart.php*/,"info_shopping_cart","height=559,width=445,toolbar=no,statusbar=no,scrollbars=yes").focus();
+}
+//--></script>
 </head>
 <body>
 <!-- header //-->
@@ -129,7 +134,8 @@
 <tr>
     <td class="box_width_td_left"><table border="0" class="box_width_left" cellspacing="0" cellpadding="0">
 <!-- left_navigation //-->
-<!-- categories //-->
+
+<!-- categorii //-->
           <tr>
             <td>
 <table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBoxHeading_table">
@@ -152,6 +158,7 @@
             </td>
           </tr>
 <!-- categories_eof //-->
+
 <!-- whats_new //-->
           <tr>
             <td>
@@ -159,7 +166,7 @@
   <tr>
     <td><img src="images/corner3_top_left.gif" tppabs="http://osc3.template-help.com/osc_23506/images/corner3_top_left.gif" border="0" alt="" width="4" height="4"></td>
     <td  class="infoBoxHeading3_td">What's New?</td>
-    <td><img src="images/corner3_top_right.gif" border="0" alt="" width="4" height="4"></td>
+    <td><img src="images/corner3_top_right.gif" tppabs="http://osc3.template-help.com/osc_23506/images/corner3_top_right.gif" border="0" alt="" width="4" height="4"></td>
   </tr>
 </table>
 <table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBox3_table">
@@ -241,61 +248,135 @@
 			
 
 
+<form name="login" action="http://osc3.template-help.com/osc_23506/login.php?action=process" method="post">	
+
+
+  				<table cellpadding="0" cellspacing="0" border="0" class="cont_heading_table">
+					<tr><td class="cont_heading_td">
+				Welcome, Please Sign In			
+</td></tr>
+				</table>								
+
+  		<table cellpadding="0" cellspacing="0" border="0" class="content_wrapper1_b">
+			<tr><td class="content_wrapper_r">
+				<div class="content_wrapper_t">
+					<div class="content_wrapper_l">
+						<div class="content_wrapper_tl">
+							<div class="content_wrapper_tr">
+								<div class="content_wrapper_bl">
+									<div class="content_wrapper_br">
+										<div class="width_100"> 
+<!--
+   <table cellpadding="0" cellspacing="0" border="0">
+	  <tr><td style="padding:0px 10px 0px 10px;" class="smallText">
+	  <font color="#ff0000"><b>Note:</b></font> Your &quot;Visitors Cart&quot; contents will be merged with your &quot;Members Cart&quot; contents once you have logged on. <a href="javascript:session_win();">[More Info]</a></td></tr>
+	</table>
 	
+-->
 
-				<table border="0" width="100%" cellspacing="0" cellpadding="0"  class="cont_heading_table">
-  <tr>
-    <td  class="cont_heading_td">New Products</td>
-  </tr>
-</table>
-				
-<table cellpadding="0" cellspacing="0" border="0"><tr><td class="padd_3">	
-
-<div style="background:url(images/line_.gif) 0px 0px repeat-x;"><img src="images/spacer.gif" tppabs="http://osc3.template-help.com/osc_23506/images/spacer.gif" border="0" alt="" width="1" height="1"></div> 
-       
-		<table border="0" cellspacing="0" cellpadding="0" class="result result_top_padd">
+<div style="padding:0px 0px 4px 0px;"><img src="images/spacer.gif" tppabs="http://osc3.template-help.com/osc_23506/images/spacer.gif" border="0" alt="" width="1" height="1"></div>	
+	<table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td>Displaying <b>1</b> to <b>3</b> (of <b>72</b> new products)</td>
-            <td class="result_right">Result Pages: &nbsp;<b>1</b>&nbsp;&nbsp;
-			<a href="products_new.php-page=2.htm" class="pageResults" title=" Page 2 "><u>2</u></a>&nbsp;&nbsp;
-			<a href="products_new.php-page=3.htm" class="pageResults" title=" Page 3 "><u>3</u></a>&nbsp;&nbsp;
-			<a href="products_new.php-page=4.htm" class="pageResults" title=" Page 4 "><u>4</u></a>&nbsp;&nbsp;
-			<a href="products_new.php-page=5.htm" class="pageResults" title=" Page 5 "><u>5</u></a>&nbsp;
-			<a href="products_new.php-page=6.htm" class="pageResults" title=" Next Set of 5 Pages ">...</a>&nbsp;&nbsp;
-			<a href="products_new.php-page=2.htm" class="pageResults" title=" Next Page "><u>[Next&nbsp;&gt;&gt;]</u></a>&nbsp;
+            <td class="main indent_2" width="50%"><b>Sunt client nou</b></td>
+			<td><img src="images/pixel_trans.gif" border="0" alt="" width="10" height="1"></td>
+            <td class="main indent_2" width="50%"><b>Sunt deja client</b></td>
+          </tr>
+          <tr>
+            <td width="50%" height="100%">
+				
+
+  		<table cellpadding="0" cellspacing="0" border="0" class="pic22_b infoBox_">
+			<tr><td class="pic_r">
+				<div class="pic_t">
+					<div class="pic_l">
+						<div class="pic_tl">
+							<div class="pic_tr">
+								<div class="pic_bl">
+									<div class="pic_br">
+										<div class="width_100">
+				<table border="0" width="100%" height="100%" cellspacing="5" cellpadding="0" style="height:240px;">
+                  <tr>
+                    <td><img src="images/pixel_trans.gif" border="0" alt="" width="100%" height="10"></td>
+                  </tr>
+                  <tr>
+                    <td class="main" style="height:100%;"><br><br>Prin crearea unui cont pe Librarie Online puteti face cumparaturi mai repede, sunteti la curent cu starea comenzilor dvs. </td>
+                  </tr>
+                  <tr>
+                    <td><img src="images/pixel_trans.gif" border="0" alt="" width="100%" height="10"></td>
+                  </tr>
+                  <tr>
+                    <td><table border="0" width="100%" cellspacing="0" cellpadding="2">
+                      <tr>
+                        <td width="10"><img src="images/pixel_trans.gif" border="0" alt="" width="10" height="1"></td>
+                        <td align="right"><a href="create_account.php">
+							<img src="includes/languages/english/images/buttons/button_continue.gif" border="0" alt="Continue" title=" Continue " width="79" height="24"></a></td>
+                        <td width="10"><img src="images/pixel_trans.gif" border="0" alt="" width="10" height="1"></td>
+                      </tr>
+                    </table>
+					
+					</td>
+                  </tr>
+                </table>
+				
+</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</td></tr>
+		</table>
+			</td>
+			<td><img src="images/pixel_trans.gif" border="0" alt="" width="1" height="1"></td>
+            <td width="50%" height="100%">
+				
+
+  		<table cellpadding="0" cellspacing="0" border="0" class="pic22_b infoBox_">
+			<tr><td class="pic_r">
+				<div class="pic_t">
+					<div class="pic_l">
+						<div class="pic_tl">
+							<div class="pic_tr">
+								<div class="pic_bl">
+									<div class="pic_br">
+										<div class="width_100">
+				<table border="0" width="100%" height="100%" cellspacing="5" cellpadding="0" style="height:240px;">
+                  <tr><td><img src="images/pixel_trans.gif" border="0" alt="" width="100%" height="10"></td></tr>
+                  <tr> <td class="main" colspan="2"></td></tr>
+                  <tr><td><img src="images/pixel_trans.gif" border="0" alt="" width="100%" height="10"></td></tr>
+                  <tr><td class="main"><b>Adresa de e-mail:</b></td></tr>
+                  <tr><td class="main"><input type="text" name="email_address"></td></tr>
+                  <tr><td class="main"><b>Parola:</b></td></tr>
+                    <td class="main"><input type="password" name="password" maxlength="40"></td></tr>
+                  <tr><td colspan="2"><img src="images/pixel_trans.gif" border="0" alt="" width="100%" height="10"></td></tr>
+                  <tr><td class="smallText"><a href="password_forgotten.php">Ati uitat parola?.</a></td></tr>
+                  <tr><td><img src="images/pixel_trans.gif" border="0" alt="" width="100%" height="10"></td></tr>
+                  <tr><td>
+                  	<table border="0" width="100%" cellspacing="0" cellpadding="2">
+                      <tr>
+                        <td width="10"><img src="images/pixel_trans.gif" border="0" alt="" width="10" height="1"></td>
+                        <td align="right"><input type="image" src="includes/languages/english/images/buttons/button_login1.gif" border="0" alt="Sign In" title=" Sign In "></td>
+                        <td width="10"><img src="images/pixel_trans.gif" border="0" alt="" width="10" height="1"></td>
+                      </tr>
+                    </table>
+                  </td></tr>
+                </table>
+				
+</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</td></tr>
+		</table>
 			</td>
           </tr>
         </table>
-
-<div style="background:url(images/line_x.gif) 0px 0px repeat-x;padding:0px 0px 1px 0px;"><img src="images/spacer.gif" tppabs="http://osc3.template-help.com/osc_23506/images/spacer.gif" border="0" alt="" width="1" height="1"></div> 
-
-
-
-
-<table border="0" width="" cellspacing="0" cellpadding="0">
-   <tr>
-    <td  class="tableBox_output_td main"><table border="0" width="" cellspacing="0" cellpadding="0">
-   <tr>
-    <td align="left"  class="left">
-  		<table cellpadding="0" cellspacing="0" border="0" class="content_wrapper_b">
-			<tr><td class="content_wrapper_r">
-				<div class="content_wrapper_t">
-					<div class="content_wrapper_l">
-						<div class="content_wrapper_tl">
-							<div class="content_wrapper_tr">
-								<div class="content_wrapper_bl">
-									<div class="content_wrapper_br">
-										<div class="width_100">
-	<div  class="pic_padd">
-  		<table cellpadding="0" cellspacing="0" border="0" align="center" class="pic_b">
-			<tr><td class="pic_r">
-				<div class="pic_t">
-					<div class="pic_l">
-						<div class="pic_tl">
-							<div class="pic_tr">
-								<div class="pic_bl">
-									<div class="pic_br">
-										<div class="width_100"><a href="product_info.php-products_id=1.htm" tppabs="http://osc3.template-help.com/osc_23506/product_info.php?products_id=1"><img src="images/001.jpg" tppabs="http://osc3.template-help.com/osc_23506/images/001.jpg" border="0" alt="Brothers Grimm" title=" Brothers Grimm " width="145" height="118"></a></div>
+	
+</div>
 									</div>
 								</div>
 							</div>
@@ -303,173 +384,12 @@
 					</div>
 				</div>
 			</td></tr>
-		</table></div>
-	<div>
-			<div class="name name_padd"><a href="product_info.php-products_id=1.htm" tppabs="http://osc3.template-help.com/osc_23506/product_info.php?products_id=1">Brothers Grimm</a></div>
-			
-			<div class="ofh"> 
-					<div class="price_padd vam">&nbsp;&nbsp;<span class="productSpecialPrice">$299.99</div>
-					
-					<div class="listing data_padd"><em>Date Added: Monday 23 March, 2009<br>Manufacturer: Example_1</em></div>
-				  
-			</div>
-			
-			<div class="desc desc_padd">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Pellentesque ut quam. Pellentesque vestibulum, velit eget venenatis auctor, quam turpis consequat quam, et ultricies leo neque et tortor. Quisque ut nulla non neque facilisis mattis. Sed quis nibh blandit lacus laoreet feugiat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris tincidunt erat nec risus accumsan tincidunt. Nunc augue massa, accumsan a, mollis vitae, porttitor eu, leo. Vestibulum purus. Vestibulum ipsum nibh, vulputate eu, bibendum quis, accumsan sit amet, metus. Sed leo. Aliquam quis quam. Sed sem. Aliquam erat volutpat.Sed sed nibh. Curabitur vel nisi et tortor luctus porta. Maecenas magna purus, tristique at, gravida a, ornare et, quam. Praesent sem risus, dignissim...</div>
-			
-			<div class="button_padd ofh">
-				<div class="fl_right"><a href="product_info.php-products_id=1.htm" tppabs="http://osc3.template-help.com/osc_23506/products_new.php?action=buy_now&products_id=1"><img src="includes/languages/english/images/buttons/button_add_to_cart1.gif" tppabs="http://osc3.template-help.com/osc_23506/includes/languages/english/images/buttons/button_add_to_cart1.gif" border="0" alt="" width="92" height="24"></a></div>
-				<div class="fl_left"><a href="product_info.php-products_id=1.htm" tppabs="http://osc3.template-help.com/osc_23506/product_info.php?products_id=1"><img src="includes/languages/english/images/buttons/button_details.gif" tppabs="http://osc3.template-help.com/osc_23506/includes/languages/english/images/buttons/button_details.gif" border="0" alt="" width="67" height="24"></a></div> 
-				
-			</div>
+		</table>      		
 
-	</div><br class="cl_both"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</td></tr>
-		</table></td>  
-  </tr> 	
-<tr><td class="prod_line_x padd_gg" colspan="1"><img src="images/spacer.gif" tppabs="http://osc3.template-help.com/osc_23506/images/spacer.gif" border="0" alt="" width="1" height="1"></td></tr>   <tr>
-    <td align="left"  class="right"><img src="images/spacer.gif" tppabs="http://osc3.template-help.com/osc_23506/images/spacer.gif" border="0" alt="" width="1" height="4"><br />
-  		<table cellpadding="0" cellspacing="0" border="0" class="content_wrapper_b">
-			<tr><td class="content_wrapper_r">
-				<div class="content_wrapper_t">
-					<div class="content_wrapper_l">
-						<div class="content_wrapper_tl">
-							<div class="content_wrapper_tr">
-								<div class="content_wrapper_bl">
-									<div class="content_wrapper_br">
-										<div class="width_100">
-	<div  class="pic_padd">
-  		<table cellpadding="0" cellspacing="0" border="0" align="center" class="pic_b">
-			<tr><td class="pic_r">
-				<div class="pic_t">
-					<div class="pic_l">
-						<div class="pic_tl">
-							<div class="pic_tr">
-								<div class="pic_bl">
-									<div class="pic_br">
-										<div class="width_100"><a href="product_info.php-products_id=5.htm" tppabs="http://osc3.template-help.com/osc_23506/product_info.php?products_id=5"><img src="images/005.jpg" tppabs="http://osc3.template-help.com/osc_23506/images/005.jpg" border="0" alt="Comedy Club" title=" Comedy Club " width="145" height="118"></a></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</td></tr>
-		</table></div>
-	<div>
-			<div class="name name_padd"><a href="product_info.php-products_id=5.htm" tppabs="http://osc3.template-help.com/osc_23506/product_info.php?products_id=5">Comedy Club</a></div>
-			
-			<div class="ofh"> 
-					<div class="listing data_padd"><em>Date Added: Monday 23 March, 2009<br>Manufacturer: Example_3</em></div>	
-									
-					<div class="price_padd vam">&nbsp;&nbsp;<s>$35.99</s> <span class="productSpecialPrice">$30.00</span></div>
-			</div>
-
-			<div class="desc desc_padd">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Pellentesque ut quam. Pellentesque vestibulum, velit eget venenatis auctor, quam turpis consequat quam, et ultricies leo neque et tortor. Quisque ut nulla non neque facilisis mattis. Sed quis nibh blandit lacus laoreet feugiat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris tincidunt erat nec risus accumsan tincidunt. Nunc augue massa, accumsan a, mollis vitae, porttitor eu, leo. Vestibulum purus. Vestibulum ipsum nibh, vulputate eu, bibendum quis, accumsan sit amet, metus. Sed leo. Aliquam quis quam. Sed sem. Aliquam erat volutpat.Sed sed nibh. Curabitur vel nisi et tortor luctus porta. Maecenas magna purus, tristique at, gravida a, ornare et, quam. Praesent sem risus, dignissim...</div>
-
-			<div class="button_padd ofh">
-				<div class="fl_right"><a href="product_info.php-products_id=5.htm" tppabs="http://osc3.template-help.com/osc_23506/product_info.php?products_id=5"><img src="includes/languages/english/images/buttons/button_details.gif" tppabs="http://osc3.template-help.com/osc_23506/includes/languages/english/images/buttons/button_details.gif" border="0" alt="" width="67" height="24"></a></div>
-				<div class="fl_left"><a href="shopping_cart.php.htm" tppabs="http://osc3.template-help.com/osc_23506/products_new.php?action=buy_now&products_id=5"><img src="includes/languages/english/images/buttons/button_add_to_cart1.gif" tppabs="http://osc3.template-help.com/osc_23506/includes/languages/english/images/buttons/button_add_to_cart1.gif" border="0" alt="" width="92" height="24"></a></div> 
-				
-			</div>
-
-	</div><br class="cl_both"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</td></tr>
-		</table></td>  
-  </tr> 	
-<tr><td class="prod_line_x padd_gg" colspan="1"><img src="images/spacer.gif" tppabs="http://osc3.template-help.com/osc_23506/images/spacer.gif" border="0" alt="" width="1" height="1"></td></tr>   <tr>
-    <td align="left"  class="left"><img src="images/spacer.gif" tppabs="http://osc3.template-help.com/osc_23506/images/spacer.gif" border="0" alt="" width="1" height="4"><br />
-  		<table cellpadding="0" cellspacing="0" border="0" class="content_wrapper_b">
-			<tr><td class="content_wrapper_r">
-				<div class="content_wrapper_t">
-					<div class="content_wrapper_l">
-						<div class="content_wrapper_tl">
-							<div class="content_wrapper_tr">
-								<div class="content_wrapper_bl">
-									<div class="content_wrapper_br">
-										<div class="width_100">
-	<div  class="pic_padd">
-  		<table cellpadding="0" cellspacing="0" border="0" align="center" class="pic_b">
-			<tr><td class="pic_r">
-				<div class="pic_t">
-					<div class="pic_l">
-						<div class="pic_tl">
-							<div class="pic_tr">
-								<div class="pic_bl">
-									<div class="pic_br">
-										<div class="width_100"><a href="product_info.php-products_id=72.htm" tppabs="http://osc3.template-help.com/osc_23506/product_info.php?products_id=72"><img src="images/072.jpg" tppabs="http://osc3.template-help.com/osc_23506/images/072.jpg" border="0" alt="Evil Dracula" title=" Evil Dracula " width="145" height="118"></a></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</td></tr>
-		</table></div>
-	<div>
-			<div class="name name_padd"><a href="product_info.php-products_id=72.htm" tppabs="http://osc3.template-help.com/osc_23506/product_info.php?products_id=72">Evil Dracula</a></div>
-			
-			<div class="ofh"> 
-					<div class="price_padd vam">&nbsp;&nbsp;<span class="productSpecialPrice">$499.99</div>
-					
-					<div class="listing data_padd"><em>Date Added: Monday 23 March, 2009<br>Manufacturer: Example_2</em></div>
-				  
-			</div>
-			
-			<div class="desc desc_padd">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Pellentesque ut quam. Pellentesque vestibulum, velit eget venenatis auctor, quam turpis consequat quam, et ultricies leo neque et tortor. Quisque ut nulla non neque facilisis mattis. Sed quis nibh blandit lacus laoreet feugiat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris tincidunt erat nec risus accumsan tincidunt. Nunc augue massa, accumsan a, mollis vitae, porttitor eu, leo. Vestibulum purus. Vestibulum ipsum nibh, vulputate eu, bibendum quis, accumsan sit amet, metus. Sed leo. Aliquam quis quam. Sed sem. Aliquam erat volutpat.Sed sed nibh. Curabitur vel nisi et tortor luctus porta. Maecenas magna purus, tristique at, gravida a, ornare et, quam. Praesent sem risus, dignissim...</div>
-			
-			<div class="button_padd ofh">
-				<div class="fl_right"><a href="shopping_cart.php.htm" tppabs="http://osc3.template-help.com/osc_23506/products_new.php?action=buy_now&products_id=72"><img src="includes/languages/english/images/buttons/button_add_to_cart1.gif" tppabs="http://osc3.template-help.com/osc_23506/includes/languages/english/images/buttons/button_add_to_cart1.gif" border="0" alt="" width="92" height="24"></a></div>
-				<div class="fl_left"><a href="product_info.php-products_id=72.htm" tppabs="http://osc3.template-help.com/osc_23506/product_info.php?products_id=72"><img src="includes/languages/english/images/buttons/button_details.gif" tppabs="http://osc3.template-help.com/osc_23506/includes/languages/english/images/buttons/button_details.gif" border="0" alt="" width="67" height="24"></a></div> 
-				
-			</div>
-
-	</div><br class="cl_both"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</td></tr>
-		</table></td>  
-  </tr> 	
-</table>
-</td>
-  </tr> 	
-</table>
-
-
-<div style="background:url(images/line_x.gif) 0px 100% repeat-x;padding:1px 0px 0px 0px;"><img src="images/spacer.gif" tppabs="http://osc3.template-help.com/osc_23506/images/spacer.gif" border="0" alt="" width="1" height="1"></div> 
-       
-        <table border="0" width="100%" cellspacing="0" cellpadding="0" class="result result_bottom_padd">
-          <tr>
-            <td>Displaying <b>1</b> to <b>3</b> (of <b>72</b> new products)</td>
-            <td class="result_right">Result Pages: &nbsp;<b>1</b>&nbsp;&nbsp;<a href="products_new.php-page=2.htm" tppabs="http://osc3.template-help.com/osc_23506/products_new.php?page=2" class="pageResults" title=" Page 2 "><u>2</u></a>&nbsp;&nbsp;<a href="products_new.php-page=3.htm" tppabs="http://osc3.template-help.com/osc_23506/products_new.php?page=3" class="pageResults" title=" Page 3 "><u>3</u></a>&nbsp;&nbsp;<a href="products_new.php-page=4.htm" tppabs="http://osc3.template-help.com/osc_23506/products_new.php?page=4" class="pageResults" title=" Page 4 "><u>4</u></a>&nbsp;&nbsp;<a href="products_new.php-page=5.htm" tppabs="http://osc3.template-help.com/osc_23506/products_new.php?page=5" class="pageResults" title=" Page 5 "><u>5</u></a>&nbsp;<a href="products_new.php-page=6.htm" tppabs="http://osc3.template-help.com/osc_23506/products_new.php?page=6" class="pageResults" title=" Next Set of 5 Pages ">...</a>&nbsp;&nbsp;<a href="products_new.php-page=2.htm" tppabs="http://osc3.template-help.com/osc_23506/products_new.php?page=2" class="pageResults" title=" Next Page "><u>[Next&nbsp;&gt;&gt;]</u></a>&nbsp;</td>
-          </tr>
-        </table>
-		
-<div style="background:url(images/line_.gif) 0px 0px repeat-x;padding:0px 0px 0px 0px;"><img src="images/spacer.gif" tppabs="http://osc3.template-help.com/osc_23506/images/spacer.gif" border="0" alt="" width="1" height="1"></div>        
-
-
-</td></tr></table>      		
-
-	</td>
+	</form></td>
 <!-- body_text_eof //-->
 	<td class="box_width_td_right"><table border="0" class="box_width_right" cellspacing="0" cellpadding="0">
 <!-- right_navigation //-->
-
 <!-- manufacturers 
           <tr>
             <td>
@@ -492,7 +412,7 @@
 </table>
             </td>
           </tr>
-<!-- manufacturers_eof //-->
+manufacturers_eof //-->
 
 <!-- best_sellers //-->
           <tr>
@@ -504,9 +424,7 @@
     <td><img src="images/corner_top_right.gif" border="0" alt="" width="4" height="4"></td>
   </tr>
 </table>
-	
-
-					
+						
 <table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBox2_table">
   <tr>
     <td  class="infoBox2_td"><table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBoxContents2_table">
@@ -534,9 +452,9 @@
             <td>
 <table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBoxHeading3_table">
   <tr>
-    <td><img src="images/corner3_top_left.gif" tppabs="http://osc3.template-help.com/osc_23506/images/corner3_top_left.gif" border="0" alt="" width="4" height="4"></td>
-    <td  class="infoBoxHeading3_td">Specials</td>
-    <td><img src="images/corner3_top_right.gif" tppabs="http://osc3.template-help.com/osc_23506/images/corner3_top_right.gif" border="0" alt="" width="4" height="4"></td>
+    <td><img src="images/corner3_top_left.gif" border="0" alt="" width="4" height="4"></td>
+    <td  class="infoBoxHeading3_td">Special</td>
+    <td><img src="images/corner3_top_right.gif" border="0" alt="" width="4" height="4"></td>
   </tr>
 </table>
 <table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBox3_table">
@@ -554,7 +472,8 @@
 							<div class="pic2_tr">
 								<div class="pic2_bl">
 									<div class="pic2_br">
-										<div class="width_100"><a href="product_info.php-products_id=3.htm" tppabs="http://osc3.template-help.com/osc_23506/product_info.php?products_id=3"><img src="images/003.jpg" tppabs="http://osc3.template-help.com/osc_23506/images/003.jpg" border="0" alt="Piggy Bank" title=" Piggy Bank " width="145" height="118"></a></div>
+										<div class="width_100"><a href="product_info.php-products_id=6.htm">
+										<img src="images/006.jpg" border="0" alt="Geography Textbook" title=" Geography Textbook " width="145" height="118"></a></div>
 									</div>
 								</div>
 							</div>
@@ -563,8 +482,8 @@
 				</div>
 			</td></tr>
 		</table></td></tr>
-						<tr><td class="name_padd"><span><a href="product_info.php-products_id=3.htm" tppabs="http://osc3.template-help.com/osc_23506/product_info.php?products_id=3">Piggy Bank</a></span></td></tr>
-                        <tr><td class="price_padd"><div><del>$49.99</del> &nbsp;&nbsp; <span class="productSpecialPrice">$39.99</span></div></td></tr>
+						<tr><td class="name_padd"><span><a href="product_info.php-products_id=6.htm">Geography Textbook</a></span></td></tr>
+                        <tr><td class="price_padd"><div><del>$39.99</del> &nbsp;&nbsp; <span class="productSpecialPrice">$30.00</span></div></td></tr>
                     </table></td>
   </tr>
 </table>
@@ -574,8 +493,9 @@
             </td>
           </tr>
 <!-- specials_eof //-->
+
 <!-- right_navigation_eof //-->
-    </table></td>    
+    </table></td>
   </tr>
 </table>
 <!-- body_eof //-->

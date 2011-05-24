@@ -200,22 +200,29 @@
             </td>
           </tr>
 <!-- whats_new_eof //-->
+
 <!-- information //-->
           <tr>
             <td>
 <table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBoxHeading_table">
   <tr>
-    <td><img src="images/corner_top_left.gif" tppabs="http://osc3.template-help.com/osc_23506/images/corner_top_left.gif" border="0" alt="" width="4" height="4"></td>
-    <td  class="infoBoxHeading_td">Information</td>
-    <td><img src="images/corner_top_right.gif" tppabs="http://osc3.template-help.com/osc_23506/images/corner_top_right.gif" border="0" alt="" width="4" height="4"></td>
+    <td><img src="images/corner_top_left.gif" border="0" alt="" width="4" height="4"></td>
+    <td  class="infoBoxHeading_td">Informatii</td>
+    <td><img src="images/corner_top_right.gif" border="0" alt="" width="4" height="4"></td>
   </tr>
 </table>
 <table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBox2_table">
   <tr>
     <td  class="infoBox2_td"><table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBoxContents2_table">
   <tr>
-    <td  class="boxText"><ul class="information">
-  										  <li class="bg_list_un"><a href="shipping.php.htm" tppabs="http://osc3.template-help.com/osc_23506/shipping.php">Shipping & Returns</a></li><li class="bg_list"><a href="privacy.php.htm" tppabs="http://osc3.template-help.com/osc_23506/privacy.php">Privacy Notice</a></li><li class="bg_list"><a href="conditions.php.htm" tppabs="http://osc3.template-help.com/osc_23506/conditions.php">Conditions of Use</a></li><li class="bg_list"><a href="contact_us.php.htm" tppabs="http://osc3.template-help.com/osc_23506/contact_us.php">Contact Us</a></li></ul></td>
+    <td  class="boxText">
+		<ul class="information">
+  			<li class="bg_list_un"><a href="shipping.php">Shipping & Returns</a></li>
+			<li class="bg_list"><a href="privacy.php">Privacy Notice</a></li>
+			<li class="bg_list"><a href="conditions.php">Conditions of Use</a></li>
+			<li class="bg_list"><a href="contact_us.php">Contact Us</a></li>
+		</ul>
+	</td>
   </tr>
 </table>
 </td>
@@ -224,6 +231,7 @@
             </td>
           </tr>
 <!-- information_eof //-->
+
 <!-- left_navigation_eof //-->
     </table></td>
 <!-- body_text //-->
@@ -257,24 +265,24 @@
 
 			<table border="0" width="100%" cellspacing="5" cellpadding="0" class="infoBox2_">
               <tr>
-                <td class="main">Full Name:</td>
+                <td class="main">Numele complet:</td>
                 <td class="main" style="width:100%;"><input type="text" name="name"></td>
               </tr>
               <tr>
-                <td class="main" style="white-space:nowrap;">E-Mail Address:</td>
+                <td class="main" style="white-space:nowrap;">Adresa de e-mail:</td>
                 <td class="main"><input type="text" name="email"></td>
               </tr>
               <tr>
-                <td class="main">Enquiry:</td>
+                <td class="main">Introduceti mesajul dvs:</td>
                 <td><textarea name="enquiry" wrap="soft" cols="50" rows="15"></textarea></td>
               </tr>
             </table>
 				
 
-<div style="padding:0px 0px 4px 0px;"><img src="images/spacer.gif" tppabs="http://osc3.template-help.com/osc_23506/images/spacer.gif" border="0" alt="" width="1" height="1"></div>
+<div style="padding:0px 0px 4px 0px;"><img src="images/spacer.gif" border="0" alt="" width="1" height="1"></div>
 <table cellpadding="0" cellspacing="5" border="0"><tr><td>
 			<table border="0" width="100%" cellspacing="0" cellpadding="2">
-				<tr><td align="right"><input type="image" src="includes/languages/english/images/buttons/button_continue.gif" tppabs="http://osc3.template-help.com/osc_23506/includes/languages/english/images/buttons/button_continue.gif" border="0" alt="Continue" title=" Continue "></td></tr>
+				<tr><td align="right"><input type="image" src="includes/languages/english/images/buttons/button_continue.gif" border="0" alt="Continue" title=" Continue "></td></tr>
             </table>
 				
 </td></tr></table>
@@ -293,7 +301,8 @@
 <!-- body_text_eof //-->
 	<td class="box_width_td_right"><table border="0" class="box_width_right" cellspacing="0" cellpadding="0">
 <!-- right_navigation //-->
-<!-- manufacturers //-->
+
+<!-- manufacturers 
           <tr>
             <td>
 <table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBoxHeading_table">
@@ -316,14 +325,15 @@
             </td>
           </tr>
 <!-- manufacturers_eof //-->
+
 <!-- best_sellers //-->
           <tr>
             <td valign="top">
 <table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBoxHeading_table">
   <tr>
-    <td><img src="images/corner_top_left.gif" tppabs="http://osc3.template-help.com/osc_23506/images/corner_top_left.gif" border="0" alt="" width="4" height="4"></td>
-    <td  class="infoBoxHeading_td">Bestsellers</td>
-    <td><img src="images/corner_top_right.gif" tppabs="http://osc3.template-help.com/osc_23506/images/corner_top_right.gif" border="0" alt="" width="4" height="4"></td>
+    <td><img src="images/corner_top_left.gif" border="0" alt="" width="4" height="4"></td>
+    <td  class="infoBoxHeading_td">Cele mai vandute: </td>
+    <td><img src="images/corner_top_right.gif" border="0" alt="" width="4" height="4"></td>
   </tr>
 </table>
 	
@@ -333,7 +343,15 @@
   <tr>
     <td  class="infoBox2_td"><table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBoxContents2_table">
   <tr>
-    <td  class="boxText"><ul class="bestsellers"><li class="bg_list2_un"><a href="product_info.php-products_id=1.htm" tppabs="http://osc3.template-help.com/osc_23506/product_info.php?products_id=1"><b>01.&nbsp;&nbsp;</b><font>Brothers Grimm</font></a></li><li class="bg_list2"><a href="product_info.php-products_id=2.htm" tppabs="http://osc3.template-help.com/osc_23506/product_info.php?products_id=2"><b>02.&nbsp;&nbsp;</b><font>Folk Tales</font></a></li><li class="bg_list2"><a href="product_info.php-products_id=3.htm" tppabs="http://osc3.template-help.com/osc_23506/product_info.php?products_id=3"><b>03.&nbsp;&nbsp;</b><font>Piggy Bank</font></a></li><li class="bg_list2"><a href="product_info.php-products_id=5.htm" tppabs="http://osc3.template-help.com/osc_23506/product_info.php?products_id=5"><b>04.&nbsp;&nbsp;</b><font>Comedy Club</font></a></li><li class="bg_list2"><a href="product_info.php-products_id=6.htm" tppabs="http://osc3.template-help.com/osc_23506/product_info.php?products_id=6"><b>05.&nbsp;&nbsp;</b><font>Geography Textbook</font></a></li><li class="bg_list2"><a href="product_info.php-products_id=4.htm" tppabs="http://osc3.template-help.com/osc_23506/product_info.php?products_id=4"><b>06.&nbsp;&nbsp;</b><font>Prosper&rsquo;os Books</font></a></li></ul></td>
+    <td  class="boxText">
+	<ul class="bestsellers">
+		<li class="bg_list2_un"><a href="product_info.php-products_id=1.htm"><b>01.&nbsp;&nbsp;</b><font>Brothers Grimm</font></a></li>
+		<li class="bg_list2"><a href="product_info.php-products_id=2.htm"><b>02.&nbsp;&nbsp;</b><font>Folk Tales</font></a></li>
+		<li class="bg_list2"><a href="product_info.php-products_id=3.htm"><b>03.&nbsp;&nbsp;</b><font>Piggy Bank</font></a></li>
+		<li class="bg_list2"><a href="product_info.php-products_id=5.htm"><b>04.&nbsp;&nbsp;</b><font>Comedy Club</font></a></li>
+		<li class="bg_list2"><a href="product_info.php-products_id=6.htm"><b>05.&nbsp;&nbsp;</b><font>Geography Textbook</font></a></li>
+		<li class="bg_list2"><a href="product_info.php-products_id=4.htm"><b>06.&nbsp;&nbsp;</b><font>Prosper&rsquo;os Books</font></a></li>
+	</ul></td>
   </tr>
 </table>
 </td>
@@ -342,6 +360,7 @@
             </td>
           </tr>
 <!-- best_sellers_eof //-->
+
 <!-- specials //-->
           <tr>
             <td>
@@ -405,13 +424,25 @@
 
 
 			<table cellpadding="0" cellspacing="0" border="0" align="center" class="footer">
-				<tr><td><table cellpadding="0" cellspacing="0" border="0" class="footer_td"><tr><td><img src="images/p1.gif" tppabs="http://osc3.template-help.com/osc_23506/images/p1.gif" border="0" alt="" width="162" height="26"></td></tr></table></td>
-                    <td class="footer2_td"><span><a href="specials.php.htm" tppabs="http://osc3.template-help.com/osc_23506/specials.php">Specials</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="advanced_search.php.htm" tppabs="http://osc3.template-help.com/osc_23506/advanced_search.php">Advanced Search</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="reviews.php.htm" tppabs="http://osc3.template-help.com/osc_23506/reviews.php">Reviews</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="create_account.php.htm" tppabs="http://osc3.template-help.com/osc_23506/create_account.php">Create an Account</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="login.php.htm" tppabs="http://osc3.template-help.com/osc_23506/login.php">Log In</a></span><br>Copyright &copy; 2011 <a href="index.php.htm" tppabs="http://osc3.template-help.com/osc_23506/index.php">Book Store</a> &nbsp;&nbsp; <b><a href="privacy.php.htm" tppabs="http://osc3.template-help.com/osc_23506/privacy.php">Privacy Notice</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="conditions.php.htm" tppabs="http://osc3.template-help.com/osc_23506/conditions.php">Conditions of Use</a></b></td>
+				<tr><td>
+					<table cellpadding="0" cellspacing="0" border="0" class="footer_td">
+					<tr><td><img src="images/p1.gif" border="0" alt="" width="162" height="26"></td></tr>
+					</table>
+					</td>
+                    <td class="footer2_td"><span><a href="specials.php">Special</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+					<a href="advanced_search.php">Cautare avansata</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+					<a href="reviews.php">Reviews</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+					<a href="create_account.php">Creare cont</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+					<a href="login.php">Log In</a></span><br>Copyright &copy; 2011 
+					<a href="index.php">Book Store</a> &nbsp;&nbsp; <b>
+					<a href="privacy.php">Privacy Notice</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+					<a href="conditions.php">Conditions of Use</a></b></td>
 				</tr>
 			</table>
 </td></tr></table>
 </td></tr></table>
 </td></tr></table>
 <!-- footer_eof //-->
+
 </body>
 </html>
