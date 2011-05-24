@@ -147,10 +147,30 @@
 	<ul class="categories">
 	<?php	//Listarea categoriilor
 	include("../admin/connect.php");
+	if (isset($_GET['domeniu']))
+		$sel_domeniu = $_GET['domeniu'];
+	else
+		$sel_domeniu = '';
 	$lista_categorii = "SELECT denumire from `baza_librarie`.`domeniu` ORDER BY denumire ";
 		$test = mysql_query($lista_categorii);
+	
 		while($domeniu = mysql_fetch_array($test)) {
-			echo '<li class="bg_list_un"><a href="index.php?domeniu='.$domeniu['denumire'].'">'.$domeniu['denumire'].'</a></li>';
+		
+			
+			if ($sel_domeniu == $domeniu['denumire'])
+				{
+				echo '<li class="bg_list"><a href="index.php?domeniu='.$domeniu['denumire'].'">'.$domeniu['denumire'].'</a></li>';
+				
+				$lista_subcategorii = "SELECT sub.denumire as denumire from `baza_librarie`.`domeniu` as dom,`baza_librarie`.`subdomeniu` as sub 
+				                      WHERE sub.idDomeniu=dom.id and dom.denumire='".$sel_domeniu."' ORDER BY denumire";
+				$testsub = mysql_query($lista_subcategorii);
+				//var_dump($lista_subcategorii);
+				while($subdomeniu = mysql_fetch_array($testsub)) {
+					echo '<li class="bg_list2_un"><a href="index.php?domeniu='.$subdomeniu['denumire'].'">'.$subdomeniu['denumire'].'</a></li>';
+					}
+				}
+			else
+				echo '<li class="bg_list_un"><a href="index.php?domeniu='.$domeniu['denumire'].'">'.$domeniu['denumire'].'</a></li>';
 		}
 		/*<li class="bg_list_un"><a href="index.php-cPath=1.htm">Arte</a></li>
 		<li class="bg_list"><a href="index.php-cPath=2.htm">Autoeducare</a></li>
