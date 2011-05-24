@@ -61,6 +61,7 @@
 		</tr>
 	</table>
 	-->
+	<a href="login.php">Log In</a>
 											</td>
 											<td><img src="images/part.gif" border="0" alt="" width="1" height="34"></td>
 											<td class="header_td" style="width:33%;">
@@ -71,6 +72,8 @@
 		</tr>
 	</table>
 	-->
+	<img src="images/cheie.gif" border="0" alt="" width="25" height="30">
+	<a href="login.php">Log In</a>
 											</td>
 											<td><img src="images/part.gif" border="0" alt="" width="1" height="34"></td>
 											<td class="header_td" style="width:33%; padding-top:2px; padding-bottom:0px; padding-left:3px;">
@@ -597,11 +600,14 @@
 					<tr><td><img src="images/p1.gif" border="0" alt="" width="162" height="26"></td></tr>
 					</table>
 					</td>
-                    <td class="footer2_td"><span><a href="specials.php">Special</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+                    <td class="footer2_td">
+					<span><a href="specials.php">Special</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
 					<a href="advanced_search.php">Cautare avansata</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
 					<a href="reviews.php">Reviews</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
 					<a href="create_account.php">Creare cont</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
-					<a href="login.php">Log In</a></span><br>Copyright &copy; 2011 
+					<a href="login.php">Log In</a>
+					</span>
+					<br>Copyright &copy; 2011 
 					<a href="index.php">Book Store</a> &nbsp;&nbsp; <b>
 					<a href="privacy.php">Privacy Notice</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
 					<a href="conditions.php">Conditions of Use</a></b></td>
