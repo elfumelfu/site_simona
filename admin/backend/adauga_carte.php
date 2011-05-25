@@ -1,7 +1,7 @@
 <form method="post" action="index.php?exec=adauga_carte&salveaza">
 	<pre>ISBN: <input name="isbn" type="text"/></pre>
 	<pre>Titlu: <input name="titlu" value="" type="text"/></pre>
-	<pre>Autor: 
+	<ul>Autor: </ul>
 <script>
 $(document).ready(function()
 {
@@ -22,12 +22,17 @@ $('#delete').click(function() {
 				<option><?php echo  $autor['prenume'].' '.$autor['nume']?></option>
 			<?php }?>
 			</select>
+<div style="float:left;width:100px;" class="add_del">
 			<input id="add" value=">>" type="button"/>
 			<input id="delete" value="<<" type="button"/>
-			<select name="selected_autor[]" id="selected_autor" multiple="multiple" size="10" style="width:200px">
+                        </div>
+<div style="float:left;width:200px;">
+			<select name="selected_autor[]" id="selected_autor" multiple="multiple" size="10" style="width:200px;float:left;display:inline;">
 			</select>
+    </div>
+<div style="clear:both"></div>
 	<a href="index.php?exec=adauga_autor">Adauga autor</a>
-	</pre>
+	
 	<pre>Editura: 
 	
 	<?php $select_editura = mysql_query("SELECT * FROM `baza_librarie`.`editura`");	?>
@@ -68,6 +73,7 @@ $insert_carte ="
 		
 		
 	mysql_query($insert_carte);
+        
 foreach($_POST['selected_autor'] as $aut){
 
 
@@ -83,6 +89,6 @@ mysql_query($insert_autor_carte);
 }
 }
 //var_dump($_POST);
-
+//07
 
 ?>
