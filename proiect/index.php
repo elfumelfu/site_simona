@@ -224,12 +224,16 @@
 <!-- body_text //-->
     <td class="content_width2_td">                           	
                         
-        <div class="banner_02">
+<!--        <div class="banner_02">
 			<a href="index.php-cPath=3.htm" target="_blank">
 			<img src="images/banner_02.jpg" border="0" alt="Banner2" title=" Banner2 " width="660" height="283">
 			</a>
-		</div>
-               
+		</div>-->
+                <div class="banner_02">
+                    
+                    <div style="width:660px;border:1px solid #000; height:30px;margin-bottom: 10px;">
+                      
+                    </div>
 		<table cellpadding="0" cellspacing="0" border="0">
 			<tr>
 				<td style="width:100%;padding:0px 11px 0px 0px;">
@@ -273,6 +277,10 @@
   mysql_connect("localhost", "root", "") or die(mysql_error());
   
   $sel = "SELECT * FROM `baza_librarie`.`carte` ";
+  
+  
+  
+  
   $select = mysql_query($sel);
  
  
