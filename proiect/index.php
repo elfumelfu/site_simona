@@ -109,7 +109,7 @@
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
 							<td id="m2" onMouseOut="this.id='m2';" onMouseOver="this.id='over_m2';" onClick="document.location='products_new.php'">Noutati</td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
-							<td id="m3" onMouseOut="this.id='m3';" onMouseOver="this.id='over_m3';" onClick="document.location='specials.php'">Special</td>
+							<td id="m3" onMouseOut="this.id='m3';" onMouseOver="this.id='over_m3';" onClick="document.location='specials.php'">Oferte</td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
 									                        
 							<td id="m4" onMouseOut="this.id='m4';" onMouseOver="this.id='over_m4';" onClick="document.location='create_account.php'" nowrap="nowrap">Creare cont nou</td>
@@ -159,14 +159,14 @@
 			
 			if ($sel_domeniu == $domeniu['denumire'])
 				{
-				echo '<li class="bg_list"><a href="index.php?domeniu='.$domeniu['denumire'].'">'.$domeniu['denumire'].'</a></li>';
+				echo '<li class="bg_list"><a style="font-weight:bold" href="index.php?domeniu='.$domeniu['denumire'].'">'.$domeniu['denumire'].'</a></li>';
 				
 				$lista_subcategorii = "SELECT sub.denumire as denumire from `baza_librarie`.`domeniu` as dom,`baza_librarie`.`subdomeniu` as sub 
 				                      WHERE sub.idDomeniu=dom.id and dom.denumire='".$sel_domeniu."' ORDER BY denumire";
 				$testsub = mysql_query($lista_subcategorii);
 				//var_dump($lista_subcategorii);
 				while($subdomeniu = mysql_fetch_array($testsub)) {
-					echo '<li class="bg_list2_un"><a href="index.php?domeniu='.$subdomeniu['denumire'].'">'.$subdomeniu['denumire'].'</a></li>';
+					echo '<li class="bg_list"><div><a href="index.php?domeniu='.$subdomeniu['denumire'].'">'.$subdomeniu['denumire'].'</a></div></li>';
 					}
 				}
 			else
@@ -573,7 +573,7 @@ if(isset($_GET['pag'])){
   <tr>
     <td>
 		<img src="images/corner3_top_left.gif" border="0" alt="" width="4" height="4"></td>
-    <td  class="infoBoxHeading3_td">Specials</td>
+    <td  class="infoBoxHeading3_td">Oferte</td>
     <td>
 		<img src="images/corner3_top_right.gif" border="0" alt="" width="4" height="4"></td>
   </tr>
@@ -652,7 +652,7 @@ if(isset($_GET['pag'])){
 					</table>
 					</td>
                     <td class="footer2_td">
-						<span><a href="specials.php">Specials</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+						<span><a href="specials.php">Oferte</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
 						<a href="advanced_search.php">Advanced Search</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
 						<a href="reviews.php">Reviews</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
 						<a href="create_account.php">Create an Account</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;

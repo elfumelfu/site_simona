@@ -4,8 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <title>Librarie Online</title>
 <xbasehref="http://osc3.template-help.com/osc_23506/">
-<link rel="stylesheet" type="text/css" href="stylesheet.css" tppabs="http://osc3.template-help.com/osc_23506/stylesheet.css">
-<script type="text/javascript" src="iepngfix_tilebg.js" tppabs="http://osc3.template-help.com/osc_23506/iepngfix_tilebg.js"></script>
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+<script type="text/javascript" src="iepngfix_tilebg.js"></script>
 <style type="text/css">
 .ie6_png 			{behavior: url("iepngfix.htc"/*tpa=http://osc3.template-help.com/osc_23506/iepngfix.htc*//*tpa=http://osc3.template-help.com/osc_23506/iepngfix.htc*/) }
 .ie6_png img		{behavior: url("iepngfix.htc"/*tpa=http://osc3.template-help.com/osc_23506/iepngfix.htc*//*tpa=http://osc3.template-help.com/osc_23506/iepngfix.htc*/) }
