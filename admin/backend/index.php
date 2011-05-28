@@ -114,7 +114,7 @@ include('adauga_autor.php');
             				<tr>
 							<td id="over_m1"> <a href="index.php?exec=adauga_carte">Adauga Carte</a></td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
-							<td id="m2" ><a href="index.php?exec=adauga_editura">Adauga Editura</a></td>
+							<td id="m2" ><a href="index.php?listare_editura">Edituri</a></td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
 							<td id="m3"><a href="index.php?exec=adauga_autor">Adauga Autor</a><br></td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
@@ -256,20 +256,54 @@ if(isset($_GET['salveaza_autor']) && $_POST){
 //var_dump($test);
 }
 //insert autor
+
+//listare editura
+if(isset($_GET['listare_editura'])){
+	$list_editura = "SELECT id, denumire, localitate, nrtelefon, email FROM baza_librarie.editura ORDER BY denumire, localitate";
+	$rc = mysql_query($list_editura);
+	echo '
+		<a href="index.php?exec=adauga_editura">Adauga editura</a>
+		<table border="1">
+		<tr>
+		<th>ID</th>
+		<th>Denumire</th>
+		<th>Localitate</th>
+		<th>Nr telefon</th>
+		<th>E-mail</th>
+		</tr>
+		';
+	while($row = mysql_fetch_array($rc)){
+		echo '
+			<tr>
+			<td>'.$row['id'].'</td><td>'.$row['denumire'].'</td><td>'.$row['localitate'].'</td><td>'.$row['nrtelefon'].'</td><td>'.$row['email'].'</td>
+				<td><a href="index.php?exec=adauga_editura&mod='. $row['id'] .'" >editare</a></td>
+				<td><a href="index.php?function=sterge&id='.$row['id'].'&tabela=editura" >stergere</a></td>
+			</tr>
+			';
+	}
+		
+//var_dump($test);
+}
+
 //insert editura
 if(isset($_GET['salveaza_editura']) && isset($_POST)){
-echo $inserare_editura="INSERT INTO `baza_librarie`.`editura` (
-`id` ,
-`denumire` ,
-`localitate` ,
-`nrtelefon` ,
-`email`
-)
-VALUES (
-NULL , '".$_POST['denumire']."', '".$_POST['localitate']."', '".$_POST['numar_telefon']."', '".$_POST['email']."')";
-$ts = mysql_query($inserare_editura);
-var_dump($ts);
+
+if (isset($_GET['id'])) {
+	$id = $_GET['id'];			
+	$modifica_editura = "UPDATE baza_librarie.editura SET denumire='".$_POST['denumire'].
+	                       "', localitate='".$_POST['localitate'].
+						   "', nrtelefon='" .$_POST['numar_telefon'].
+						   "', email='".$_POST['email']."' WHERE id=".$id;
+	$rc = mysql_query($modifica_editura);
+ } else {
+	echo $inserare_editura="INSERT INTO `baza_librarie`.`editura` ( `denumire` , `localitate` , `nrtelefon` , `email` ) VALUES (
+				'".$_POST['denumire']."', '".$_POST['localitate']."', '".$_POST['numar_telefon']."', '".$_POST['email']."')";
+	$ts = mysql_query($inserare_editura);
+
+	}
 }
+
+
 //insert editura
 
 //meniul principal pentru admin
