@@ -5,7 +5,13 @@
 <script type="text/javascript" src="../js/jquery-ui-1.8.12.custom.min.js"></script>
 <?php include('../connect.php');?>
 
-
+<?php 
+function sterge_inregistrare($id, $tabela) {
+	$rem = "DELETE FROM baza_librarie.".$tabela." WHERE id = ".$id."";
+	var_dump($rem);
+	mysql_query($rem);
+}
+?>
 
 <?php 
 
@@ -106,12 +112,13 @@ include('adauga_autor.php');
 								<table cellpadding="0" cellspacing="0" border="0">
 									<tr>
             				<tr>
-							<td id="over_m1"> <a href="index.php?exec=adauga_carte">Adauga Carte</a>
-</td>
+							<td id="over_m1"> <a href="index.php?exec=adauga_carte">Adauga Carte</a></td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
 							<td id="m2" ><a href="index.php?exec=adauga_editura">Adauga Editura</a></td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
 							<td id="m3"><a href="index.php?exec=adauga_autor">Adauga Autor</a><br></td>
+							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
+							<td id="m4"><a href="index.php?listare_autor">Autori</a><br></td>
 							 </tr>
 						</table>
 								</td>
@@ -205,21 +212,47 @@ $unde = $_SESSION['unde'];
 }
 echo  $_SESSION['de_unde'].'<br>';
 echo  $_SESSION['unde'];
+echo '<br>';
 //breadcrumbs
 
-
+//listare autori
+if(isset($_GET['listare_autor'])){
+	$list_autor = "SELECT id, nume, prenume, origine FROM baza_librarie.autor ORDER BY nume, prenume, origine";
+	$test_autor = mysql_query($list_autor);
+	echo '
+		<a href="index.php?exec=adauga_autor">Adauga autor</a>
+		<table border="1">
+		<tr>
+		<th>ID</th>
+		<th>Nume</th>
+		<th>Prenume</th>
+		<th>Origine</th>
+		</tr>
+		';
+	while($row = mysql_fetch_array($test_autor)){
+		echo '
+			<tr>
+			<td>'.$row['id'].'</td><td>'.$row['nume'].'</td><td>'.$row['prenume'].'</td><td>'.$row['origine'].'</td>
+				<td><a href="index.php?exec=adauga_autor&mod='. $row['id'] .'" >editare</a></td>
+				<td><a href="index.php?function=sterge&id='.$row['id'].'&tabela=autor" >stergere</a></td>
+			</tr>
+			';
+	}
+		
+//var_dump($test);
+}
 //insert autor
 if(isset($_GET['salveaza_autor']) && $_POST){
- $insert_autor = "INSERT INTO `baza_librarie`.`autor` (
-`id` ,
-`nume` ,
-`prenume` ,
-`origine`
-)
-VALUES (
-NULL , '".$_POST['nume']."', '".$_POST['prenume']."', '".$_POST['origine']."'
-);";
-$test = mysql_query($insert_autor);
+ 
+  if (isset($_GET['id'])) {
+	$id = $_GET['id'];			
+	$modifica_autor = "UPDATE baza_librarie.autor SET nume='".$_POST['nume']."', prenume='"	.$_POST['prenume']."', origine='" .$_POST['origine']."' WHERE id=".$id;
+	$rc = mysql_query($modifica_autor);
+ } else {
+	$insert_autor = "INSERT INTO `baza_librarie`.`autor` ( `nume` , `prenume` , `origine`  ) VALUES (
+					'".$_POST['nume']."', '".$_POST['prenume']."', '".$_POST['origine']."');";
+	$test = mysql_query($insert_autor);
+ }
 //var_dump($test);
 }
 //insert autor
@@ -259,6 +292,22 @@ switch ($_GET['exec']) {
         break;
 }
 }
+
+if( isset($_GET['function']) ) { 
+  switch( $_GET['function'] ) { 
+     case 'sterge':
+		if (isset($_GET['id']))
+			$id = $_GET['id'];
+		if (isset($_GET['tabela']))
+			$tabela = $_GET['tabela'];	
+        sterge_inregistrare($id, $tabela); 
+     break; 
+
+  } 
+}
+
+
+
   ?>
 			
 			
