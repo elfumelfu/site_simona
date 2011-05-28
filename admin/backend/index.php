@@ -112,13 +112,11 @@ include('adauga_autor.php');
 								<table cellpadding="0" cellspacing="0" border="0">
 									<tr>
             				<tr>
-							<td id="over_m1"> <a href="index.php?exec=adauga_carte">Adauga Carte</a></td>
+							<td id="m1"> <a href="index.php?exec=adauga_carte">Adauga Carte</a></td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
-							<td id="m2" ><a href="index.php?listare_editura">Edituri</a></td>
+							<td id="m2"><a href="index.php?listare_autor">Autori</a></td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
-							<td id="m3"><a href="index.php?exec=adauga_autor">Adauga Autor</a><br></td>
-							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
-							<td id="m4"><a href="index.php?listare_autor">Autori</a><br></td>
+							<td id="m3" ><a href="index.php?listare_editura">Edituri</a></td>
 							 </tr>
 						</table>
 								</td>
@@ -259,17 +257,45 @@ if(isset($_GET['salveaza_autor']) && $_POST){
 
 //listare editura
 if(isset($_GET['listare_editura'])){
-	$list_editura = "SELECT id, denumire, localitate, nrtelefon, email FROM baza_librarie.editura ORDER BY denumire, localitate";
+	$list_editura = "SELECT id, denumire, localitate, nrtelefon, email FROM baza_librarie.editura ";
+	if(!isset($_SESSION['order'])) {
+		$_SESSION['order'] = "id";
+	}
+	if(!isset($_SESSION['order_type']))
+		$_SESSION['order_type'] = "ASC"; 
+	
+	$order = $_SESSION['order'];
+	$order_type = $_SESSION['order_type'];
+	
+	if (isset($_GET['order'])) {
+		$set_order = $_GET['order'];
+		$list_editura .= " ORDER BY " . $set_order;
+
+		if ($order == $set_order) {
+
+			if (strcmp( $order_type , "ASC") == 0) 
+				$order_type = "DESC";
+			else
+				$order_type = "ASC";
+		} else
+			$order_type = "ASC";
+
+		$_SESSION['order'] = $set_order;
+		$_SESSION['order_type'] = $order_type;
+	} else
+		$list_editura .= " ORDER BY id";
+	
+	$list_editura .= " ".$order_type;
 	$rc = mysql_query($list_editura);
 	echo '
 		<a href="index.php?exec=adauga_editura">Adauga editura</a>
 		<table border="1">
 		<tr>
-		<th>ID</th>
-		<th>Denumire</th>
-		<th>Localitate</th>
-		<th>Nr telefon</th>
-		<th>E-mail</th>
+		<th><a href="index.php?listare_editura&order=id">ID</a></th>
+		<th><a href="index.php?listare_editura&order=denumire">Denumire</a></th>
+		<th><a href="index.php?listare_editura&order=localitate">Localitate</a></th>
+		<th><a href="index.php?listare_editura&order=nrtelefon">Nr telefon</a></th>
+		<th><a href="index.php?listare_editura&order=email">E-mail</a></th>
 		</tr>
 		';
 	while($row = mysql_fetch_array($rc)){
