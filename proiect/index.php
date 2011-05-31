@@ -1,3 +1,9 @@
+<?php
+session_start();
+include '../admin/connect.php';
+
+include('inregistrare.php');
+?>
 <!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html dir="LTR" lang="en">
 <head>
@@ -5,6 +11,8 @@
 <title>Librarie Online</title>
 <xbasehref="http://osc3.template-help.com/osc_23506/">
 <script type="text/javascript" src="iepngfix_tilebg.js"></script>
+    	<script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.13.custom.min.js"></script>
 <link rel="stylesheet" type="text/css" href="stylesheet.css" >
 <style type="text/css">
 .ie6_png 			{behavior: url("iepngfix.htc"/*tpa=http://osc3.template-help.com/osc_23506/iepngfix.htc*//*tpa=http://osc3.template-help.com/osc_23506/iepngfix.htc*/) }
@@ -17,6 +25,26 @@
        ie_png.fix('.png');
    </script>
 <![endif]-->
+   <script>
+                                                                            $(document).ready(function(){
+                                                                                
+                                                                                $('.add-to').click(function(){
+                                                                                    var name = $(this).attr('name');
+                                                                                    alert(name);
+                                                                                   
+                                                                                    
+                                                                                    
+                                                                                    $.ajax({
+  url: "add-to.php?id_prod"+name,
+  context: document.body,
+  success: function(result){
+    $(".z1").html(result);
+  }
+});
+    return false;                                                                                 
+                                                                                });
+                                                                            })
+                                                                        </script>
 </head>
 <body>
 <!-- header //-->
@@ -54,23 +82,34 @@
 											<tr><td style="padding:0px 20px 0px 40px;background:url(images/navigation_td2.gif) 100% 0px no-repeat;height:85px;">
                                             	<table border="0" cellspacing="0" cellpadding="0" class="header" style="margin:20px 0px 0px 0px;">
 													<tr>
-													<td class="header_td" style="width:33%;">
-	<!--
-	<table border="0" cellspacing="0" cellpadding="0" align="center" style="width:148px;">
-		<tr><td><b>Currencies:</b><form name="currencies" action="http://osc3.template-help.com/osc_23506/index.php" method="get"><select name="currency" onChange="this.form.submit();" class="select"><option value="USD" SELECTED>US Dollar</option><option value="EUR">Euro</option></select><input type="hidden" name="language" value="en"></form></td>
-		</tr>
-	</table>
-	-->
-											</td>
-											<td><img src="images/part.gif" border="0" alt="" width="1" height="34"></td>
-											<td class="header_td" style="width:33%;">
-	<!--
-	<table border="0" cellspacing="0" cellpadding="0" align="center" style="width:107px">
-		<tr><td><b>&nbsp;&nbsp;Language:</b><a href="index.php-language=en.htm">
-		<img src="includes/languages/english/images/icon.gif"  border="0" alt="English" title=" English " width="24" height="15"></a><img src="images/flag_sep2.gif" border="0" alt="" width="1" height="10"  style="margin:0px 8px 0px 8px;"><a href="index.php-language=de.htm" ><img src="includes/languages/german/images/icon.gif" border="0" alt="Deutsch" title=" Deutsch " width="24" height="15"></a><img src="images/flag_sep2.gif" border="0" alt="" width="1" height="10"  style="margin:0px 8px 0px 8px;"><a href="index.php-language=es.htm" tppabs="http://osc3.template-help.com/osc_23506/index.php?language=es"><img src="includes/languages/espanol/images/icon.gif" border="0" alt="Espa&ntilde;ol" title=" Espa&ntilde;ol " width="24" height="15"></a></td>
-		</tr>
-	</table>
-	-->
+													<td class="header_td" style="width:66%;">
+ <?php
+if(isset($_SESSION['is_logged_in'])) {
+    
+    
+    $sel_user = mysql_query("SELECT * FROM `baza_librarie`.`user` where id=".$_SESSION['is_logged_in']);
+   // var_dump($sel_user);
+    //echo "SELECT * FROM `baza_librarie`.`user` where id=".$_SESSION['is_logged_in'];
+    $obj_us = mysql_fetch_object($sel_user);
+    echo "Buna ziua,".$obj_us->nume.' '.$obj_us->prenume.'<br/>';
+    //echo  $_SESSION['is_logged_in'];
+    ?>
+<form method="post">
+    <input type="hidden" name="logout" value="logout"/>
+    <input type="submit" value="Logout"/>
+</form>    
+    <?php }?>
+    <?php
+if(!isset($_SESSION['is_logged_in'])) {
+    ?>
+    <form method="post">
+        <input type="text" name="username"/>
+        <input type="password" name="password"/>
+        <input type="submit" value="Autentificare"/>
+    </form>
+    <?php
+} 
+?>
 											</td>
 											<td><img src="images/part.gif" border="0" alt="" width="1" height="34"></td>
 											<td class="header_td" style="width:33%; padding-top:2px; padding-bottom:0px; padding-left:3px;">
@@ -107,14 +146,17 @@
             				<tr>
 							<td id="over_m1" onMouseOut="this.id='over_m1';" onMouseOver="this.id='over_m1';" onClick="document.location='index.php'" nowrap="nowrap"> Acasa</td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
-							<td id="m2" onMouseOut="this.id='m2';" onMouseOver="this.id='over_m2';" onClick="document.location='products_new.php'">Noutati</td>
+							<td id="m2" onMouseOut="this.id='m2';" onMouseOver="this.id='over_m2';" onClick="document.location='index.php?exec=noutati'">Noutati</td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
-							<td id="m3" onMouseOut="this.id='m3';" onMouseOver="this.id='over_m3';" onClick="document.location='specials.php'">Oferte</td>
+							<td id="m3" onMouseOut="this.id='m3';" onMouseOver="this.id='over_m3';" onClick="document.location='index.php?exec=oferte'">Oferte</td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
-									                        
-							<td id="m4" onMouseOut="this.id='m4';" onMouseOver="this.id='over_m4';" onClick="document.location='create_account.php'" nowrap="nowrap">Creare cont nou</td>
+									<?php if(isset($_SESSION['is_logged_in'])) {?> 
+                                                        <td id="m4" onMouseOut="this.id='m4';" onMouseOver="this.id='over_m4';" onClick="document.location='index.php?exec=contul_meu'" nowrap="nowrap">Contul meu</td>
+                                                                        <?php }else{?>                      
+							<td id="m4" onMouseOut="this.id='m4';" onMouseOver="this.id='over_m4';" onClick="document.location='index.php?exec=creare_cont'" nowrap="nowrap">Creare cont nou</td>
+                                                                        <?php }?>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
-							<td id="m6" onMouseOut="this.id='m6';" onMouseOver="this.id='over_m6';" onClick="document.location='contact_us.php'">Contact</td>
+							<td id="m6" onMouseOut="this.id='m6';" onMouseOver="this.id='over_m6';" onClick="document.location='index.php?exec=contact'">Contact</td>
 							</tr>
 						</table>
 								</td>
@@ -236,7 +278,7 @@
                     </div>
 		<table cellpadding="0" cellspacing="0" border="0">
 			<tr>
-				<td style="width:100%;padding:0px 11px 0px 0px;">
+				<td style="padding:0px 11px 0px 0px;">
 	
 <!-- Welcome_box_start -->
      <!--   <table border="0" width="100%" cellspacing="0" cellpadding="0">
@@ -248,195 +290,35 @@
 
 <!-- Welcome_box_end -->
 
-						
-<table border="0" width="100%" cellspacing="0" cellpadding="0"  class="cont_heading_table">
-  <tr>
-    <td  class="cont_heading_td">What's New Here?</td>
-  </tr>
-</table>
-
-<table cellpadding="0" cellspacing="0" border="0">
-<tr><td class="padd_3">		
-				<!-- new_products //-->
-<table border="0" width="" cellspacing="0" cellpadding="0">
-   <tr>
-    <td  class="tableBox_output_td main">
-	<table border="0" width="" cellspacing="0" cellpadding="0">
-		<tr>
-		<td align="left"><img src="images/spacer.gif" border="0" alt="" width="1" height="4"><br />
+		<?php 
+                
+                //continut
+                if(isset($_GET['exec'])){
+switch ($_GET['exec']) {
+    case "creare_cont":
+        include('cont-nou.php');
+	break;
 	
-	  <?php 
-	  if($_GET['pag'] !=''){
-	  $pagina = $_GET['pag'];
-	  $limita = $pagina*4;
-	  }else{
-	  $pagina = 0;
-	   $limita = 1*4;
-	  }
-		  
-  mysql_connect("localhost", "root", "") or die(mysql_error());
-  
-  $sel = "SELECT * FROM `baza_librarie`.`carte` ";
-  $select = mysql_query($sel);
- 
- 
-	 $numar_coloane = mysql_num_rows($select);
-	 $pagini = $numar_coloane/4;
- 
- ?>
- 
- 
-		<div style="clear:both;width:100%;text-align:center;">Numar de pagini: <?php echo ceil($pagini);?>
-		&nbsp;<?php  for($i = 0; $i < ceil($pagini); $i++){?>
-		<a href="index.php?pag=<?php echo $i;?>"> pag <?php echo $i+1;?></a>
-		<?php }?>
-		
-		</div>
- 
- <br/><br/>
- 
-  <?php
-if(isset($_GET['pag'])){  
-  $lim = $_GET['pag']*4;
-  
-  }else{$lim = 0 ;}
-  //$sel .="LEFT JOIN `autor` AS `aut` ON aut.id = carte.idautor";
-  
-  
-  $sel .= "limit ".(int)$lim.",4";
-  //echo $sel;
-  $select = mysql_query($sel);
-  while($carte = mysql_fetch_array($select)){?>
- 
+	case "adauga_editura":
+		include('adauga_editura.php');
+	break;
 	
-  		<table cellpadding="0" cellspacing="0" border="0" class="content_wrapper_b">
-			<tr><td class="content_wrapper_r">
-				<div class="content_wrapper_t">
-					<div class="content_wrapper_l">
-						<div class="content_wrapper_tl">
-							<div class="content_wrapper_tr">
-								<div class="content_wrapper_bl">
-									<div class="content_wrapper_br">
-										<div class="width_100">
-	<table cellpadding="0" cellspacing="0" border="0">
-		<tr><td class="name name2_padd">
-			<a href="product_info.php-products_id=70.htm" ><?php echo $carte['titlu'];?></a></td></tr>
-	</table>
-	<table cellpadding="0" cellspacing="0" border="0">
-		<tr>
-		<td class="pic2_padd">
-  		<table cellpadding="0" cellspacing="0" border="0" align="center" class="pic_b">
-			<tr>
-			<td class="pic_r">
-				<div class="pic_t">
-					<div class="pic_l">
-						<div class="pic_tl">
-							<div class="pic_tr">
-								<div class="pic_bl">
-									<div class="pic_br">
-										<div class="width_100"><a href="product_info.php-products_id=70.htm">
-										<img src="<?php echo $carte['imagine']?>"  border="0" alt="<?php echo $carte['titlu']?>" title=" Manager attempted " width="145"></a></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</td></tr>
-		</table></td>
-			<td style="width:100%;">
-				<table cellpadding="0" cellspacing="0" border="0">
-					<tr><td class="desc desc2_padd"><?php echo substr($carte['descriere'],0,50);?>...</td></tr>
-					<tr><td>
-						<table cellpadding="0" cellspacing="0" border="0">
-							<tr>
-								<td class="button2_padd button_marg">
-									<a href="product_info.php-products_id=70.htm">
-									<img src="includes/languages/english/images/buttons/button_details.gif"border="0" alt="" width="67" height="24"  class="btn1"></a><br />
-									<a href="shopping_cart.php">
-									<img src="includes/languages/english/images/buttons/button_add_to_cart1.gif" border="0" alt="" width="92" height="24"  class="btn2"></a>
-								</td>
-								<td class="price2_padd"><span class="productSpecialPrice"><?php echo $carte['pret']?> Lei</span></td>
-							</tr>
-						</table>
-					</td></tr>
-					</tr>
-				</table>									   
-			</td>
-		</tr>
-	</table>
-	</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</td></tr>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			<?php 
-  
-  }
-  ?>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-
-		</table>
-		<br/>   
-		<br/>
-		
-		
-		
-			<div style="clear:both;width:100%;text-align:center;">Numar de pagini: <?php echo ceil($pagini);?>
-		&nbsp;<?php  for($i = 0; $i < ceil($pagini); $i++){?>
-		<a href="index.php?pag=<?php echo $i;?>"> pag <?php echo $i+1;?></a>
-		<?php }?>
-		
-		</div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		</td>  
-  </tr> 	
-</table>
-</td>
-  </tr> 	
-</table>
-<!-- new_products_eof //-->
-</td></tr></table>				
-				</td>
+	case "adauga_autor":
+		include('adauga_autor.php');
+	break;
+    default:
+	
+        break;
+}
+}else{
+    
+    include('prima_pag.php');
+        //include ('index.php');
+//        echo 'test';
+}
+                
+                
+                ?>
 				<td class="box_width_td_right"><table border="0" class="box_width_right" cellspacing="0" cellpadding="0">
 <!-- right_navigation //-->
 <!-- manufacturers 
