@@ -35,7 +35,7 @@ include('inregistrare.php');
                                                                                     
                                                                                     
                                                                                     $.ajax({
-  url: "add-to.php?id_prod"+name,
+  url: "add-to.php?id_prod="+name,
   context: document.body,
   success: function(result){
     $(".z1").html(result);
@@ -115,7 +115,33 @@ if(!isset($_SESSION['is_logged_in'])) {
 											<td class="header_td" style="width:33%; padding-top:2px; padding-bottom:0px; padding-left:3px;">
 <table cellpadding="0" cellspacing="0" border="0" align="center" style="width:140px;">
 	<tr>
-		<td class="z1"><strong>Cosul de cumparaturi:</strong><span> now in your cart </span><a href="shopping_cart.php">43  items</a></td>
+		<td class="z1">
+                    
+                    
+                    
+        <?php            
+if(isset($_SESSION['cart'])){
+    $suma = 0;
+    foreach($_SESSION['cart'] as $s){
+       // var_dump(array_sum($s));
+      //  echo $s.'<br/>';
+        $suma += $s;
+       // echo $suma;
+       
+       // echo array_sum($s);
+    }
+     var_dump($suma);
+//array_sum($_SESSION['cart']);
+//var_dump($_SESSION['cart']);
+?>
+<strong>Cosul de cumparaturi:</strong>
+<span> acum in cosul tau </span><a href="shopping_cart.php"><?php echo $suma?>  de carti</a>
+<?php }else{?>
+<strong>Cosul de cumparaturi:</strong>
+<span> acum in cosul tau </span><a href="shopping_cart.php">0   carti</a>
+
+<?php }?>
+                </td>
 	</tr>
 </table>
 											</td>										
