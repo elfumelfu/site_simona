@@ -324,7 +324,12 @@ switch ($_GET['exec']) {
     case "creare_cont":
         include('cont-nou.php');
 	break;
-	
+	case "contact":
+        include('contact_us.php');
+	break;
+	case "oferte":
+        include('specials.php');
+	break;
 	case "adauga_editura":
 		include('adauga_editura.php');
 	break;

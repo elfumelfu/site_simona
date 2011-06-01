@@ -73,18 +73,33 @@ $insert_carte ="
 		
 		
 	mysql_query($insert_carte);
-        
+      
 foreach($_POST['selected_autor'] as $aut){
 
-
+echo "asdfsdfsadfsdafsdgfvdsa";
 $nume_prenume = explode(' ',$aut);
-$select_autor_insert = mysql_query("SELECT * FROM `baza_librarie`.`autor` where `nume` = '".$nume_prenume[0]."' and `prenume` = '".$nume_prenume[1]."' ");
+
+
+$autor_insert =  "SELECT * FROM `baza_librarie`.`autor` where `nume` = '".$nume_prenume[1]."' and `prenume` = '".$nume_prenume[0]."' ";
+$select_autor_insert = mysql_query($autor_insert);
+
+if (!$select_autor_insert) {
+    $message  = 'Invalid query: ' . mysql_error() . "\n";
+    $message .= 'Whole query: ' . $autor_insert;
+    die($message);
+}
+
 while($autor_insert = mysql_fetch_array($select_autor_insert)){
 $autor =  $autor_insert['id'];
 
-
+var_dump($_POST['isbn']);
 $insert_autor_carte = "INSERT INTO `baza_librarie`.`autorcarte` (`idautor` ,`idcarte`)VALUES ('".$autor."', '".$_POST['isbn']."');";
-mysql_query($insert_autor_carte);
+$result = mysql_query($insert_autor_carte);
+if (!$result) {
+    $message  = 'Invalid query: ' . mysql_error() . "\n";
+    $message .= 'Whole query: ' . $insert_autor_carte;
+    die($message);
+}
 }
 }
 }
