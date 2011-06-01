@@ -215,24 +215,54 @@ echo '<br>';
 
 //listare carti
 if(isset($_GET['listare_carti'])){
-	$list = "SELECT isbn, titlu, group_concat(nume, \' \', prenume separator \', \')as autori, ideditura, nrpag , pret, nrbuc, 
+	$list_carti = "SELECT isbn, titlu, group_concat(nume, ' ', prenume separator ':')as autori, ideditura, nrpag , pret, nrbuc, colectie,
 	                      limba, anaparitie, descriere, imagine from carte, autor , autorcarte 
 			where autor.id=autorcarte.idautor and carte.isbn = autorcarte.idcarte group by isbn";
-	$test = mysql_query($list);
+	//var_dump($list_carti);
+	$test_carti = mysql_query($list_carti);
+	if (!$test_carti) {
+		echo 'invalid query : "'.$list_carti.'"';
+	}
+	
 	echo '
 		<a href="index.php?exec=adauga_carte">Adauga carte</a>
 		<table border="1">
 		<tr>
 		<th>ISBN</th>
-		<th>titlu</th>
-		<th>autori</th>
-		<th>ideditura</th>
+		<th>Titlu</th>
+		<th>Autori</th>
+		<th>Pret</th>
+		<th>Editura</th>
+		<th>An Aparitie</th>
+		<th>Numar pagini</th>
+		<th>Colectie</th>
+		<th>Descriere</th>
 		</tr>
 		';
-	while($row = mysql_fetch_array($test)){
+
+	while($row = mysql_fetch_array($test_carti)){
+
+		$aut = explode (":", $row['autori']);
+		//var_dump($aut);
+		
 		echo '
 			<tr>
-			<td>'.$row['isbn'].'</td><td>'.$row['titlu'].'</td><td>'.$row['autori'].'</td><td>'.$row['ideditura'].'</td>
+			<td>'.$row['isbn'].'</td>
+			<td>'.$row['titlu'].'</td>
+			<td nowrap>';
+			$i=0;
+			while (isset($aut[$i])) {
+			echo '<a href="WTF?'.$aut[$i].'">'.$aut[$i].'</a><br>';
+			$i++;
+			}
+			echo '</td>';
+			echo '
+			<td>'.$row['pret'].'</td>
+			<td>'.$row['ideditura'].'</td>
+			<td>'.$row['anaparitie'].'</td>
+			<td>'.$row['nrpag'].'</td>
+			<td>'.$row['colectie'].'</td>
+			<td>'.$row['descriere'].'</td>
 				<td><a href="index.php?exec=adauga_autor&mod='. $row['isbn'] .'" >editare</a></td>
 				<td><a href="index.php?function=sterge&id='.$row['isbn'].'&tabela=autor" >stergere</a></td>
 			</tr>
