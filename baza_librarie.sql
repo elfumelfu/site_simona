@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 24, 2011 at 08:46 PM
+-- Generation Time: Jun 01, 2011 at 09:11 PM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.1
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `autor` (
   `prenume` varchar(15) NOT NULL,
   `origine` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=72 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=76 ;
 
 --
 -- Dumping data for table `autor`
@@ -43,10 +43,8 @@ INSERT INTO `autor` (`id`, `nume`, `prenume`, `origine`) VALUES
 (3, 'Matei', 'Sorin', 'romana'),
 (4, 'Verne', 'Jules', 'franceza'),
 (5, 'Dickens', 'Charles', 'engleza'),
-(71, 'qqqq', 'wwww', 'eeee'),
 (6, 'Logofatu', 'Doina', 'romana'),
 (16, 'Anghel', 'Traian', 'romana'),
-(67, 'bbbbbb', '333333', 'zzzzzz'),
 (66, 'CZOCK ', 'Attila', 'maghiara'),
 (65, 'McKAY', 'Sharon E. ', 'engleza'),
 (64, 'Conger', 'David', 'engleza');
@@ -58,15 +56,21 @@ INSERT INTO `autor` (`id`, `nume`, `prenume`, `origine`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `autorcarte` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
   `idautor` int(5) NOT NULL,
   `idcarte` int(5) NOT NULL,
-  PRIMARY KEY (`idautor`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `autorcarte`
 --
 
+INSERT INTO `autorcarte` (`id`, `idautor`, `idcarte`) VALUES
+(1, 1, 0),
+(2, 2, 0),
+(3, 5, 2147483647),
+(4, 6, 2147483647);
 
 -- --------------------------------------------------------
 
@@ -103,7 +107,10 @@ INSERT INTO `carte` (`isbn`, `titlu`, `colectie`, `ideditura`, `nrpag`, `pret`, 
 (124, 'CHARLIE WILCOX', '', 3, 189, 14, 35, '2', 2003, '', ''),
 (125, '100 DE PERSONALITATI ALE SECOLULUI XX. PICTORI', '', 3, 270, 25, 15, '74', 2001, '', ''),
 (0, '', '', 0, 0, 0, 0, '', 0, '', ''),
-(44444444, 'egegedg', '', 57, 0, 0, 0, '', 0, '', '');
+(44444444, 'egegedg', '', 57, 0, 0, 0, '', 0, '', ''),
+(123123, 'asd', '', 56, 0, 0, 0, '', 0, '', ''),
+(12121212, 'adsadfsdf', '', 1, 0, 0, 0, '', 0, '', ''),
+(2147483647, 'ttttttt', '', 1, 0, 0, 0, '', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -153,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `editura` (
   `nrtelefon` varchar(10) NOT NULL,
   `email` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=68 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=70 ;
 
 --
 -- Dumping data for table `editura`
@@ -167,11 +174,7 @@ INSERT INTO `editura` (`id`, `denumire`, `localitate`, `nrtelefon`, `email`) VAL
 (5, 'Corint', 'Bucuresti', '0213198822', 'vanzari@edituracorint.ro'),
 (56, 'Libris', 'Brasov', '0268477701', 'vanzari@libris.ro'),
 (57, 'Teora', 'Bucuresti', '0318100007', ''),
-(58, 'Nemira', 'Bucuresti', '0212242156', 'librarie@nemira.ro'),
-(64, 'dddd', '', '', ''),
-(65, 'jjjj', 'efd', '4356', 'dgrhr'),
-(66, 'jjjj', 'efd', '4356', 'dgrhr'),
-(67, 'aaaaa', 'dfgfd', '435', 'gdgd');
+(58, 'Nemira', 'Bucuresti', '0212242156', 'librarie@nemira.ro');
 
 -- --------------------------------------------------------
 
@@ -255,6 +258,31 @@ CREATE TABLE IF NOT EXISTS `subdomeniucarte` (
 -- Dumping data for table `subdomeniucarte`
 --
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nume` varchar(255) NOT NULL,
+  `prenume` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `parola` varchar(255) NOT NULL,
+  `adresa` varchar(255) NOT NULL,
+  `oras` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `nume`, `prenume`, `email`, `parola`, `adresa`, `oras`) VALUES
+(11, 'bleoju', 'daniel', 'bleoju_daniel@yahoo.com', 'aa05c8feef007f75d0eb0d5febedc122', '', ''),
+(12, 'daniel', 'jndsfjnsk', 'daniel.bleoju@activedesign.ro', 'aa05c8feef007f75d0eb0d5febedc122', '', '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
