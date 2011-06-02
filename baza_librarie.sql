@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 02, 2011 at 08:21 PM
+-- Generation Time: Jun 02, 2011 at 10:14 PM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.1
 
@@ -87,10 +87,10 @@ INSERT INTO `autorcarte` (`id`, `idautor`, `idcarte`) VALUES
 CREATE TABLE IF NOT EXISTS `carte` (
   `isbn` bigint(13) NOT NULL,
   `titlu` varchar(100) NOT NULL,
-  `colectie` varchar(30) NOT NULL,
   `ideditura` int(4) NOT NULL,
   `nrpag` int(4) NOT NULL,
   `pret` int(4) NOT NULL,
+  `reducere` int(3) NOT NULL,
   `nrbuc` int(4) NOT NULL,
   `limba` varchar(30) NOT NULL,
   `anaparitie` int(4) NOT NULL,
@@ -103,22 +103,22 @@ CREATE TABLE IF NOT EXISTS `carte` (
 -- Dumping data for table `carte`
 --
 
-INSERT INTO `carte` (`isbn`, `titlu`, `colectie`, `ideditura`, `nrpag`, `pret`, `nrbuc`, `limba`, `anaparitie`, `descriere`, `imagine`) VALUES
-(1, 'Casa umbrelor', '', 3, 640, 80, 15, 'romana', 2009, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has su', 'imagini/banner6.jpg'),
-(2, 'PC pas cu pas', '', 1, 180, 24, 15, 'romana', 2008, '', ''),
-(3, 'Bazele programarii in C', '', 1, 367, 39, 5, '1', 2006, '', ''),
-(121, 'Informatica. Manual pentru clasa a X-a', '', 1, 180, 10, 10, '1', 2000, '', ''),
-(122, 'Programarea in limbajul C/C ++ pentru liceu', '', 1, 256, 30, 23, '1', 2010, '', ''),
-(123, 'PROGRAMAREA IN C#', '', 3, 324, 17, 3, '2', 2003, '', ''),
-(124, 'CHARLIE WILCOX', '', 3, 189, 14, 35, '2', 2003, '', ''),
-(125, '100 DE PERSONALITATI ALE SECOLULUI XX. PICTORI', '', 3, 270, 25, 15, '74', 2001, '', ''),
-(0, '', '', 0, 0, 0, 0, '', 0, '', ''),
-(44444444, 'egegedg', '', 57, 0, 0, 0, '', 0, '', ''),
-(123123, 'asd', '', 56, 0, 0, 0, '', 0, '', ''),
-(12121212, 'adsadfsdf', '', 1, 0, 0, 0, '', 0, '', ''),
-(2147483647, 'ttttttt', '', 1, 0, 0, 0, '', 0, '', ''),
-(9789736756382, 'Fotografia de portret - 99 de idei de fotografie pentru tine', '', 71, 0, 0, 0, '', 0, '', ''),
-(9789731984018, 'Arhitectura lumii. Capodoperele', '', 70, 0, 0, 0, '', 0, '', '');
+INSERT INTO `carte` (`isbn`, `titlu`, `ideditura`, `nrpag`, `pret`, `reducere`, `nrbuc`, `limba`, `anaparitie`, `descriere`, `imagine`) VALUES
+(1, 'Casa umbrelor', 3, 640, 80, 0, 15, 'romana', 2009, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has su', 'imagini/banner6.jpg'),
+(2, 'PC pas cu pas', 1, 180, 24, 0, 15, 'romana', 2008, '', ''),
+(3, 'Bazele programarii in C', 1, 367, 39, 0, 5, '1', 2006, '', ''),
+(121, 'Informatica. Manual pentru clasa a X-a', 1, 180, 10, 0, 10, '1', 2000, '', ''),
+(122, 'Programarea in limbajul C/C ++ pentru liceu', 1, 256, 30, 0, 23, '1', 2010, '', ''),
+(123, 'PROGRAMAREA IN C#', 3, 324, 17, 0, 3, '2', 2003, '', ''),
+(124, 'CHARLIE WILCOX', 3, 189, 14, 0, 35, '2', 2003, '', ''),
+(125, '100 DE PERSONALITATI ALE SECOLULUI XX. PICTORI', 3, 270, 25, 0, 15, '74', 2001, '', ''),
+(0, '', 0, 0, 0, 0, 0, '', 0, '', ''),
+(44444444, 'egegedg', 57, 0, 0, 0, 0, '', 0, '', ''),
+(123123, 'asd', 56, 0, 0, 0, 0, '', 0, '', ''),
+(12121212, 'adsadfsdf', 1, 0, 0, 0, 0, '', 0, '', ''),
+(2147483647, 'ttttttt', 1, 0, 0, 0, 0, '', 0, '', ''),
+(9789736756382, 'Fotografia de portret - 99 de idei de fotografie pentru tine', 71, 0, 0, 0, 0, '', 0, '', ''),
+(9789731984018, 'Arhitectura lumii. Capodoperele', 70, 0, 0, 0, 0, '', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `domeniu` (
   `id` int(4) NOT NULL AUTO_INCREMENT,
   `denumire` varchar(40) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `domeniu`
@@ -154,7 +154,8 @@ INSERT INTO `domeniu` (`id`, `denumire`) VALUES
 (23, 'Carte straina'),
 (24, 'Politica'),
 (25, 'Limbi straine'),
-(26, 'carti pentru copii');
+(26, 'carti pentru copii'),
+(27, 'Colectie');
 
 -- --------------------------------------------------------
 
