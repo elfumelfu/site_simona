@@ -409,7 +409,7 @@ if(isset($_GET['listare_editura'])){
 }
 //listare domeniu
 if(isset($_GET['listare_domeniu'])){
-	$list_domeniu = "SELECT id, denumire email FROM baza_librarie.domeniu ";
+	$list_domeniu = "SELECT id, denumire FROM baza_librarie.domeniu ";
 	if(!isset($_SESSION['order'])) {
 		$_SESSION['order'] = "id";
 	}
@@ -448,6 +448,7 @@ if(isset($_GET['listare_domeniu'])){
 		<th><a href="index.php?listare_domeniu&order=denumire">Denumire</a></th>
 	   	</tr>
 		';
+
 	while($row = mysql_fetch_array($test_domeniu)){
 		echo '
 			<tr>
