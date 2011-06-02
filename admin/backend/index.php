@@ -217,8 +217,8 @@ include('adauga_autor.php');
 
 //listare carti
 if(isset($_GET['listare_carti'])){
-	$list_carti = "SELECT isbn, titlu, group_concat(nume, ' ', prenume separator ':')as autori, ideditura, nrpag , pret, nrbuc, colectie,
-	                      limba, anaparitie, descriere, imagine from carte, autor , autorcarte 
+	$list_carti = "SELECT isbn, titlu, group_concat(nume, ' ', prenume separator ':')as autori, ideditura, nrpag , pret, reducere, nrbuc, 
+	limba, anaparitie, descriere, imagine from carte, autor , autorcarte 
 			where autor.id=autorcarte.idautor and carte.isbn = autorcarte.idcarte group by isbn";
 	//var_dump($list_carti);
 	$test_carti = mysql_query($list_carti);
@@ -234,10 +234,10 @@ if(isset($_GET['listare_carti'])){
 		<th>Titlu</th>
 		<th>Autori</th>
 		<th>Pret</th>
+		<th>Reducere</th>
 		<th>Editura</th>
 		<th>An Aparitie</th>
 		<th>Numar pagini</th>
-		<th>Colectie</th>
 		<th>Descriere</th>
 		</tr>
 		';
@@ -260,10 +260,10 @@ if(isset($_GET['listare_carti'])){
 			echo '</td>';
 			echo '
 			<td>'.$row['pret'].'</td>
+			<td>'.$row['reducere'].'</td>
 			<td>'.$row['ideditura'].'</td>
 			<td>'.$row['anaparitie'].'</td>
 			<td>'.$row['nrpag'].'</td>
-			<td>'.$row['colectie'].'</td>
 			<td>'.$row['descriere'].'</td>
 				<td><a href="index.php?exec=adauga_autor&mod='. $row['isbn'] .'" >editare</a></td>
 				<td><a href="index.php?function=sterge&id='.$row['isbn'].'&tabela=autor" >stergere</a></td>
