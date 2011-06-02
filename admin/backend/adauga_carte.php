@@ -1,7 +1,7 @@
 <form method="post" action="index.php?exec=adauga_carte&salveaza">
-	<pre>ISBN: <input name="isbn" type="text"/></pre>
+	<pre>ISBN: <input name="isbn" type="text"/></pre>    Imagine!!!!
 	<pre>Titlu: <input name="titlu" value="" type="text"/></pre>
-	<ul>Autor: </ul>
+	<pre>Autor: </pre> 
 <script>
 $(document).ready(function()
 {
@@ -14,7 +14,7 @@ $('#delete').click(function() {
 })
 
 </script>
-	
+
 <?php $select_autor = mysql_query("SELECT * FROM `baza_librarie`.`autor`");	?>
 			<select name="autor" id="autor" multiple="multiple" size="10" style="float:left;width:200px">
 			<?php while($autor = mysql_fetch_array($select_autor)){?>
@@ -32,8 +32,8 @@ $('#delete').click(function() {
     </div>
 <div style="clear:both"></div>
 	<a href="index.php?exec=adauga_autor">Adauga autor</a>
-	
-	<pre>Editura: 
+	<br><br>
+		<pre>Editura: 
 	
 	<?php $select_editura = mysql_query("SELECT * FROM `baza_librarie`.`editura`");	?>
 			<select name="editura" style="float:left;">
@@ -49,6 +49,33 @@ $('#delete').click(function() {
 			</select>
 	<a href="index.php?exec=adauga_editura">Adauga editura</a>
 	</pre>
+	<br><br>
+
+	<b>Colectie: </b> 
+<?php $select_colectie = mysql_query("SELECT * FROM `baza_librarie`.`carte`");	?>
+			<select name="colectie" style="float:left;">
+			<?php while($colectie = mysql_fetch_array($select_colectie)){?>
+				<option>
+					<?php 
+					
+					echo  $colectie['colectie']
+					
+					?>
+				</option>
+			<?php }?>
+			</select>
+	<a href="index.php?exec=adauga_colectie">Adauga colectie</a>
+	<br><br><br>
+	
+	<pre>Pret: <input name="pret" type="text"/></pre>
+	<pre>Reducere(procente): <input name="reducere" type="text"/></pre>
+	<pre>Numar de pagini: <input name="nrpag" type="text"/></pre>
+	<pre>Numar de bucati: <input name="nrbuc" type="text"/></pre>
+	<pre>Anul aparitiei: <input name="anaparitie" type="text"/></pre>
+	<pre>Limba: <input name="limba" type="text"/></pre>
+	<pre>Descriere: <input name="descriere" type="text"/></pre>
+	
+	
 	<input onclick='$("#selected_autor option").attr("selected","selected");' type="submit" value="Salveaza"/>
 </form>
 
@@ -66,9 +93,9 @@ $editura =  $editura_insert['id'];
 
 $insert_carte ="
 		INSERT INTO `baza_librarie`.`carte` 
-		(`isbn`, `titlu`, `colectie`, `ideditura`, `nrpag`, `pret`, `nrbuc`, `limba`, `anaparitie`, `descriere`, `imagine`) 
+		(`isbn`, `titlu`, `colectie`, `ideditura`, `nrpag`, `pret`, `reducere`, `nrbuc`, `limba`, `anaparitie`, `descriere`, `imagine`) 
 		VALUES  
-		('".$_POST['isbn']."', '".$_POST['titlu']."', '',  '".$editura."', '', '', '', '', '', '', '')		
+		('".$_POST['isbn']."', '".$_POST['titlu']."', '',  '".$editura."', '', '', '', '', '', '', '', '')		
 		";
 		
 		

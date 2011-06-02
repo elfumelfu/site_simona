@@ -1,4 +1,3 @@
-
 <?php session_start();?>
 
 
@@ -460,7 +459,7 @@ if(isset($_GET['listare_domeniu'])){
 //var_dump($test);
 }
 
-//insert domeniu
+//start insert domeniu
 if(isset($_GET['salveaza_domeniu']) && $_POST){
  
   if (isset($_GET['id'])) {
@@ -478,13 +477,13 @@ if(isset($_GET['salveaza_domeniu']) && $_POST){
 ?> <script>open_link("<?php echo $_SESSION["unde"];?>")</script>
         <?php 
 }
-//insert autor
+//end insert domeniu
 
 
 
 
 
-//insert editura
+//start insert editura
 if(isset($_GET['salveaza_editura']) && isset($_POST)){
 
     if (isset($_GET['id'])) {
@@ -505,9 +504,27 @@ if(isset($_GET['salveaza_editura']) && isset($_POST)){
      ?> <script>open_link("<?php echo $_SESSION["unde"];?>")</script>
         <?php
 }
+//end insert editura
 
-
-//insert editura
+//start insert colectie
+if(isset($_GET['salveaza_colectie']) && $_POST){
+ 
+  if (isset($_GET['id'])) {
+	$id = $_GET['id'];
+        echo "id = ".$id;
+        $modifica_colectie = "UPDATE baza_librarie.carte SET colectie='".$_POST['colectie']."' WHERE id=".$id;
+	$rc = mysql_query($modifica_colectie);
+        if (!$rc) echo "ERROR".  mysql_error();
+        
+ } else {
+	$insert_colectie = "INSERT INTO `baza_librarie`.`carte` ( `colectie`) VALUES (
+					'".$_POST['colectie']."');";
+	$test = mysql_query($insert_colectie);
+ }
+?> <script>open_link("<?php echo $_SESSION["unde"];?>")</script>
+        <?php 
+}
+//end insert colectie
 
 //meniul principal pentru admin
 if(isset($_GET['exec'])){
@@ -525,6 +542,9 @@ switch ($_GET['exec']) {
 	break;
 	case "adauga_domeniu":
 		include('adauga_domeniu.php');
+	break;
+	case "adauga_colectie":
+		include('adauga_colectie.php');
 	break;
     default:
 	
