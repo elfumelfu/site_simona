@@ -19,7 +19,6 @@ function sterge_inregistrare($id, $tabela) {
 $url = (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] : "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 //var_dump($url);
 
-
 /*
 if(isset($_GET['adauga_carte'])){
 include('adauga_carte.php');
@@ -105,25 +104,33 @@ include('adauga_autor.php');
 								<div class="header_box_bl">
 									<div class="header_box_br">
 										<div class="width_100">
+<!-- start meniu orizontal -->										
 <table cellpadding="0" cellspacing="0" border="0" class="menu">
-					<tr><td class="td">
-						<table cellpadding="0" cellspacing="0" border="0" class="table">
-							<tr><td>
-								<table cellpadding="0" cellspacing="0" border="0">
-									<tr>
-            				<tr>
+	<tr>
+	<td class="td">
+		<table cellpadding="0" cellspacing="0" border="0" class="table">
+			<tr><td>
+					<table cellpadding="0" cellspacing="0" border="0">
+						<!--<tr> -->
+           				<tr>
 							<td id="m1"> <a href="index.php?exec=adauga_carte">Adauga Carte</a></td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
 							<td id="m2"><a href="index.php?listare_autor">Autori</a></td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
 							<td id="m3" ><a href="index.php?listare_editura">Edituri</a></td>
-							 </tr>
-						</table>
-								</td>
-							</tr>
-						</table>													
-					</td></tr>					
-				</table>			<!-- header_eof //-->
+							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
+							<td id="m3" ><a href="index.php?listare_domeniu">Domenii</a></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>													
+	</td>
+	</tr>					
+</table>			
+<!-- end meniu orizontal -->	
+
+<!-- header_eof //-->
 
 <!-- body //-->
 <table border="0" class="main_table" cellspacing="0" cellpadding="0">
@@ -143,7 +150,7 @@ include('adauga_autor.php');
 <table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBox2_table">
   <tr>
     <td  class="infoBox2_td"><table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBoxContents2_table">
-  <tr>
+ <!-- <tr>
     <td  class="boxText">
 	<ul class="categories">
 		<li class="bg_list_un"><a href="index.php-cPath=1.htm">Arte</a></li>
@@ -158,7 +165,7 @@ include('adauga_autor.php');
 		<li class="bg_list"><a href="index.php-cPath=10.htm">Istorie</a></li>
 	</ul>
 	</td>
-  </tr>
+  </tr>   -->
 </table>
 </td>
   </tr>
@@ -185,8 +192,6 @@ include('adauga_autor.php');
 
 <!-- Welcome_box_end -->
 
-						
-
 
 <table cellpadding="0" cellspacing="0" border="0">
 <tr><td class="padd_3">		
@@ -198,16 +203,15 @@ include('adauga_autor.php');
 		<tr>
 		<td align="left"><img src="images/spacer.gif" border="0" alt="" width="1" height="4"><br />
 	
-	  <?php 
-	 if($_SESSION['de_unde'] != $url){
-$_SESSION['unde'] = $_SESSION['de_unde'];
-$_SESSION['de_unde'] = $url;
-
-}
+<?php 
+if($_SESSION['de_unde'] != $url){
+		$_SESSION['unde'] = $_SESSION['de_unde'];
+		$_SESSION['de_unde'] = $url;
+		}
 if(isset($_SESSION['de_unde'])){
-$de_unde = $_SESSION['de_unde'];
-$unde = $_SESSION['unde'];
-}
+		$de_unde = $_SESSION['de_unde'];
+		$unde = $_SESSION['unde'];
+		}
 echo  $_SESSION['de_unde'].'<br>';
 echo  $_SESSION['unde'];
 echo '<br>';
@@ -273,18 +277,50 @@ if(isset($_GET['listare_carti'])){
 }
 
 
+
 //listare autori
 if(isset($_GET['listare_autor'])){
-	$list_autor = "SELECT id, nume, prenume, origine FROM baza_librarie.autor ORDER BY nume, prenume, origine";
+	$list_autor = "SELECT id, nume, prenume, origine FROM baza_librarie.autor ";
+	if(!isset($_SESSION['order'])) {
+		$_SESSION['order'] = "id";
+		}
+	if(!isset($_SESSION['order_type']))
+		$_SESSION['order_type'] = "ASC"; 
+	
+	$order = $_SESSION['order'];
+	$order_type = $_SESSION['order_type'];
+	
+	if (isset($_GET['order'])) {
+		$set_order = $_GET['order'];
+		$list_autor .= " ORDER BY " . $set_order;
+		
+		if ($order == $set_order) {
+			if (strcmp( $order_type , "ASC") == 0) 
+				$order_type = "DESC";
+			else
+				$order_type = "ASC";
+		} else
+			$order_type = "ASC";
+
+		$_SESSION['order'] = $set_order;
+		$_SESSION['order_type'] = $order_type;
+	} else
+		$list_autor .= " ORDER BY id";
+	
+	$list_autor .= " ".$order_type;
+		
 	$test_autor = mysql_query($list_autor);
+	
+	var_dump($list_autor);
+	
 	echo '
 		<a href="index.php?exec=adauga_autor">Adauga autor</a>
 		<table border="1">
 		<tr>
-		<th>ID</th>
-		<th>Nume</th>
-		<th>Prenume</th>
-		<th>Origine</th>
+		<th><a href="index.php?listare_autor&order=id">ID</a></th>
+		<th><a href="index.php?listare_autor&order=nume">Nume</a></th>
+		<th><a href="index.php?listare_autor&order=prenume">Prenume</a></th>
+		<th><a href="index.php?listare_autor&order=origine">Origine</a></th>
 		</tr>
 		';
 	while($row = mysql_fetch_array($test_autor)){
@@ -346,6 +382,7 @@ if(isset($_GET['listare_editura'])){
 		$list_editura .= " ORDER BY id";
 	
 	$list_editura .= " ".$order_type;
+	
 	$rc = mysql_query($list_editura);
 	echo '
 		<a href="index.php?exec=adauga_editura">Adauga editura</a>
@@ -370,6 +407,79 @@ if(isset($_GET['listare_editura'])){
 		
 //var_dump($test);
 }
+//listare domeniu
+if(isset($_GET['listare_domeniu'])){
+	$list_domeniu = "SELECT id, denumire email FROM baza_librarie.domeniu ";
+	if(!isset($_SESSION['order'])) {
+		$_SESSION['order'] = "id";
+	}
+	if(!isset($_SESSION['order_type']))
+		$_SESSION['order_type'] = "ASC"; 
+	
+	$order = $_SESSION['order'];
+	$order_type = $_SESSION['order_type'];
+	
+	if (isset($_GET['order'])) {
+		$set_order = $_GET['order'];
+		$list_domeniu .= " ORDER BY " . $set_order;
+
+		if ($order == $set_order) {
+
+			if (strcmp( $order_type , "ASC") == 0) 
+				$order_type = "DESC";
+			else
+				$order_type = "ASC";
+		} else
+			$order_type = "ASC";
+
+		$_SESSION['order'] = $set_order;
+		$_SESSION['order_type'] = $order_type;
+	} else
+		$list_domeniu .= " ORDER BY id";
+	
+	$list_domeniu .= " ".$order_type;
+	
+	$test_domeniu = mysql_query($list_domeniu);
+	echo '
+		<a href="index.php?exec=adauga_domeniu">Adauga domeniu</a>
+		<table border="1">
+		<tr>
+		<th><a href="index.php?listare_domeniu&order=id">ID</a></th>
+		<th><a href="index.php?listare_domeniu&order=denumire">Denumire</a></th>
+	   	</tr>
+		';
+	while($row = mysql_fetch_array($test_domeniu)){
+		echo '
+			<tr>
+			<td>'.$row['id'].'</td> <td>'.$row['denumire'].'</td>
+				<td><a href="index.php?exec=adauga_domeniu&mod='. $row['id'] .'" >editare</a></td>
+				<td><a href="index.php?function=sterge&id='.$row['id'].'&tabela=domeniu" >stergere</a></td>
+			</tr>
+			';
+	}
+		
+//var_dump($test);
+}
+
+//insert domeniu
+if(isset($_GET['salveaza_domeniu']) && $_POST){
+ 
+  if (isset($_GET['id'])) {
+	$id = $_GET['id'];			
+	$modifica_domeniu = "UPDATE baza_librarie.domeniu SET denumire='".$_POST['denumire']." WHERE id=".$id;
+	$rc = mysql_query($modifica_domeniu);
+ } else {
+	$insert_domeniu = "INSERT INTO `baza_librarie`.`domeniu` ( `denumire`) VALUES (
+					'".$_POST['denumire']."');";
+	$test = mysql_query($insert_domeniu);
+ }
+//var_dump($test);
+}
+//insert autor
+
+
+
+
 
 //insert editura
 if(isset($_GET['salveaza_editura']) && isset($_POST)){
@@ -406,6 +516,9 @@ switch ($_GET['exec']) {
 	case "adauga_autor":
 		include('adauga_autor.php');
 	break;
+	case "adauga_domeniu":
+		include('adauga_domeniu.php');
+	break;
     default:
 	
         //include ('index.php');
@@ -429,38 +542,7 @@ if( isset($_GET['function']) ) {
 
 
   ?>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-
 		</table>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		</td>  
   </tr> 	
 </table>
@@ -498,7 +580,7 @@ if( isset($_GET['function']) ) {
 </td></tr></table>
 <!-- footer_eof //-->
 <!--osc3.template-help.com -->
-
+<!--
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www./");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -507,6 +589,6 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
 try {
 var pageTracker = _gat._getTracker("UA-7078796-1");
 pageTracker._trackPageview();
-} catch(err) {}</script>
+} catch(err) {}</script>-->
 </body>
 </html>
