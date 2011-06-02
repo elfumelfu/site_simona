@@ -1,7 +1,9 @@
 <?php 
 session_start();
 if(isset($_GET['id_prod'])){
-    
+    if(!isset($_SESSION['cart'][$_GET['id_prod']])){
+        $_SESSION['cart'][$_GET['id_prod']] = 0;
+    }
     $_SESSION['cart'][$_GET['id_prod']] += 1;
 }
 
@@ -20,4 +22,4 @@ if(isset($_GET['id_prod'])){
 //var_dump($_SESSION['cart']);
 ?>
 <strong>Cosul de cumparaturi:</strong>
-<span> acum in cosul tau </span><a href="shopping_cart.php"><?php echo $suma?>  de carti</a>
+<span> acum in cosul tau </span><a href="index.php?exec=cos"><?php echo $suma?> carti</a>
