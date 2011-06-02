@@ -130,6 +130,8 @@ include('adauga_autor.php');
 							<td id="m3" ><a href="index.php?listare_editura">Edituri</a></td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
 							<td id="m3" ><a href="index.php?listare_domeniu">Domenii</a></td>
+                                                        <td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
+							<td id="m3" ><a href="index.php?listare_subdomeniu">Subdomenii</a></td>
 						</tr>
 					</table>
 				</td>
@@ -506,8 +508,85 @@ if(isset($_GET['salveaza_editura']) && isset($_POST)){
         <?php
 }
 
+//listare subdomeniu
+if(isset($_GET['listare_subdomeniu'])){
+	$list_domeniu = "SELECT subdomeniu.id, domeniu.denumire as dom, subdomeniu.denumire as den 
+                         FROM baza_librarie.domeniu, baza_librarie.subdomeniu WHERE subdomeniu.iddomeniu=domeniu.id ";
+	if(!isset($_SESSION['order'])) {
+		$_SESSION['order'] = "id";
+	}
+	if(!isset($_SESSION['order_type']))
+		$_SESSION['order_type'] = "ASC"; 
+	
+	$order = $_SESSION['order'];
+	$order_type = $_SESSION['order_type'];
+	
+	if (isset($_GET['order'])) {
+		$set_order = $_GET['order'];
+		$list_domeniu .= " ORDER BY " . $set_order;
 
-//insert editura
+		if ($order == $set_order) {
+
+			if (strcmp( $order_type , "ASC") == 0) 
+				$order_type = "DESC";
+			else
+				$order_type = "ASC";
+		} else
+			$order_type = "ASC";
+
+		$_SESSION['order'] = $set_order;
+		$_SESSION['order_type'] = $order_type;
+	} else
+		$list_domeniu .= " ORDER BY id";
+	
+	$list_domeniu .= " ".$order_type;
+	
+	$test_domeniu = mysql_query($list_domeniu);
+	echo '
+		<a href="index.php?exec=adauga_subdomeniu">Adauga subdomeniu</a>
+		<table border="1">
+		<tr>
+		<th><a href="index.php?listare_subdomeniu&order=id">ID</a></th>
+                <th><a href="index.php?listare_subdomeniu&order=dom">Domeniu</a></th>
+		<th><a href="index.php?listare_subdomeniu&order=den">Denumire</a></th>
+	   	</tr>
+		';
+
+	while($row = mysql_fetch_array($test_domeniu)){
+		echo '
+			<tr>
+			<td>'.$row['id'].'</td> 
+                        <td>'.$row['dom'].'</td>
+                        <td>'.$row['den'].'</td>
+				<td><a href="index.php?exec=adauga_subdomeniu&mod='. $row['id'] .'" >editare</a></td>
+				<td><a href="index.php?function=sterge&id='.$row['id'].'&tabela=subdomeniu" >stergere</a></td>
+			</tr>
+			';
+	}
+		
+//var_dump($test);
+}
+
+//insert subdomeniu
+if(isset($_GET['salveaza_subdomeniu']) && $_POST){
+ 
+  if (isset($_GET['id'])) {
+	$id = $_GET['id'];
+        echo "id = ".$id;
+        $modifica_subdomeniu = "UPDATE baza_librarie.subdomeniu SET 
+                            denumire='".$_POST['denumire']."',
+                            idDomeniu=".$_POST['iddomeniu']."    WHERE id=".$id;
+	$rc = mysql_query($modifica_subdomeniu);
+        if (!$rc) echo "ERROR".  mysql_error();
+        
+ } else {
+	$insert_subdomeniu = "INSERT INTO `baza_librarie`.`subdomeniu` ( `denumire`,`idDomeniu`) VALUES (
+					'".$_POST['denumire']."', ".$_POST['iddomeniu'].");";
+	$test = mysql_query($insert_subdomeniu);
+ }
+?> <script>open_link("<?php echo $_SESSION["unde"];?>")</script>
+        <?php 
+}
 
 //meniul principal pentru admin
 if(isset($_GET['exec'])){
@@ -525,6 +604,9 @@ switch ($_GET['exec']) {
 	break;
 	case "adauga_domeniu":
 		include('adauga_domeniu.php');
+	break;
+        case "adauga_subdomeniu":
+		include('adauga_subdomeniu.php');
 	break;
     default:
 	

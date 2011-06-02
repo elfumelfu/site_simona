@@ -34,8 +34,19 @@ if ($mod > 0) {
 <form action="<?php echo $unde1?>" method="post">
  
 	Denumire: 	<input type="text" name="denumire" <?php if(isset($denumire)) echo 'value="'.$denumire.'"';?> /><br/>
-	
-	
+	Domeniu: 	<select name="iddomeniu" >
+			<?php $select_domeniu = mysql_query("SELECT * FROM `baza_librarie`.`domeniu`");	?>
+                        <?php while($domeniu = mysql_fetch_array($select_domeniu)){?>
+				<option value="<?php echo $domeniu['id']?>"<?php if(isset($idDomeniu) && $idDomeniu == $domeniu['id']){
+                                                echo "selected='selected'"; }?>>
+					<?php 
+					
+					echo  $domeniu['denumire'];
+					
+					?>
+				</option>
+			<?php }?>
+			</select><br>
 	<input type="submit" value="salveaza"/>
 	
 
