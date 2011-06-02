@@ -1,4 +1,3 @@
-
 <?php session_start();?>
 
 
@@ -220,8 +219,8 @@ include('adauga_autor.php');
 
 //listare carti
 if(isset($_GET['listare_carti'])){
-	$list_carti = "SELECT isbn, titlu, group_concat(nume, ' ', prenume separator ':')as autori, ideditura, nrpag , pret, nrbuc, colectie,
-	                      limba, anaparitie, descriere, imagine from carte, autor , autorcarte 
+	$list_carti = "SELECT isbn, titlu, group_concat(nume, ' ', prenume separator ':')as autori, ideditura, nrpag , pret, reducere, nrbuc, 
+	limba, anaparitie, descriere, imagine from carte, autor , autorcarte 
 			where autor.id=autorcarte.idautor and carte.isbn = autorcarte.idcarte group by isbn";
 	//var_dump($list_carti);
 	$test_carti = mysql_query($list_carti);
@@ -237,10 +236,10 @@ if(isset($_GET['listare_carti'])){
 		<th>Titlu</th>
 		<th>Autori</th>
 		<th>Pret</th>
+		<th>Reducere</th>
 		<th>Editura</th>
 		<th>An Aparitie</th>
 		<th>Numar pagini</th>
-		<th>Colectie</th>
 		<th>Descriere</th>
 		</tr>
 		';
@@ -263,10 +262,10 @@ if(isset($_GET['listare_carti'])){
 			echo '</td>';
 			echo '
 			<td>'.$row['pret'].'</td>
+			<td>'.$row['reducere'].'</td>
 			<td>'.$row['ideditura'].'</td>
 			<td>'.$row['anaparitie'].'</td>
 			<td>'.$row['nrpag'].'</td>
-			<td>'.$row['colectie'].'</td>
 			<td>'.$row['descriere'].'</td>
 				<td><a href="index.php?exec=adauga_autor&mod='. $row['isbn'] .'" >editare</a></td>
 				<td><a href="index.php?function=sterge&id='.$row['isbn'].'&tabela=autor" >stergere</a></td>
@@ -462,7 +461,7 @@ if(isset($_GET['listare_domeniu'])){
 //var_dump($test);
 }
 
-//insert domeniu
+//start insert domeniu
 if(isset($_GET['salveaza_domeniu']) && $_POST){
  
   if (isset($_GET['id'])) {
@@ -480,13 +479,13 @@ if(isset($_GET['salveaza_domeniu']) && $_POST){
 ?> <script>open_link("<?php echo $_SESSION["unde"];?>")</script>
         <?php 
 }
-//insert autor
+//end insert domeniu
 
 
 
 
 
-//insert editura
+//start insert editura
 if(isset($_GET['salveaza_editura']) && isset($_POST)){
 
     if (isset($_GET['id'])) {
@@ -507,6 +506,8 @@ if(isset($_GET['salveaza_editura']) && isset($_POST)){
      ?> <script>open_link("<?php echo $_SESSION["unde"];?>")</script>
         <?php
 }
+//end insert editura
+
 
 //listare subdomeniu
 if(isset($_GET['listare_subdomeniu'])){
@@ -569,10 +570,12 @@ if(isset($_GET['listare_subdomeniu'])){
 
 //insert subdomeniu
 if(isset($_GET['salveaza_subdomeniu']) && $_POST){
+
  
   if (isset($_GET['id'])) {
 	$id = $_GET['id'];
         echo "id = ".$id;
+
         $modifica_subdomeniu = "UPDATE baza_librarie.subdomeniu SET 
                             denumire='".$_POST['denumire']."',
                             idDomeniu=".$_POST['iddomeniu']."    WHERE id=".$id;
@@ -583,10 +586,12 @@ if(isset($_GET['salveaza_subdomeniu']) && $_POST){
 	$insert_subdomeniu = "INSERT INTO `baza_librarie`.`subdomeniu` ( `denumire`,`idDomeniu`) VALUES (
 					'".$_POST['denumire']."', ".$_POST['iddomeniu'].");";
 	$test = mysql_query($insert_subdomeniu);
+
  }
 ?> <script>open_link("<?php echo $_SESSION["unde"];?>")</script>
         <?php 
 }
+
 
 //meniul principal pentru admin
 if(isset($_GET['exec'])){
@@ -605,8 +610,10 @@ switch ($_GET['exec']) {
 	case "adauga_domeniu":
 		include('adauga_domeniu.php');
 	break;
+
         case "adauga_subdomeniu":
 		include('adauga_subdomeniu.php');
+
 	break;
     default:
 	
