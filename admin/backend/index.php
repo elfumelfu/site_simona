@@ -1,18 +1,33 @@
+
 <?php session_start();?>
 
 
 <script type="text/javascript" src="../js/jquery-1.5.1.min.js"></script>
 <script type="text/javascript" src="../js/jquery-ui-1.8.12.custom.min.js"></script>
 <?php include('../connect.php');?>
+<script>
+function open_link(url){
+    window.location = url;
+}
+</script>
 
-
+<?php 
+function sterge_inregistrare($id, $tabela) {
+	$rem = "DELETE FROM baza_librarie.".$tabela." WHERE id = ".$id."";
+	var_dump($rem);
+	mysql_query($rem);
+?>
+        <script>open_link("<?php echo $_SESSION["de_unde"];?>")</script>
+<?php    
+        exit ();
+}
+?>
 
 <?php 
 
 //breadcrumbs
 $url = (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] : "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 //var_dump($url);
-
 
 /*
 if(isset($_GET['adauga_carte'])){
@@ -99,26 +114,33 @@ include('adauga_autor.php');
 								<div class="header_box_bl">
 									<div class="header_box_br">
 										<div class="width_100">
+<!-- start meniu orizontal -->										
 <table cellpadding="0" cellspacing="0" border="0" class="menu">
-					<tr><td class="td">
-						<table cellpadding="0" cellspacing="0" border="0" class="table">
-							<tr><td>
-								<table cellpadding="0" cellspacing="0" border="0">
-									<tr>
-            				<tr>
-							<td id="over_m1"> <a href="index.php?exec=adauga_carte">Adauga Carte</a>
-</td>
+	<tr>
+	<td class="td">
+		<table cellpadding="0" cellspacing="0" border="0" class="table">
+			<tr><td>
+					<table cellpadding="0" cellspacing="0" border="0">
+						<!--<tr> -->
+           				<tr>
+							<td id="m1"> <a href="index.php?listare_carti">Carti</a></td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
-							<td id="m2" ><a href="index.php?exec=adauga_editura">Adauga Editura</a></td>
+							<td id="m2"><a href="index.php?listare_autor">Autori</a></td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
-							<td id="m3"><a href="index.php?exec=adauga_autor">Adauga Autor</a><br></td>
-							 </tr>
-						</table>
-								</td>
-							</tr>
-						</table>													
-					</td></tr>					
-				</table>			<!-- header_eof //-->
+							<td id="m3" ><a href="index.php?listare_editura">Edituri</a></td>
+							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
+							<td id="m3" ><a href="index.php?listare_domeniu">Domenii</a></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>													
+	</td>
+	</tr>					
+</table>			
+<!-- end meniu orizontal -->	
+
+<!-- header_eof //-->
 
 <!-- body //-->
 <table border="0" class="main_table" cellspacing="0" cellpadding="0">
@@ -138,7 +160,7 @@ include('adauga_autor.php');
 <table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBox2_table">
   <tr>
     <td  class="infoBox2_td"><table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBoxContents2_table">
-  <tr>
+ <!-- <tr>
     <td  class="boxText">
 	<ul class="categories">
 		<li class="bg_list_un"><a href="index.php-cPath=1.htm">Arte</a></li>
@@ -153,7 +175,7 @@ include('adauga_autor.php');
 		<li class="bg_list"><a href="index.php-cPath=10.htm">Istorie</a></li>
 	</ul>
 	</td>
-  </tr>
+  </tr>   -->
 </table>
 </td>
   </tr>
@@ -180,8 +202,6 @@ include('adauga_autor.php');
 
 <!-- Welcome_box_end -->
 
-						
-
 
 <table cellpadding="0" cellspacing="0" border="0">
 <tr><td class="padd_3">		
@@ -193,50 +213,300 @@ include('adauga_autor.php');
 		<tr>
 		<td align="left"><img src="images/spacer.gif" border="0" alt="" width="1" height="4"><br />
 	
-	  <?php 
-	 if($_SESSION['de_unde'] != $url){
-$_SESSION['unde'] = $_SESSION['de_unde'];
-$_SESSION['de_unde'] = $url;
+<?php 
 
+
+//listare carti
+if(isset($_GET['listare_carti'])){
+	$list_carti = "SELECT isbn, titlu, group_concat(nume, ' ', prenume separator ':')as autori, ideditura, nrpag , pret, nrbuc, colectie,
+	                      limba, anaparitie, descriere, imagine from carte, autor , autorcarte 
+			where autor.id=autorcarte.idautor and carte.isbn = autorcarte.idcarte group by isbn";
+	//var_dump($list_carti);
+	$test_carti = mysql_query($list_carti);
+	if (!$test_carti) {
+		echo 'invalid query : "'.$list_carti.'"';
+	}
+	
+	echo '
+		<a href="index.php?exec=adauga_carte">Adauga carte</a>
+		<table border="1">
+		<tr>
+		<th>ISBN</th>
+		<th>Titlu</th>
+		<th>Autori</th>
+		<th>Pret</th>
+		<th>Editura</th>
+		<th>An Aparitie</th>
+		<th>Numar pagini</th>
+		<th>Colectie</th>
+		<th>Descriere</th>
+		</tr>
+		';
+
+	while($row = mysql_fetch_array($test_carti)){
+
+		$aut = explode (":", $row['autori']);
+		//var_dump($aut);
+		
+		echo '
+			<tr>
+			<td>'.$row['isbn'].'</td>
+			<td>'.$row['titlu'].'</td>
+			<td nowrap>';
+			$i=0;
+			while (isset($aut[$i])) {
+			echo '<a href="WTF?'.$aut[$i].'">'.$aut[$i].'</a><br>';
+			$i++;
+			}
+			echo '</td>';
+			echo '
+			<td>'.$row['pret'].'</td>
+			<td>'.$row['ideditura'].'</td>
+			<td>'.$row['anaparitie'].'</td>
+			<td>'.$row['nrpag'].'</td>
+			<td>'.$row['colectie'].'</td>
+			<td>'.$row['descriere'].'</td>
+				<td><a href="index.php?exec=adauga_autor&mod='. $row['isbn'] .'" >editare</a></td>
+				<td><a href="index.php?function=sterge&id='.$row['isbn'].'&tabela=autor" >stergere</a></td>
+			</tr>
+			';
+	}
+		
+//var_dump($test);
 }
-if(isset($_SESSION['de_unde'])){
-$de_unde = $_SESSION['de_unde'];
-$unde = $_SESSION['unde'];
-}
-echo  $_SESSION['de_unde'].'<br>';
-echo  $_SESSION['unde'];
-//breadcrumbs
 
 
-//insert autor
-if(isset($_GET['salveaza_autor']) && $_POST){
- $insert_autor = "INSERT INTO `baza_librarie`.`autor` (
-`id` ,
-`nume` ,
-`prenume` ,
-`origine`
-)
-VALUES (
-NULL , '".$_POST['nume']."', '".$_POST['prenume']."', '".$_POST['origine']."'
-);";
-$test = mysql_query($insert_autor);
+
+//listare autori
+if(isset($_GET['listare_autor'])){
+	$list_autor = "SELECT id, nume, prenume, origine FROM baza_librarie.autor ";
+	if(!isset($_SESSION['order'])) {
+		$_SESSION['order'] = "id";
+		}
+	if(!isset($_SESSION['order_type']))
+		$_SESSION['order_type'] = "ASC"; 
+	
+	$order = $_SESSION['order'];
+	$order_type = $_SESSION['order_type'];
+	
+	if (isset($_GET['order'])) {
+		$set_order = $_GET['order'];
+		$list_autor .= " ORDER BY " . $set_order;
+		
+		if ($order == $set_order) {
+			if (strcmp( $order_type , "ASC") == 0) 
+				$order_type = "DESC";
+			else
+				$order_type = "ASC";
+		} else
+			$order_type = "ASC";
+
+		$_SESSION['order'] = $set_order;
+		$_SESSION['order_type'] = $order_type;
+	} else
+		$list_autor .= " ORDER BY id";
+	
+	$list_autor .= " ".$order_type;
+		
+	$test_autor = mysql_query($list_autor);
+	
+	echo '
+		<a href="index.php?exec=adauga_autor">Adauga autor</a>
+		<table border="1">
+		<tr>
+		<th><a href="index.php?listare_autor&order=id">ID</a></th>
+		<th><a href="index.php?listare_autor&order=nume">Nume</a></th>
+		<th><a href="index.php?listare_autor&order=prenume">Prenume</a></th>
+		<th><a href="index.php?listare_autor&order=origine">Origine</a></th>
+		</tr>
+		';
+	while($row = mysql_fetch_array($test_autor)){
+		echo '
+			<tr>
+			<td>'.$row['id'].'</td><td>'.$row['nume'].'</td><td>'.$row['prenume'].'</td><td>'.$row['origine'].'</td>
+				<td><a href="index.php?exec=adauga_autor&mod='. $row['id'] .'" >editare</a></td>
+				<td><a href="index.php?function=sterge&id='.$row['id'].'&tabela=autor" >stergere</a></td>
+			</tr>
+			';
+	}
+		
 //var_dump($test);
 }
 //insert autor
+if(isset($_GET['salveaza_autor']) && $_POST){
+ 
+  if (isset($_GET['id'])) {
+	$id = $_GET['id'];			
+	$modifica_autor = "UPDATE baza_librarie.autor SET nume='".$_POST['nume']."', prenume='"	.$_POST['prenume']."', origine='" .$_POST['origine']."' WHERE id=".$id;
+	$rc = mysql_query($modifica_autor);
+ } else {
+	$insert_autor = "INSERT INTO `baza_librarie`.`autor` ( `nume` , `prenume` , `origine`  ) VALUES (
+					'".$_POST['nume']."', '".$_POST['prenume']."', '".$_POST['origine']."');";
+	$test = mysql_query($insert_autor);
+ }
+?> <script>open_link("<?php echo $_SESSION["unde"];?>")</script>
+        <?php	
+}
+//insert autor
+
+//listare editura
+if(isset($_GET['listare_editura'])){
+	$list_editura = "SELECT id, denumire, localitate, nrtelefon, email FROM baza_librarie.editura ";
+	if(!isset($_SESSION['order'])) {
+		$_SESSION['order'] = "id";
+	}
+	if(!isset($_SESSION['order_type']))
+		$_SESSION['order_type'] = "ASC"; 
+	
+	$order = $_SESSION['order'];
+	$order_type = $_SESSION['order_type'];
+	
+	if (isset($_GET['order'])) {
+		$set_order = $_GET['order'];
+		$list_editura .= " ORDER BY " . $set_order;
+
+		if ($order == $set_order) {
+
+			if (strcmp( $order_type , "ASC") == 0) 
+				$order_type = "DESC";
+			else
+				$order_type = "ASC";
+		} else
+			$order_type = "ASC";
+
+		$_SESSION['order'] = $set_order;
+		$_SESSION['order_type'] = $order_type;
+	} else
+		$list_editura .= " ORDER BY id";
+	
+	$list_editura .= " ".$order_type;
+	
+	$rc = mysql_query($list_editura);
+	echo '
+		<a href="index.php?exec=adauga_editura">Adauga editura</a>
+		<table border="1">
+		<tr>
+		<th><a href="index.php?listare_editura&order=id">ID</a></th>
+		<th><a href="index.php?listare_editura&order=denumire">Denumire</a></th>
+		<th><a href="index.php?listare_editura&order=localitate">Localitate</a></th>
+		<th><a href="index.php?listare_editura&order=nrtelefon">Nr telefon</a></th>
+		<th><a href="index.php?listare_editura&order=email">E-mail</a></th>
+		</tr>
+		';
+	while($row = mysql_fetch_array($rc)){
+		echo '
+			<tr>
+			<td>'.$row['id'].'</td><td>'.$row['denumire'].'</td><td>'.$row['localitate'].'</td><td>'.$row['nrtelefon'].'</td><td>'.$row['email'].'</td>
+				<td><a href="index.php?exec=adauga_editura&mod='. $row['id'] .'" >editare</a></td>
+				<td><a href="index.php?function=sterge&id='.$row['id'].'&tabela=editura" >stergere</a></td>
+			</tr>
+			';
+	}
+
+//var_dump($test);
+}
+//listare domeniu
+if(isset($_GET['listare_domeniu'])){
+	$list_domeniu = "SELECT id, denumire FROM baza_librarie.domeniu ";
+	if(!isset($_SESSION['order'])) {
+		$_SESSION['order'] = "id";
+	}
+	if(!isset($_SESSION['order_type']))
+		$_SESSION['order_type'] = "ASC"; 
+	
+	$order = $_SESSION['order'];
+	$order_type = $_SESSION['order_type'];
+	
+	if (isset($_GET['order'])) {
+		$set_order = $_GET['order'];
+		$list_domeniu .= " ORDER BY " . $set_order;
+
+		if ($order == $set_order) {
+
+			if (strcmp( $order_type , "ASC") == 0) 
+				$order_type = "DESC";
+			else
+				$order_type = "ASC";
+		} else
+			$order_type = "ASC";
+
+		$_SESSION['order'] = $set_order;
+		$_SESSION['order_type'] = $order_type;
+	} else
+		$list_domeniu .= " ORDER BY id";
+	
+	$list_domeniu .= " ".$order_type;
+	
+	$test_domeniu = mysql_query($list_domeniu);
+	echo '
+		<a href="index.php?exec=adauga_domeniu">Adauga domeniu</a>
+		<table border="1">
+		<tr>
+		<th><a href="index.php?listare_domeniu&order=id">ID</a></th>
+		<th><a href="index.php?listare_domeniu&order=denumire">Denumire</a></th>
+	   	</tr>
+		';
+
+	while($row = mysql_fetch_array($test_domeniu)){
+		echo '
+			<tr>
+			<td>'.$row['id'].'</td> <td>'.$row['denumire'].'</td>
+				<td><a href="index.php?exec=adauga_domeniu&mod='. $row['id'] .'" >editare</a></td>
+				<td><a href="index.php?function=sterge&id='.$row['id'].'&tabela=domeniu" >stergere</a></td>
+			</tr>
+			';
+	}
+		
+//var_dump($test);
+}
+
+//insert domeniu
+if(isset($_GET['salveaza_domeniu']) && $_POST){
+ 
+  if (isset($_GET['id'])) {
+	$id = $_GET['id'];
+        echo "id = ".$id;
+        $modifica_domeniu = "UPDATE baza_librarie.domeniu SET denumire='".$_POST['denumire']."' WHERE id=".$id;
+	$rc = mysql_query($modifica_domeniu);
+        if (!$rc) echo "ERROR".  mysql_error();
+        
+ } else {
+	$insert_domeniu = "INSERT INTO `baza_librarie`.`domeniu` ( `denumire`) VALUES (
+					'".$_POST['denumire']."');";
+	$test = mysql_query($insert_domeniu);
+ }
+?> <script>open_link("<?php echo $_SESSION["unde"];?>")</script>
+        <?php 
+}
+//insert autor
+
+
+
+
+
 //insert editura
 if(isset($_GET['salveaza_editura']) && isset($_POST)){
-echo $inserare_editura="INSERT INTO `baza_librarie`.`editura` (
-`id` ,
-`denumire` ,
-`localitate` ,
-`nrtelefon` ,
-`email`
-)
-VALUES (
-NULL , '".$_POST['denumire']."', '".$_POST['localitate']."', '".$_POST['numar_telefon']."', '".$_POST['email']."')";
-$ts = mysql_query($inserare_editura);
-var_dump($ts);
+
+    if (isset($_GET['id'])) {
+	$id = $_GET['id'];			
+	$modifica_editura = "UPDATE baza_librarie.editura SET denumire='".$_POST['denumire'].
+	                       "', localitate='".$_POST['localitate'].
+						   "', nrtelefon='" .$_POST['numar_telefon'].
+						   "', email='".$_POST['email']."' WHERE id=".$id;
+	$rc = mysql_query($modifica_editura);
+       
+        
+    } else {
+	echo $inserare_editura="INSERT INTO `baza_librarie`.`editura` ( `denumire` , `localitate` , `nrtelefon` , `email` ) VALUES (
+				'".$_POST['denumire']."', '".$_POST['localitate']."', '".$_POST['numar_telefon']."', '".$_POST['email']."')";
+	$ts = mysql_query($inserare_editura);
+
+	}
+     ?> <script>open_link("<?php echo $_SESSION["unde"];?>")</script>
+        <?php
 }
+
+
 //insert editura
 
 //meniul principal pentru admin
@@ -253,45 +523,43 @@ switch ($_GET['exec']) {
 	case "adauga_autor":
 		include('adauga_autor.php');
 	break;
+	case "adauga_domeniu":
+		include('adauga_domeniu.php');
+	break;
     default:
 	
         //include ('index.php');
         break;
 }
 }
-  ?>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 
+if( isset($_GET['function']) ) { 
+  switch( $_GET['function'] ) { 
+     case 'sterge':
+		if (isset($_GET['id']))
+			$id = $_GET['id'];
+		if (isset($_GET['tabela']))
+			$tabela = $_GET['tabela'];	
+        sterge_inregistrare($id, $tabela); 
+     break; 
+
+  } 
+}
+if($_SESSION['de_unde'] != $url){
+		$_SESSION['unde'] = $_SESSION['de_unde'];
+		$_SESSION['de_unde'] = $url;
+		}
+if(isset($_SESSION['de_unde'])){
+		$de_unde = $_SESSION['de_unde'];
+		$unde = $_SESSION['unde'];
+		}
+echo  'de_unde : '.$_SESSION['de_unde'].'<br>';
+echo  '   unde : '.$_SESSION['unde'];
+echo '<br>';
+//breadcrumbs
+
+  ?>
 		</table>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		</td>  
   </tr> 	
 </table>
@@ -329,7 +597,7 @@ switch ($_GET['exec']) {
 </td></tr></table>
 <!-- footer_eof //-->
 <!--osc3.template-help.com -->
-
+<!--
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www./");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -338,6 +606,6 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
 try {
 var pageTracker = _gat._getTracker("UA-7078796-1");
 pageTracker._trackPageview();
-} catch(err) {}</script>
+} catch(err) {}</script>-->
 </body>
 </html>

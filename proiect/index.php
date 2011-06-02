@@ -242,64 +242,11 @@ if(isset($_SESSION['cart'])){
 <!-- categories //-->
           <tr>
             <td>
-<table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBoxHeading_table">
-  <tr>
-    <td><img src="images/corner_top_left.gif" border="0" alt="" width="4" height="4"></td>
-    <td  class="infoBoxHeading_td">Categorii</td>
-    <td><img src="images/corner_top_right.gif" border="0" alt="" width="4" height="4"></td>
-  </tr>
-</table>
-<table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBox2_table">
-  <tr>
-    <td  class="infoBox2_td"><table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBoxContents2_table">
-  <tr>
-    <td  class="boxText">
-	<ul class="categories">
-	<?php	//Listarea categoriilor
-	include("../admin/connect.php");
-	if (isset($_GET['domeniu']))
-		$sel_domeniu = $_GET['domeniu'];
-	else
-		$sel_domeniu = '';
-	$lista_categorii = "SELECT denumire from `baza_librarie`.`domeniu` ORDER BY denumire ";
-		$test = mysql_query($lista_categorii);
-	
-		while($domeniu = mysql_fetch_array($test)) {
-		
-			
-			if ($sel_domeniu == $domeniu['denumire'])
-				{
-				echo '<li class="bg_list"><a href="index.php?domeniu='.$domeniu['denumire'].'">'.$domeniu['denumire'].'</a></li>';
-				
-				$lista_subcategorii = "SELECT sub.denumire as denumire from `baza_librarie`.`domeniu` as dom,`baza_librarie`.`subdomeniu` as sub 
-				                      WHERE sub.idDomeniu=dom.id and dom.denumire='".$sel_domeniu."' ORDER BY denumire";
-				$testsub = mysql_query($lista_subcategorii);
-				//var_dump($lista_subcategorii);
-				while($subdomeniu = mysql_fetch_array($testsub)) {
-					echo '<li class="bg_list2_un"><a href="index.php?domeniu='.$subdomeniu['denumire'].'">'.$subdomeniu['denumire'].'</a></li>';
-					}
-				}
-			else
-				echo '<li class="bg_list_un"><a href="index.php?domeniu='.$domeniu['denumire'].'">'.$domeniu['denumire'].'</a></li>';
-		}
-		/*<li class="bg_list_un"><a href="index.php-cPath=1.htm">Arte</a></li>
-		<li class="bg_list"><a href="index.php-cPath=2.htm">Autoeducare</a></li>
-		<li class="bg_list"><a href="index.php-cPath=3.htm">Beletristica</a></li>
-		<li class="bg_list"><a href="index.php-cPath=4.htm">Calculatoare</a></li>
-		<li class="bg_list"><a href="index.php-cPath=5.htm">Carte straina</a></li>
-		<li class="bg_list"><a href="index.php-cPath=6.htm">Economie</a></li>
-		<li class="bg_list"><a href="index.php-cPath=7.htm">Gastronomie</a></li>
-		<li class="bg_list"><a href="index.php-cPath=8.htm">Hobby</a></li>
-		<li class="bg_list"><a href="index.php-cPath=9.htm">Invatamant-Educatie</a></li>
-		<li class="bg_list"><a href="index.php-cPath=10.htm">Istorie</a></li>*/
-		?>
-	</ul>
-	</td>
-  </tr>
-</table>
-</td>
-  </tr>
-</table>
+
+			<?php 
+			include ('menu.php');
+			?>
+
             </td>
           </tr>
 <!-- categories_eof //-->
@@ -419,9 +366,19 @@ switch ($_GET['exec']) {
     case "creare_cont":
         include('cont-nou.php');
 	break;
+
 	
 	case "cos":
 		include('cos_de_cumparaturi.php');
+
+	case "contact":
+        include('contact_us.php');
+	break;
+	case "oferte":
+        include('specials.php');
+	break;
+	case "adauga_editura":
+		include('adauga_editura.php');
 	break;
 	
 	case "adauga_autor":
@@ -527,7 +484,7 @@ switch ($_GET['exec']) {
   <tr>
     <td>
 		<img src="images/corner3_top_left.gif" border="0" alt="" width="4" height="4"></td>
-    <td  class="infoBoxHeading3_td">Specials</td>
+    <td  class="infoBoxHeading3_td">Oferte</td>
     <td>
 		<img src="images/corner3_top_right.gif" border="0" alt="" width="4" height="4"></td>
   </tr>
@@ -606,7 +563,7 @@ switch ($_GET['exec']) {
 					</table>
 					</td>
                     <td class="footer2_td">
-						<span><a href="specials.php">Specials</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
+						<span><a href="specials.php">Oferte</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
 						<a href="advanced_search.php">Advanced Search</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
 						<a href="reviews.php">Reviews</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
 						<a href="create_account.php">Create an Account</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;
