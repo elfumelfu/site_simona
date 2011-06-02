@@ -1,6 +1,48 @@
 <?php
 session_start();
+
+   
+
+
+
+
+
+
 include '../admin/connect.php';
+
+
+
+
+
+
+
+
+
+
+   if(isset($_POST['id'])){
+     foreach($_POST['id'] as $id){
+      // echo $id;
+     
+       if((int)$_POST[$id] == $_SESSION['cart'][$id]){
+           
+          
+       }else{
+          
+           $_SESSION['cart'][$id] = $_POST[$id];
+       }
+    }
+    }
+
+if(isset($_POST['sterge'])){
+foreach($_POST['sterge'] as $sterge){
+    unset($_SESSION['cart'][$sterge]);
+  
+}
+};
+
+
+
+
 
 include('inregistrare.php');
 ?>
@@ -30,7 +72,7 @@ include('inregistrare.php');
                                                                                 
                                                                                 $('.add-to').click(function(){
                                                                                     var name = $(this).attr('name');
-                                                                                    alert(name);
+                                                                                    //alert(name);
                                                                                    
                                                                                     
                                                                                     
@@ -130,15 +172,15 @@ if(isset($_SESSION['cart'])){
        
        // echo array_sum($s);
     }
-     var_dump($suma);
+    // var_dump($suma);
 //array_sum($_SESSION['cart']);
 //var_dump($_SESSION['cart']);
 ?>
 <strong>Cosul de cumparaturi:</strong>
-<span> acum in cosul tau </span><a href="shopping_cart.php"><?php echo $suma?>  de carti</a>
+<span> acum in cosul tau </span><a href="index.php?exec=cos"><?php echo $suma?> carti</a>
 <?php }else{?>
 <strong>Cosul de cumparaturi:</strong>
-<span> acum in cosul tau </span><a href="shopping_cart.php">0   carti</a>
+<span> acum in cosul tau </span><a href="index.php?exec=cos">0   carti</a>
 
 <?php }?>
                 </td>
@@ -324,6 +366,11 @@ switch ($_GET['exec']) {
     case "creare_cont":
         include('cont-nou.php');
 	break;
+
+	
+	case "cos":
+		include('cos_de_cumparaturi.php');
+
 	case "contact":
         include('contact_us.php');
 	break;
@@ -347,8 +394,8 @@ switch ($_GET['exec']) {
         //include ('index.php');
 //        echo 'test';
 }
-                
-                
+                if(!isset($_GET['exec'])){$_GET['exec'] = 'null';}
+                if($_GET['exec'] != 'cos'){
                 ?>
 				<td class="box_width_td_right"><table border="0" class="box_width_right" cellspacing="0" cellpadding="0">
 <!-- right_navigation //-->
@@ -483,7 +530,7 @@ switch ($_GET['exec']) {
 <!-- specials_eof //-->
 <!-- right_navigation_eof //-->
     </table></td>	
-
+<?php }?>
 			</tr>
 		</table>
 							

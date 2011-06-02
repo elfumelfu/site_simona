@@ -4,11 +4,11 @@
 //session_start();
 if(isset($_POST['logout'])){
 if($_POST['logout'] == 'logout'){
-    session_destroy();
-    echo 'In 5 secunde veti iesi din contul dumeavoastra.';
+    unset($_SESSION['is_logged_in']);
+   // echo 'In 5 secunde veti iesi din contul dumeavoastra.';
     ?>
     <script>
-        setTimeout('this.location.href = "index.php";',5000)
+       / //setTimeout('this.location.href = "index.php";',5000)
     </script>
 <?php
 }
