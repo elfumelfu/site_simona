@@ -1,15 +1,25 @@
+
 <?php session_start();?>
 
 
 <script type="text/javascript" src="../js/jquery-1.5.1.min.js"></script>
 <script type="text/javascript" src="../js/jquery-ui-1.8.12.custom.min.js"></script>
 <?php include('../connect.php');?>
+<script>
+function open_link(url){
+    window.location = url;
+}
+</script>
 
 <?php 
 function sterge_inregistrare($id, $tabela) {
 	$rem = "DELETE FROM baza_librarie.".$tabela." WHERE id = ".$id."";
 	var_dump($rem);
 	mysql_query($rem);
+?>
+        <script>open_link("<?php echo $_SESSION["de_unde"];?>")</script>
+<?php    
+        exit ();
 }
 ?>
 
@@ -113,7 +123,7 @@ include('adauga_autor.php');
 					<table cellpadding="0" cellspacing="0" border="0">
 						<!--<tr> -->
            				<tr>
-							<td id="m1"> <a href="index.php?exec=adauga_carte">Adauga Carte</a></td>
+							<td id="m1"> <a href="index.php?listare_carti">Carti</a></td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
 							<td id="m2"><a href="index.php?listare_autor">Autori</a></td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
@@ -204,18 +214,7 @@ include('adauga_autor.php');
 		<td align="left"><img src="images/spacer.gif" border="0" alt="" width="1" height="4"><br />
 	
 <?php 
-if($_SESSION['de_unde'] != $url){
-		$_SESSION['unde'] = $_SESSION['de_unde'];
-		$_SESSION['de_unde'] = $url;
-		}
-if(isset($_SESSION['de_unde'])){
-		$de_unde = $_SESSION['de_unde'];
-		$unde = $_SESSION['unde'];
-		}
-echo  $_SESSION['de_unde'].'<br>';
-echo  $_SESSION['unde'];
-echo '<br>';
-//breadcrumbs
+
 
 //listare carti
 if(isset($_GET['listare_carti'])){
@@ -311,8 +310,6 @@ if(isset($_GET['listare_autor'])){
 		
 	$test_autor = mysql_query($list_autor);
 	
-	var_dump($list_autor);
-	
 	echo '
 		<a href="index.php?exec=adauga_autor">Adauga autor</a>
 		<table border="1">
@@ -347,7 +344,8 @@ if(isset($_GET['salveaza_autor']) && $_POST){
 					'".$_POST['nume']."', '".$_POST['prenume']."', '".$_POST['origine']."');";
 	$test = mysql_query($insert_autor);
  }
-//var_dump($test);
+?> <script>open_link("<?php echo $_SESSION["unde"];?>")</script>
+        <?php	
 }
 //insert autor
 
@@ -404,7 +402,7 @@ if(isset($_GET['listare_editura'])){
 			</tr>
 			';
 	}
-		
+
 //var_dump($test);
 }
 //listare domeniu
@@ -466,15 +464,19 @@ if(isset($_GET['listare_domeniu'])){
 if(isset($_GET['salveaza_domeniu']) && $_POST){
  
   if (isset($_GET['id'])) {
-	$id = $_GET['id'];			
-	$modifica_domeniu = "UPDATE baza_librarie.domeniu SET denumire='".$_POST['denumire']." WHERE id=".$id;
+	$id = $_GET['id'];
+        echo "id = ".$id;
+        $modifica_domeniu = "UPDATE baza_librarie.domeniu SET denumire='".$_POST['denumire']."' WHERE id=".$id;
 	$rc = mysql_query($modifica_domeniu);
+        if (!$rc) echo "ERROR".  mysql_error();
+        
  } else {
 	$insert_domeniu = "INSERT INTO `baza_librarie`.`domeniu` ( `denumire`) VALUES (
 					'".$_POST['denumire']."');";
 	$test = mysql_query($insert_domeniu);
  }
-//var_dump($test);
+?> <script>open_link("<?php echo $_SESSION["unde"];?>")</script>
+        <?php 
 }
 //insert autor
 
@@ -485,19 +487,23 @@ if(isset($_GET['salveaza_domeniu']) && $_POST){
 //insert editura
 if(isset($_GET['salveaza_editura']) && isset($_POST)){
 
-if (isset($_GET['id'])) {
+    if (isset($_GET['id'])) {
 	$id = $_GET['id'];			
 	$modifica_editura = "UPDATE baza_librarie.editura SET denumire='".$_POST['denumire'].
 	                       "', localitate='".$_POST['localitate'].
 						   "', nrtelefon='" .$_POST['numar_telefon'].
 						   "', email='".$_POST['email']."' WHERE id=".$id;
 	$rc = mysql_query($modifica_editura);
- } else {
+       
+        
+    } else {
 	echo $inserare_editura="INSERT INTO `baza_librarie`.`editura` ( `denumire` , `localitate` , `nrtelefon` , `email` ) VALUES (
 				'".$_POST['denumire']."', '".$_POST['localitate']."', '".$_POST['numar_telefon']."', '".$_POST['email']."')";
 	$ts = mysql_query($inserare_editura);
 
 	}
+     ?> <script>open_link("<?php echo $_SESSION["unde"];?>")</script>
+        <?php
 }
 
 
@@ -539,8 +545,18 @@ if( isset($_GET['function']) ) {
 
   } 
 }
-
-
+if($_SESSION['de_unde'] != $url){
+		$_SESSION['unde'] = $_SESSION['de_unde'];
+		$_SESSION['de_unde'] = $url;
+		}
+if(isset($_SESSION['de_unde'])){
+		$de_unde = $_SESSION['de_unde'];
+		$unde = $_SESSION['unde'];
+		}
+echo  'de_unde : '.$_SESSION['de_unde'].'<br>';
+echo  '   unde : '.$_SESSION['unde'];
+echo '<br>';
+//breadcrumbs
 
   ?>
 		</table>
