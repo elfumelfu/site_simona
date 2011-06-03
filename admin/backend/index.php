@@ -28,19 +28,6 @@ function sterge_inregistrare($id, $tabela) {
 $url = (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] : "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 //var_dump($url);
 
-/*
-if(isset($_GET['adauga_carte'])){
-include('adauga_carte.php');
-}elseif(isset($_GET['adauga_editura'])){
-include('adauga_editura.php');
-}elseif(isset($_GET['adauga_autor'])){
-include('adauga_autor.php');
-}else{?>
-<a href="index.php?adauga_carte">Adauga Carte</a><br>
-<a href="index.php?adauga_editura">Adauga Editura</a><br>
-<a href="index.php?adauga_autor">Adauga Autor</a><br>
-<?php
-}*/
 ?>
 <!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html dir="LTR" lang="en">
@@ -129,8 +116,10 @@ include('adauga_autor.php');
 							<td id="m3" ><a href="index.php?listare_editura">Edituri</a></td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
 							<td id="m3" ><a href="index.php?listare_domeniu">Domenii</a></td>
-                                                        <td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
+                            <td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
 							<td id="m3" ><a href="index.php?listare_subdomeniu">Subdomenii</a></td>
+                            <td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
+							<td id="m3" ><a href="index.php?listare_user">Utilizatori</a></td>
 						</tr>
 					</table>
 				</td>
@@ -216,6 +205,73 @@ include('adauga_autor.php');
 	
 <?php 
 
+//listare utilizatori
+if(isset($_GET['listare_user'])){
+    
+	$qry = "SELECT id, nume, prenume, email, parola from baza_librarie.user";
+	$res = mysql_query($qry);
+	if (! $res) {
+		echo 'invalid query : "'.$res.'"';
+	}
+	
+	echo '
+		<a href="index.php?exec=adauga_user">Adauga user</a>
+		<table border="1">
+		<tr>
+		<th>ID</th>
+		<th>Nume</th>
+		<th>Prenume</th>
+		<th>Email</th>
+		<th>Parola</th>
+		</tr>
+		';
+
+	while($row = mysql_fetch_array($res)){
+		
+		echo '
+			<tr>
+			<td>'.$row['id'].'</td>
+			<td>'.$row['nume'].'</td>
+			<td>'.$row['prenume'].'</td>
+			<td>'.$row['email'].'</td>
+			<td>'.$row['parola'].'</td>
+				<td><a href="index.php?exec=adauga_user&mod='. $row['id'] .'" >editare</a></td>
+				<td><a href="index.php?function=sterge&id='.$row['id'].'&tabela=user" >stergere</a></td>
+			</tr>
+			';
+	}
+		
+//var_dump($test);
+}
+
+//insert subdomeniu
+if(isset($_GET['salveaza_user']) && $_POST){
+
+ 
+  if (isset($_GET['id'])) {
+	$id = $_GET['id'];
+        echo "id = ".$id;
+
+        $modifica_user = "UPDATE baza_librarie.user SET 
+                            nume='".$_POST['nume']."',
+                            prenume='".$_POST['prenume']."',
+                            email='".$_POST['email']."',
+                            parola='".md5($_POST['parola'])."'    WHERE id=".$id;
+	$rc = mysql_query($modifica_user);
+        if (!$rc) echo "ERROR".  mysql_error();
+        
+ } else {
+	$insert_user = "INSERT INTO `baza_librarie`.`user` ( `nume`,`prenume`, email, parola) VALUES (
+					'".$_POST['nume']."', 
+                    '".$_POST['prenume']."', 
+                    '".$_POST['email']."', 
+                    '".md5($_POST['parola'])."');";
+	$test = mysql_query($insert_user);
+
+ }
+?> <script>open_link("<?php echo $_SESSION["unde"];?>")</script>
+        <?php 
+}
 
 //listare carti
 if(isset($_GET['listare_carti'])){
@@ -611,10 +667,13 @@ switch ($_GET['exec']) {
 		include('adauga_domeniu.php');
 	break;
 
-        case "adauga_subdomeniu":
+    case "adauga_subdomeniu":
 		include('adauga_subdomeniu.php');
+    	break;
+    case "adauga_user":
+		include('adauga_user.php');
+    	break;
 
-	break;
     default:
 	
         //include ('index.php');
