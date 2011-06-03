@@ -1,0 +1,42 @@
+<html>
+<body>
+<table border="3" style="border:2px solid brown; border-collapse:collapse; width:80%;">
+<tr>
+  <td style=" height:50px; padding:15px;">1</td>
+  <td rowspan="3">2</td>
+</tr>
+<tr>
+  <td>3</td>
+</tr>
+<tr>
+  <td>4</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td rowspan="3">6</td>
+</tr>
+<tr>
+  <td>7</td>
+  
+</tr>
+<tr>
+  <td>8</td>
+</tr>
+
+<tr>
+  <td>9</td>
+  <td>10</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td>12</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td>14</td>
+</tr>
+</table>
+
+</body>
+</html>
+

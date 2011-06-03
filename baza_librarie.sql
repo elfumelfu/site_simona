@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 02, 2011 at 10:14 PM
+-- Generation Time: Jun 03, 2011 at 01:42 PM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.1
 
@@ -119,6 +119,49 @@ INSERT INTO `carte` (`isbn`, `titlu`, `ideditura`, `nrpag`, `pret`, `reducere`, 
 (2147483647, 'ttttttt', 1, 0, 0, 0, 0, '', 0, '', ''),
 (9789736756382, 'Fotografia de portret - 99 de idei de fotografie pentru tine', 71, 0, 0, 0, 0, '', 0, '', ''),
 (9789731984018, 'Arhitectura lumii. Capodoperele', 70, 0, 0, 0, 0, '', 0, '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comanda`
+--
+
+CREATE TABLE IF NOT EXISTS `comanda` (
+  `id` int(4) NOT NULL AUTO_INCREMENT,
+  `iduser` int(4) NOT NULL,
+  `data` date NOT NULL,
+  `stare` varchar(30) NOT NULL,
+  `plata` varchar(30) NOT NULL,
+  `idadrlivrare` int(4) NOT NULL,
+  `idadrfacturare` int(4) NOT NULL,
+  `transport` int(4) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `comanda`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comandacarti`
+--
+
+CREATE TABLE IF NOT EXISTS `comandacarti` (
+  `id` int(4) NOT NULL AUTO_INCREMENT,
+  `idcomanda` int(4) NOT NULL,
+  `isbn` bigint(13) NOT NULL,
+  `nrbuc` int(4) NOT NULL,
+  `pret` int(4) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `comandacarti`
+--
+
 
 -- --------------------------------------------------------
 

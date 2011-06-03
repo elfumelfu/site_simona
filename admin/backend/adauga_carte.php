@@ -93,9 +93,9 @@ $editura =  $editura_insert['id'];
 
 $insert_carte ="
 		INSERT INTO `baza_librarie`.`carte` 
-		(`isbn`, `titlu`, `colectie`, `ideditura`, `nrpag`, `pret`, `reducere`, `nrbuc`, `limba`, `anaparitie`, `descriere`, `imagine`) 
+		(`isbn`, `titlu`, `ideditura`, `nrpag`, `pret`, `reducere`, `nrbuc`, `limba`, `anaparitie`, `descriere`, `imagine`) 
 		VALUES  
-		('".$_POST['isbn']."', '".$_POST['titlu']."', '',  '".$editura."', '', '', '', '', '', '', '', '')		
+		('".$_POST['isbn']."', '".$_POST['titlu']."',  '".$editura."', '', '', '', '', '', '', '', '')		
 		";
 		
 		
