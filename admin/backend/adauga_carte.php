@@ -1,7 +1,3 @@
-<form method="post" action="index.php?exec=adauga_carte&salveaza">
-	<pre>ISBN: <input name="isbn" type="text"/></pre>    Imagine!!!!
-	<pre>Titlu: <input name="titlu" value="" type="text"/></pre>
-	<pre>Autor: </pre> 
 <script>
 $(document).ready(function()
 {
@@ -14,6 +10,43 @@ $('#delete').click(function() {
 })
 
 </script>
+
+<script language="javascript">
+function showSubdomenii(str)
+{
+if (str=="")
+  {
+  document.getElementById("subdomeniu").innerHTML="";
+  return;
+  }
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("subdomeniu").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("GET","getSubdomeniu.php?id="+str,true);
+xmlhttp.send();
+}
+</script>
+</script>
+
+
+<form name="add_carte" method="post" action="index.php?exec=adauga_carte&salveaza">
+	<pre>ISBN: <input name="isbn" type="text"/></pre>    Imagine!!!!
+	<pre>Titlu: <input name="titlu" value="" type="text"/></pre>
+	<pre>Autor: </pre> 
+
+<div id="txtHint"> </div>
 
 <?php $select_autor = mysql_query("SELECT * FROM `baza_librarie`.`autor`");	?>
 			<select name="autor" id="autor" multiple="multiple" size="10" style="float:left;width:200px">
@@ -33,47 +66,57 @@ $('#delete').click(function() {
 <div style="clear:both"></div>
 	<a href="index.php?exec=adauga_autor">Adauga autor</a>
 	<br><br>
-		<pre>Editura: 
-	
-	<?php $select_editura = mysql_query("SELECT * FROM `baza_librarie`.`editura`");	?>
-			<select name="editura" style="float:left;">
+		Editura: <?php $select_editura = mysql_query("SELECT * FROM `baza_librarie`.`editura`");	?>
+			<select name="editura" >
 			<?php while($editura = mysql_fetch_array($select_editura)){?>
 				<option <?php if(isset($_POST['denumire']) && $_POST['denumire'] == $editura['denumire']){ echo "selected='selected'"; }?>>
 					<?php 
 					
-					echo  $editura['denumire']
+					echo  $editura['denumire'];
 					
 					?>
 				</option>
 			<?php }?>
-			</select>
-	<a href="index.php?exec=adauga_editura">Adauga editura</a>
-	</pre>
-	<br><br>
+			</select><a href="index.php?exec=adauga_editura">Adauga editura</a><br>
 
-	<b>Colectie: </b> 
-<?php $select_colectie = mysql_query("SELECT * FROM `baza_librarie`.`carte`");	?>
-			<select name="colectie" style="float:left;">
-			<?php while($colectie = mysql_fetch_array($select_colectie)){?>
-				<option>
-					<?php 
-					
-					echo  $colectie['colectie']
-					
-					?>
+    Domeniu:
+            <?php $qry = mysql_query("SELECT * FROM `baza_librarie`.`domeniu` ORDER BY denumire");	?>
+			<select name="domeniu" id="domeniu" onchange="showSubdomenii(this.value)" onclick="showSubdomenii(this.value)">
+            <?php while($row = mysql_fetch_array($qry)){?>
+				<option value="<?php echo $row['id'];	?>">
+                    <?php echo $row['denumire']; ?>
 				</option>
 			<?php }?>
-			</select>
-	<a href="index.php?exec=adauga_colectie">Adauga colectie</a>
-	<br><br><br>
-	
-	<pre>Pret: <input name="pret" type="text"/></pre>
-	<pre>Reducere(procente): <input name="reducere" type="text"/></pre>
-	<pre>Numar de pagini: <input name="nrpag" type="text"/></pre>
-	<pre>Numar de bucati: <input name="nrbuc" type="text"/></pre>
-	<pre>Anul aparitiei: <input name="anaparitie" type="text"/></pre>
-	<pre>Limba: <input name="limba" type="text"/></pre>
-	<pre>Descriere: <input name="descriere" type="text"/></pre>
+			</select>        
+    Subdomeniu:
+            <?php $qry = mysql_query("SELECT * FROM `baza_librarie`.`subdomeniu` WHERE 
+                                 iddomeniu=(SELECT id FROM domeniu ORDER BY denumire LIMIT 1) ORDER BY denumire"  );	
+                  if(! $qry )
+                      echo "QUERY ERROR: ". mysql_error();
+                  
+            ?>
+    
+            <select name="subdomeniu" id="subdomeniu">
+                <?php while($row = mysql_fetch_array($qry)){?>
+                <option value="<?php echo $row['id'];	?>">
+                    <?php echo $row['denumire']; ?>
+				</option>
+                <?php }?>
+            </select>        
+    </br>
+    Pret: <input name="pret" type="text"/><br>
+	Reducere(procente): <input name="reducere" type="text"/><br>
+
+	Numar de pagini: <input name="nrpag" type="text"/><br>
+
+	Numar de bucati: <input name="nrbuc" type="text"/><br>
+
+	Anul aparitiei: <input name="anaparitie" type="text"/><br>
+
+	Limba: <input name="limba" type="text"/><br>
+
+	Descriere: <br>
+    <textarea name="descriere"  rows="3" cols="8" style="resize:none"> </textarea>
 	
 	
 	<input onclick='$("#selected_autor option").attr("selected","selected");' type="submit" value="Salveaza"/>
