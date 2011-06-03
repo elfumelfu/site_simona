@@ -11,6 +11,10 @@
         
         //alert("H"+$.trim($('#subdomeniu option:selected').text())+"H");
         
+        var subdom = document.getElementById("subdom");
+        
+        //alert($subdom.length());
+        
         if ($.trim($('#subdomeniu option:selected').text()) != "-" &&
             $('#domeniu option:selected').text() != "" )
             document.getElementById("subdom").innerHTML+="<option value="+
@@ -105,9 +109,12 @@ xmlhttp.send();
 			<?php }?>
 			</select><a href="index.php?exec=adauga_editura">Adauga editura</a><br>
 
-    Domeniu:
+    
+    
+    <br><br><br>
+     Domeniu:
             <?php $qry = mysql_query("SELECT * FROM `baza_librarie`.`domeniu` ORDER BY denumire");	?>
-			<select name="domeniu" id="domeniu" onchange="showSubdomenii(this.value)" onclick="showSubdomenii(this.value)">
+			<select name="domeniu" id="domeniu" onchange="showSubdomenii(this.value)" size="10" onclick="showSubdomenii(this.value)">
             <?php while($row = mysql_fetch_array($qry)){?>
 				<option value="<?php echo $row['id'];	?>">
                     <?php echo $row['denumire']; ?>
@@ -122,18 +129,19 @@ xmlhttp.send();
                   
             ?>
     
-            <select name="subdomeniu" id="subdomeniu">
+            <select name="subdomeniu" id="subdomeniu" size="10">
                 <?php while($row = mysql_fetch_array($qry)){?>
                 <option value="<?php echo $row['id'];	?>">
                     <?php echo $row['denumire']; ?>
 				</option>
                 <?php }?>
             </select>
-            <input id="addsubdom" onclick="addSubdomeniu()" value="+" type="button">    </br>
+            <input id="addsubdom" onclick="addSubdomeniu()" value="+" type="button">    
     <select name="subdom" id="subdom" size="5" style="width: 250px;"></select>
     <input id="delsubdom" onclick="delSubdomeniu()" value="-" type="button">    </br>
+    <br><br><br>
     
-    Pret: <input name="pret" type="text"/><br>
+    Pret: <input name="pret" type="text"/> <br>
 	Reducere(procente): <input name="reducere" type="text"/><br>
 
 	Numar de pagini: <input name="nrpag" type="text"/><br>
