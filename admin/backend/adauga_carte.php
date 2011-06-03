@@ -93,17 +93,18 @@ $editura =  $editura_insert['id'];
 
 $insert_carte ="
 		INSERT INTO `baza_librarie`.`carte` 
-		(`isbn`, `titlu`, `colectie`, `ideditura`, `nrpag`, `pret`, `reducere`, `nrbuc`, `limba`, `anaparitie`, `descriere`, `imagine`) 
+		(`isbn`, `titlu`, `ideditura`, `nrpag`, `pret`, `reducere`, `nrbuc`, `limba`, `anaparitie`, `descriere`, `imagine`) 
 		VALUES  
-		('".$_POST['isbn']."', '".$_POST['titlu']."', '',  '".$editura."', '', '', '', '', '', '', '', '')		
+		(".$_POST['isbn'].", '".$_POST['titlu']."', '',  '".$editura."', '', '', '', '', '', '', '')		
 		";
 		
 		
-	mysql_query($insert_carte);
-      
+	$rc = mysql_query($insert_carte);
+      if (! $rc ) {
+          echo "INVALID INSERT : ". mysql_error();
+      }
 foreach($_POST['selected_autor'] as $aut){
 
-echo "asdfsdfsadfsdafsdgfvdsa";
 $nume_prenume = explode(' ',$aut);
 
 
