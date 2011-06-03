@@ -531,6 +531,9 @@ if(isset($_GET['salveaza_domeniu']) && $_POST){
 	$insert_domeniu = "INSERT INTO `baza_librarie`.`domeniu` ( `denumire`) VALUES (
 					'".$_POST['denumire']."');";
 	$test = mysql_query($insert_domeniu);
+    $insert_subdomeniu = "INSERT INTO `baza_librarie`.`subdomeniu` ( `denumire`, iddomeniu) VALUES (
+					'-', (SELECT id from domeniu where denumire='".$_POST['denumire']."'));";
+	$test = mysql_query($insert_subdomeniu);
  }
 ?> <script>open_link("<?php echo $_SESSION["unde"];?>")</script>
         <?php 

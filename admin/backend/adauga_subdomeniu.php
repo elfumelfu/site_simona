@@ -35,7 +35,7 @@ if ($mod > 0) {
  
 	Denumire: 	<input type="text" name="denumire" <?php if(isset($denumire)) echo 'value="'.$denumire.'"';?> /><br/>
 	Domeniu: 	<select name="iddomeniu" >
-			<?php $select_domeniu = mysql_query("SELECT * FROM `baza_librarie`.`domeniu`");	?>
+			<?php $select_domeniu = mysql_query("SELECT * FROM `baza_librarie`.`domeniu` ORDER BY denumire");	?>
                         <?php while($domeniu = mysql_fetch_array($select_domeniu)){?>
 				<option value="<?php echo $domeniu['id']?>"<?php if(isset($idDomeniu) && $idDomeniu == $domeniu['id']){
                                                 echo "selected='selected'"; }?>>

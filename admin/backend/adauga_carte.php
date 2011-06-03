@@ -1,13 +1,39 @@
 <script>
-$(document).ready(function()
-{
-$('#add').click(function() {
-							$('#autor option:selected').appendTo('#selected_autor');
-						    })
-$('#delete').click(function() {
-							$('#selected_autor option:selected').appendTo('#autor');
-							})
-})
+    $(document).ready(function()
+    {
+        $('#add').click(function() {
+            $('#autor option:selected').appendTo('#selected_autor');
+        })
+        $('#delete').click(function() {
+            $('#selected_autor option:selected').appendTo('#autor');
+        })
+        $('#addsubdom').click(function() {
+        
+        //alert("H"+$.trim($('#subdomeniu option:selected').text())+"H");
+        
+        if ($.trim($('#subdomeniu option:selected').text()) != "-" &&
+            $('#domeniu option:selected').text() != "" )
+            document.getElementById("subdom").innerHTML+="<option value="+
+                $('#subdomeniu option:selected').val()+">"+
+                $('#domeniu option:selected').text()+
+                " -> "+$('#subdomeniu option:selected').text()+"</option>";
+        else
+            if ($.trim($('#subdomeniu option:selected').text()) == "-" &&
+                $('#domeniu option:selected').text() != "" )
+            document.getElementById("subdom").innerHTML+="<option value="+
+                $('#subdomeniu option:selected').val()+">"+
+                $('#domeniu option:selected').text()+"</option>";
+         
+        })
+        $('#delsubdom').click(function() {
+        
+
+        if ($('#subdom option:selected').text() != "" )
+            $('#subdom option:selected').remove();
+        
+
+        })
+    })
 
 </script>
 
@@ -102,8 +128,11 @@ xmlhttp.send();
                     <?php echo $row['denumire']; ?>
 				</option>
                 <?php }?>
-            </select>        
-    </br>
+            </select>
+            <input id="addsubdom" onclick="addSubdomeniu()" value="+" type="button">    </br>
+    <select name="subdom" id="subdom" size="5" style="width: 250px;"></select>
+    <input id="delsubdom" onclick="delSubdomeniu()" value="-" type="button">    </br>
+    
     Pret: <input name="pret" type="text"/><br>
 	Reducere(procente): <input name="reducere" type="text"/><br>
 
