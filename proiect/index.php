@@ -35,6 +35,8 @@ include('inregistrare.php');
     	<script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
 		<script type="text/javascript" src="js/jquery-ui-1.8.13.custom.min.js"></script>
                 <script type="text/javascript" src="js/jquery.form.js"></script>
+                <script src="js/jquery.validate.js" type="text/javascript"></script>
+
 <link rel="stylesheet" type="text/css" href="stylesheet.css" >
 <style type="text/css">
 .ie6_png 			{behavior: url("iepngfix.htc"/*tpa=http://osc3.template-help.com/osc_23506/iepngfix.htc*//*tpa=http://osc3.template-help.com/osc_23506/iepngfix.htc*/) }
@@ -196,6 +198,7 @@ if(isset($_SESSION['cart'])){
 								<table cellpadding="0" cellspacing="0" border="0">
 									<tr>
             				<tr>
+                                            <td class="menu_separator"></td>
 							<td id="over_m1" onMouseOut="this.id='over_m1';" onMouseOver="this.id='over_m1';" onClick="document.location='index.php'" nowrap="nowrap"> Acasa</td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
 							<td id="m2" onMouseOut="this.id='m2';" onMouseOver="this.id='over_m2';" onClick="document.location='index.php?exec=noutati'">Noutati</td>

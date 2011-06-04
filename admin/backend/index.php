@@ -108,7 +108,7 @@ $url = (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER
 			<tr><td>
 					<table cellpadding="0" cellspacing="0" border="0">
 						<!--<tr> -->
-           				<tr>
+           				<tr><td class="menu_separator"></td>
 							<td id="m1"> <a href="index.php?listare_carti">Carti</a></td>
 							<td class="menu_separator"><img src="images/menu_separator.gif" border="0" alt="" width="1" height="38"></td>
 							<td id="m2"><a href="index.php?listare_autor">Autori</a></td>
@@ -185,7 +185,14 @@ $url = (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER
 	<table border="0" width="" cellspacing="0" cellpadding="0">
 		<tr>
 		<td align="center"><img src="images/spacer.gif" border="0" alt="" width="1" height="4"><br />
-	
+	<table cellspacing="0" cellpadding="0" border="0" class="content_wrapper_b"> 
+                    <td class="content_wrapper_r">
+				<div class="content_wrapper_t">
+					<div class="content_wrapper_l">
+                    <div class="content_wrapper_tl">
+        <div class="content_wrapper_tr">
+	<div class="content_wrapper_bl">
+        <div class="content_wrapper_br">
 <?php 
 
 //start list utilizatori
@@ -291,7 +298,7 @@ if(isset($_GET['listare_carti'])){
 		
 		echo '
 			<tr>
-                        <td><img src="images/'.$row['imagine'].'" style="width:200px;"/></td>
+                        <td><img src="images/'.$row['imagine'].'" style="width:200px;   "/></td>
 			<td>'.$row['isbn'].'</td>
 			<td>'.$row['titlu'].'</td>
 			<td nowrap>';
@@ -482,7 +489,7 @@ if(isset($_GET['listare_domeniu'])){
 	$test_domeniu = mysql_query($list_domeniu);
 	echo '
 		<a href="index.php?exec=adauga_domeniu">Adauga domeniu</a>
-		<table id="listare" border="1">
+		<table id="listare" border="1" align="center">
 		<tr>
 		<th><a href="index.php?listare_domeniu&order=id">ID</a></th>
 		<th><a href="index.php?listare_domeniu&order=denumire">Domeniu</a></th>
@@ -602,7 +609,7 @@ if(isset($_GET['listare_subdomeniu'])){
 	$test_domeniu = mysql_query($list_domeniu);
 	echo '
 		<a href="index.php?exec=adauga_subdomeniu">Adauga subdomeniu</a>
-		<table id="listare" border="1">
+		<table id="listare" border="1" align="center">
 		<tr>
 		<th><a href="index.php?listare_subdomeniu&order=id">ID</a></th>
                 <th><a href="index.php?listare_subdomeniu&order=dom">Domeniu</a></th>

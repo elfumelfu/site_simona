@@ -247,7 +247,7 @@ SPAN.errorText 						{color: #ff0000;font-family: arial;}
 .menu .table 				{background:url("images/menu_left.gif"/*tpa=http://osc3.template-help.com/osc_23506/images/menu_left.gif*/) 0px 0px no-repeat;}
 .menu .td 					{background:url("images/menu_right.gif"/*tpa=http://osc3.template-help.com/osc_23506/images/menu_right.gif*/) 100% 0px no-repeat;height:37px;}
 .menu td					{width:auto;text-align:center; color:#c97581; font-size:16px; line-height:18px; vertical-align:middle;}
-.menu table .menu_separator	{width:5%; vertical-align:middle; text-align:center;}
+.menu table .menu_separator	{width:2%; vertical-align:middle; text-align:center;}
 .menu td a					{display:block;color:white;}
 .menu td img				{margin:3px 9px 3px 9px;}
 /* ************************************************************************************* */

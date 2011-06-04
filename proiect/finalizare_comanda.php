@@ -25,45 +25,46 @@
 
 <script>
   $(document).ready(function(){
-       var usernameValue = $('input[name=username]').fieldValue(); 
+   
+	$("#finalizare_comanda").validate();
+
+  
   })
-  
-  
 </script>
-<form class="finalizare_comanda">
+<form id="finalizare_comanda">
    <fieldset>
        <h4>Informatii facturare:</h4>
 
 
 <ul class="form-list">
                 <li>
-<label class="required" >Prenume*:</label>  <div class="input-box"><input type="text" name="prenume" id="prenume"/></div>
+<label class="required" >Prenume*:</label>  <div class="input-box"><input type="text"  class="required" minlength="2" name="prenume" id="prenume"/></div>
                 </li>
                 <li>
-<label class="required" >Nume*:</label><div class="input-box"> <input type="text" name="nume" id="nume"/></div>
+<label class="required" >Nume*:</label><div class="input-box"> <input type="text" name="nume" class="required" id="nume"/></div>
                 </li>
                 <li>
-<label class="required" >CNP:</label><div class="input-box"> <input type="text" name="cnp" id="cnp"/></div>
+                    <label class="required" >CNP*:</label><div class="input-box"> <input type="text" name="cnp" class="required" minlength="13" id="cnp"/></div>
 </li>
                 <li>
-<label class="required" >Adresa*:</label><div class="input-box"> <input type="text" name="adresa[]" class="adresa"/></div>
+<label class="required" >Adresa*:</label><div class="input-box"> <input type="text" name="adresa[]" class="required"/></div>
 </li>
                 <li>
-        <div class="input-box">  <input type="text" name="adresa[]" class="adresa"/></div>
+        <div class="input-box">  <input type="text" name="adresa[]" class="required"/></div>
          
-<label class="required" >Oras*:</label><div class="input-box"> <input type="text" name="oras" id="oras"/></div>
+<label class="required" >Oras*:</label><div class="input-box"> <input type="text" name="oras" class="required" id="oras"/></div>
 </li>
                 <li>
-<label class="required" >Judet*:</label><div class="input-box"> <input type="text" name="judet" id="judet"/></div>
+<label class="required" >Judet*:</label><div class="input-box"> <input type="text" name="judet" class="required" id="judet"/></div>
 </li>
                 <li>
-<label class="required" >Cod postal:</label><div class="input-box"> <input type="text" name="cod_postal" id="cod_postal"/></div>
+<label class="required" >Cod postal:</label><div class="input-box"> <input type="text" name="cod_postal" class="required digits" id="cod_postal"/></div>
 </li>
                 <li>
-<label class="required" >Tara*:</label><div class="input-box"> <input type="text" name="tara" id="tara"/></div>
+<label class="required" >Tara*:</label><div class="input-box"> <input type="text" class="required" name="tara" id="tara"/></div>
 </li>
                 <li>
-<label class="required">Telefon*:</label><div class="input-box"> <input type="text" name="telefon" id="telefon"/></div>
+<label class="required">Telefon*:</label><div class="input-box"> <input type="text" class="required digits" name="telefon" id="telefon"/></div>
 </li>
                 <li>
 
@@ -170,5 +171,7 @@ foreach($array_k as $cart_key){
 
 </table>
    </fieldset>
+    
+    <input type="submit" value="Finalizeaza comanda"/>
 </form>
 <?php endif; ?>
