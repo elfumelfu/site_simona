@@ -74,10 +74,13 @@ xmlhttp.send();
 <form name="add_carte" method="post" enctype="multipart/form-data" action="index.php?exec=adauga_carte&salveaza">
 	<table border=2>
 	<tr>
-		<td><pre>ISBN: <input name="isbn" type="text"/></pre>
+		<td style="padding: 2px;">
+                    
+                    
+                    <label class="label_right">ISBN:</label>  <div class="input-box right"> <input name="isbn" type="text"/></div>
 		</td>
-        <td rowspan=3>Autor: 
-			<div id="txtHint"> </div>
+        <td  rowspan=3><label class="label_right">Autor: </label>
+           <div id="txtHint"> </div>
 			<?php $select_autor = mysql_query("SELECT * FROM `baza_librarie`.`autor`");	?>
 			<select name="autor" id="autor" multiple="multiple" size="10" style="float:left;width:200px">
 			<?php while($autor = mysql_fetch_array($select_autor)){?>
@@ -95,14 +98,16 @@ xmlhttp.send();
 			</div>
 			<div style="clear:both"></div>
 			<a href="index.php?exec=adauga_autor">Adauga autor</a>
+            
 		</td>
 	</tr>
 	<tr>
-		<td><pre>Titlu: <input name="titlu" value="" type="text"/></pre>
+		<td><label class="label_right">Titlu:</label><div class="input-box right"> <input name="titlu" value="" type="text"/></div>
 		</td>
 	</tr>
+        
 	<tr>	
-		<td><pre><input type="file" name="poza"/></pre>
+		<td><div class="input-box right"><input type="file" name="poza"/></div></pre>
 		</td>
 	</tr>
 	<tr>
