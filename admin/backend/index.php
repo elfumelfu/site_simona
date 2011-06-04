@@ -62,7 +62,7 @@ $url = (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER
 					<tr><td>
 						<table cellpadding="0" cellspacing="0" border="0">
 							<tr><td><img src="images/bg_logo2.jpg"  border="0" alt="" width="34" height="127"></td>
-								<td class="logo"><a href="index.php.htm">
+								<td class="logo"><a href="/proiect/index.php">
 									<img src="images/logo11.gif" border="0" alt="" width="227" height="98"></a>
 								</td>
 								<td class="navigation">
