@@ -1,3 +1,6 @@
+
+
+<link rel="stylesheet" type="text/css" href="stylesheet.css" >
 <?php include('../connect.php');
 
 
@@ -34,7 +37,7 @@ if ($mod > 0) {
 
 ?>
 
-
+<div class="content_wrapper_br">
 <form action="<?php echo $unde1;?>" method="post">
  
 	Denumire: 			<input type="text" name="denumire" <?php if(isset($denumire)) echo 'value="'.$denumire.'"';?> /><br/>
@@ -45,3 +48,4 @@ if ($mod > 0) {
 	
 
 </form>
+</div>

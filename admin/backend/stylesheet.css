@@ -8,6 +8,48 @@
 
   Released under the GNU General Public License
 */
+#listare
+{
+font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+width:70%;
+border-collapse:collapse;
+}
+#listare td, #listare th 
+{
+font-size:0.9 em;
+border:1px solid #C33131;
+padding:3px 7px 2px 7px;
+color:#000000;
+}
+#listare th 
+{
+font-size:1.1em;
+text-align:left;
+padding-top:5px;
+padding-bottom:4px;
+background-color:#D36262;
+color:#ffffff;
+}
+#listare tr.alt td 
+{
+color:#000000;
+background-color:#EEB6B6;
+}
+
+table.domeniu  {width:400px;margin-left:auto;
+margin-right:auto;}
+th.domeniu { width:150px; ffont-size:1.1em;
+text-align:left;
+padding-top:5px;
+padding-bottom:4px;
+background-color:#A7C942;
+color:#ffffff;}
+th.id { width:20px;}
+th.oper { width:200px;}
+td.op1 { width:50px;}
+
+
+
 
 .boxText { font-family: arial; font-size: 10px; }
 .errorBox { font-family: arial; font-size : 10px; background: #ffb3b5; font-weight: bold; }

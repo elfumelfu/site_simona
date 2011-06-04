@@ -150,22 +150,7 @@ $url = (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER
 <table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBox2_table">
   <tr>
     <td  class="infoBox2_td"><table border="0" width="100%" cellspacing="0" cellpadding="0"  class="infoBoxContents2_table">
- <!-- <tr>
-    <td  class="boxText">
-	<ul class="categories">
-		<li class="bg_list_un"><a href="index.php-cPath=1.htm">Arte</a></li>
-		<li class="bg_list"><a href="index.php-cPath=2.htm">Autoeducare</a></li>
-		<li class="bg_list"><a href="index.php-cPath=3.htm">Beletristica</a></li>
-		<li class="bg_list"><a href="index.php-cPath=4.htm">Calculatoare</a></li>
-		<li class="bg_list"><a href="index.php-cPath=5.htm">Carte straina</a></li>
-		<li class="bg_list"><a href="index.php-cPath=6.htm">Economie</a></li>
-		<li class="bg_list"><a href="index.php-cPath=7.htm">Gastronomie</a></li>
-		<li class="bg_list"><a href="index.php-cPath=8.htm">Hobby</a></li>
-		<li class="bg_list"><a href="index.php-cPath=9.htm">Invatamant-Educatie</a></li>
-		<li class="bg_list"><a href="index.php-cPath=10.htm">Istorie</a></li>
-	</ul>
-	</td>
-  </tr>   -->
+ 
 </table>
 </td>
   </tr>
@@ -175,7 +160,7 @@ $url = (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER
 
     </table></td>
 <!-- body_text //-->
-    <td class="content_width2_td" style="width:100px;padding-left:100px;">                           	
+    <td class="content_width2_td" style="width:100px;">                           	
                         
         <div style="clear:both"></div>
 		<table cellpadding="0" cellspacing="0" border="0">
@@ -188,8 +173,6 @@ $url = (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER
           <tr><td></td></tr>
           <tr><td class="main"></td></tr>
         </table>  -->
-       		
-
 <!-- Welcome_box_end -->
 
 
@@ -201,11 +184,11 @@ $url = (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER
     <td  class="tableBox_output_td main">
 	<table border="0" width="" cellspacing="0" cellpadding="0">
 		<tr>
-		<td align="left"><img src="images/spacer.gif" border="0" alt="" width="1" height="4"><br />
+		<td align="center"><img src="images/spacer.gif" border="0" alt="" width="1" height="4"><br />
 	
 <?php 
 
-//listare utilizatori
+//start list utilizatori
 if(isset($_GET['listare_user'])){
     
 	$qry = "SELECT id, nume, prenume, email, parola from baza_librarie.user";
@@ -240,7 +223,7 @@ if(isset($_GET['listare_user'])){
 			</tr>
 			';
 	}
-		
+//end list autori		
 //var_dump($test);
 }
 
@@ -275,7 +258,7 @@ if(isset($_GET['salveaza_user']) && $_POST){
 
 //listare carti
 if(isset($_GET['listare_carti'])){
-	$list_carti = "SELECT isbn, titlu, group_concat(nume, ' ', prenume separator ':')as autori, ideditura, nrpag , pret, reducere, nrbuc, 
+	$list_carti = "SELECT isbn, titlu, group_concat(prenume, ' ', nume separator ':')as autori, ideditura, nrpag , pret, reducere, nrbuc, 
 	limba, anaparitie, descriere, imagine from carte, autor , autorcarte 
 			where autor.id=autorcarte.idautor and carte.isbn = autorcarte.idcarte group by isbn";
 	//var_dump($list_carti);
@@ -444,9 +427,9 @@ if(isset($_GET['listare_editura'])){
 		<table border="1">
 		<tr>
 		<th><a href="index.php?listare_editura&order=id">ID</a></th>
-		<th><a href="index.php?listare_editura&order=denumire">Denumire</a></th>
+		<th><a href="index.php?listare_editura&order=denumire">Editura</a></th>
 		<th><a href="index.php?listare_editura&order=localitate">Localitate</a></th>
-		<th><a href="index.php?listare_editura&order=nrtelefon">Nr telefon</a></th>
+		<th><a href="index.php?listare_editura&order=nrtelefon">Telefon</a></th>
 		<th><a href="index.php?listare_editura&order=email">E-mail</a></th>
 		</tr>
 		';
@@ -497,14 +480,17 @@ if(isset($_GET['listare_domeniu'])){
 	$test_domeniu = mysql_query($list_domeniu);
 	echo '
 		<a href="index.php?exec=adauga_domeniu">Adauga domeniu</a>
-		<table border="1">
+		<table id="listare" border="1">
 		<tr>
 		<th><a href="index.php?listare_domeniu&order=id">ID</a></th>
-		<th><a href="index.php?listare_domeniu&order=denumire">Denumire</a></th>
+		<th><a href="index.php?listare_domeniu&order=denumire">Domeniu</a></th>
+		<th colspan=2 >Operatii</th>
 	   	</tr>
 		';
-
+$i=1;
 	while($row = mysql_fetch_array($test_domeniu)){
+		$i++;
+		if ($i%2 == 0){		
 		echo '
 			<tr>
 			<td>'.$row['id'].'</td> <td>'.$row['denumire'].'</td>
@@ -512,6 +498,16 @@ if(isset($_GET['listare_domeniu'])){
 				<td><a href="index.php?function=sterge&id='.$row['id'].'&tabela=domeniu" >stergere</a></td>
 			</tr>
 			';
+		}
+		else {
+		echo '
+			<tr class="alt">
+			<td>'.$row['id'].'</td> <td>'.$row['denumire'].'</td>
+				<td><a href="index.php?exec=adauga_domeniu&mod='. $row['id'] .'" >editare</a></td>
+				<td><a href="index.php?function=sterge&id='.$row['id'].'&tabela=domeniu" >stergere</a></td>
+			</tr>
+			';
+		}
 	}
 		
 //var_dump($test);
@@ -571,7 +567,7 @@ if(isset($_GET['salveaza_editura']) && isset($_POST)){
 //listare subdomeniu
 if(isset($_GET['listare_subdomeniu'])){
 	$list_domeniu = "SELECT subdomeniu.id, domeniu.denumire as dom, subdomeniu.denumire as den 
-                         FROM baza_librarie.domeniu, baza_librarie.subdomeniu WHERE subdomeniu.iddomeniu=domeniu.id ";
+                         FROM baza_librarie.domeniu, baza_librarie.subdomeniu WHERE subdomeniu.iddomeniu=domeniu.id AND subdomeniu.denumire<>'-'";
 	if(!isset($_SESSION['order'])) {
 		$_SESSION['order'] = "id";
 	}
@@ -604,15 +600,17 @@ if(isset($_GET['listare_subdomeniu'])){
 	$test_domeniu = mysql_query($list_domeniu);
 	echo '
 		<a href="index.php?exec=adauga_subdomeniu">Adauga subdomeniu</a>
-		<table border="1">
+		<table id="listare" border="1">
 		<tr>
 		<th><a href="index.php?listare_subdomeniu&order=id">ID</a></th>
                 <th><a href="index.php?listare_subdomeniu&order=dom">Domeniu</a></th>
-		<th><a href="index.php?listare_subdomeniu&order=den">Denumire</a></th>
+		<th><a href="index.php?listare_subdomeniu&order=den">Subdomeniu</a></th>
 	   	</tr>
 		';
-
+$i=1;
 	while($row = mysql_fetch_array($test_domeniu)){
+		$i++;
+		if ($i%2==0){
 		echo '
 			<tr>
 			<td>'.$row['id'].'</td> 
@@ -622,6 +620,18 @@ if(isset($_GET['listare_subdomeniu'])){
 				<td><a href="index.php?function=sterge&id='.$row['id'].'&tabela=subdomeniu" >stergere</a></td>
 			</tr>
 			';
+			}
+			else {
+			echo '
+			<tr class="alt">
+			<td>'.$row['id'].'</td> 
+                        <td>'.$row['dom'].'</td>
+                        <td>'.$row['den'].'</td>
+				<td><a href="index.php?exec=adauga_subdomeniu&mod='. $row['id'] .'" >editare</a></td>
+				<td><a href="index.php?function=sterge&id='.$row['id'].'&tabela=subdomeniu" >stergere</a></td>
+			</tr>
+			';
+			}
 	}
 		
 //var_dump($test);
