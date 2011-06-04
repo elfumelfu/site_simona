@@ -206,6 +206,7 @@ if(isset($_GET['listare_user'])){
 		<th>Prenume</th>
 		<th>Email</th>
 		<th>Parola</th>
+		<th colspan=2 >Operatii</th>
 		</tr>
 		';
 
@@ -280,6 +281,7 @@ if(isset($_GET['listare_carti'])){
 		<th>An Aparitie</th>
 		<th>Numar pagini</th>
 		<th>Descriere</th>
+		<th colspan=2 >Operatii</th>
 		</tr>
 		';
 
@@ -358,6 +360,7 @@ if(isset($_GET['listare_autor'])){
 		<th><a href="index.php?listare_autor&order=nume">Nume</a></th>
 		<th><a href="index.php?listare_autor&order=prenume">Prenume</a></th>
 		<th><a href="index.php?listare_autor&order=origine">Origine</a></th>
+		<th colspan=2>Operatii</th>
 		</tr>
 		';
 	while($row = mysql_fetch_array($test_autor)){
@@ -431,6 +434,7 @@ if(isset($_GET['listare_editura'])){
 		<th><a href="index.php?listare_editura&order=localitate">Localitate</a></th>
 		<th><a href="index.php?listare_editura&order=nrtelefon">Telefon</a></th>
 		<th><a href="index.php?listare_editura&order=email">E-mail</a></th>
+		<th colspan=2 >Operatii</th>
 		</tr>
 		';
 	while($row = mysql_fetch_array($rc)){
@@ -605,6 +609,7 @@ if(isset($_GET['listare_subdomeniu'])){
 		<th><a href="index.php?listare_subdomeniu&order=id">ID</a></th>
                 <th><a href="index.php?listare_subdomeniu&order=dom">Domeniu</a></th>
 		<th><a href="index.php?listare_subdomeniu&order=den">Subdomeniu</a></th>
+		<th colspan=2 >Operatii</th>
 	   	</tr>
 		';
 $i=1;
