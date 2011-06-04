@@ -25,7 +25,7 @@
 
 <script>
   $(document).ready(function(){
-      $('.finalizare_comanda').ajaxForm( { beforeSubmit: validate } ); 
+       var usernameValue = $('input[name=username]').fieldValue(); 
   })
   
   
