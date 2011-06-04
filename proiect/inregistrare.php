@@ -7,9 +7,7 @@ if($_POST['logout'] == 'logout'){
     unset($_SESSION['is_logged_in']);
    // echo 'In 5 secunde veti iesi din contul dumeavoastra.';
     ?>
-    <script>
-       / //setTimeout('this.location.href = "index.php";',5000)
-    </script>
+   
 <?php
 }
 }
