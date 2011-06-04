@@ -71,8 +71,10 @@ xmlhttp.send();
 </script>
 
 
-<form name="add_carte" method="post" action="index.php?exec=adauga_carte&salveaza">
-	<pre>ISBN: <input name="isbn" type="text"/></pre>    Imagine!!!!
+<form name="add_carte" method="post" enctype="multipart/form-data" action="index.php?exec=adauga_carte&salveaza">
+	<pre>ISBN: <input name="isbn" type="text"/></pre>   
+        
+        <pre><input type="file" name="poza"/></pre>
 	<pre>Titlu: <input name="titlu" value="" type="text"/></pre>
 	<pre>Autor: </pre> 
 
@@ -171,12 +173,79 @@ $editura =  $editura_insert['id'];
 }
 
 
+
+
+
+
+
+
+
+
+function getExtension($str) {
+         $i = strrpos($str,".");
+         if (!$i) { return ""; }
+         $l = strlen($str) - $i;
+         $ext = substr($str,$i+1,$l);
+         return $ext;
+ }
+ 
+/*function a($x){
+	
+	echo $x;
+	
+	
+	}
+	a('buhuhu');*/
+$tip = getExtension($_FILES['poza']['name']);
+$correct_type = array( 'png', 'jpg', 'jpeg');
+
+
+//var_dump($tip);
+//var_dump($correct_type);
+	if(in_array($tip, $correct_type)){
+	        
+			//numele pozei
+				$img_name = $_FILES['poza']['name'];
+			//numele pozei
+			
+			//un sir de caractere generat pentru a nu se suprascrie pozele
+				$unique = uniqid();
+			//un sir de caractere generat pentru a nu se suprascrie pozele
+			
+			//noul nume + locatie poza
+				$new_img = 'images/'.$unique.$_FILES['poza']['name'];
+			//noul nume + locatie poza
+			
+			//copiere imagine
+				//$copied = copy($_FILES['poza']['tmp_name'], $new_img);
+			//copiere imagine
+			
+	move_uploaded_file($_FILES['poza']['tmp_name'], $new_img);		
+	}else{
+		echo 'fisierul pe care l-ati introdus nu este o imagine';
+	}
+
+
+//
+//		
+//<form action="index.php?post_pic" enctype="multipart/form-data" method="post">
+//<input type="file" name="poza"/>
+//<input type="submit" value="trimite"/>
+//
+//
+//</form
+
+
+
+
+
+
 $insert_carte ="
 		INSERT INTO `baza_librarie`.`carte` 
 		(`isbn`, `titlu`, `ideditura`, `nrpag`, `pret`, `reducere`, `nrbuc`, `limba`, `anaparitie`, `descriere`, `imagine`) 
 		VALUES  
 
-		('".$_POST['isbn']."', '".$_POST['titlu']."',  '".$editura."', '', '', '', '', '', '', '', '')		
+		('".$_POST['isbn']."', '".$_POST['titlu']."',  '".$editura."', '', '', '', '', '', '', '', '".$unique.$_FILES['poza']['name']."')		
 		";
 		
 		
@@ -201,7 +270,7 @@ if (!$select_autor_insert) {
 while($autor_insert = mysql_fetch_array($select_autor_insert)){
 $autor =  $autor_insert['id'];
 
-var_dump($_POST['isbn']);
+//var_dump($_POST['isbn']);
 $insert_autor_carte = "INSERT INTO `baza_librarie`.`autorcarte` (`idautor` ,`idcarte`)VALUES ('".$autor."', '".$_POST['isbn']."');";
 $result = mysql_query($insert_autor_carte);
 if (!$result) {

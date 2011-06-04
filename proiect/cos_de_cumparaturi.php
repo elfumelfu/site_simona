@@ -58,7 +58,9 @@ foreach($array_k as $cart_key){
         
         <input type="submit" value="Efectueaza modificarile"/>
     </td>
-    
+    <td>
+        <a href="index.php?exec=finalizare_comanda">Finalizare comanda</a>
+    </td>
 </tr>
 
 </table>

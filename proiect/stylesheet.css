@@ -8,7 +8,10 @@
 
   Released under the GNU General Public License
 */
-
+.input-box input{width:300px;}
+.rad input{width:40px;}
+.rad{width:40px;float:left;}
+.form-list li{list-style: none;margin-top:3px;}
 .boxText { font-family: arial; font-size: 10px; }
 .errorBox { font-family: arial; font-size : 10px; background: #ffb3b5; font-weight: bold; }
 .stockWarning { font-family: arial; font-size : 10px; color: #cc0033; }
