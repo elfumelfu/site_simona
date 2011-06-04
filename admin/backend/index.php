@@ -271,6 +271,7 @@ if(isset($_GET['listare_carti'])){
 		<a href="index.php?exec=adauga_carte">Adauga carte</a>
 		<table border="1">
 		<tr>
+                <th>Imagine</th>
 		<th>ISBN</th>
 		<th>Titlu</th>
 		<th>Autori</th>
@@ -290,6 +291,7 @@ if(isset($_GET['listare_carti'])){
 		
 		echo '
 			<tr>
+                        <td><img src="images/'.$row['imagine'].'" style="width:200px;"/></td>
 			<td>'.$row['isbn'].'</td>
 			<td>'.$row['titlu'].'</td>
 			<td nowrap>';

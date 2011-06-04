@@ -34,6 +34,7 @@ include('inregistrare.php');
 <script type="text/javascript" src="iepngfix_tilebg.js"></script>
     	<script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
 		<script type="text/javascript" src="js/jquery-ui-1.8.13.custom.min.js"></script>
+                <script type="text/javascript" src="js/jquery.form.js"></script>
 <link rel="stylesheet" type="text/css" href="stylesheet.css" >
 <style type="text/css">
 .ie6_png 			{behavior: url("iepngfix.htc"/*tpa=http://osc3.template-help.com/osc_23506/iepngfix.htc*//*tpa=http://osc3.template-help.com/osc_23506/iepngfix.htc*/) }
@@ -329,7 +330,7 @@ if(isset($_SESSION['cart'])){
                     </div>
 		<table cellpadding="0" cellspacing="0" border="0">
 			<tr>
-				<td style="padding:0px 11px 0px 0px;">
+				<td style="padding:0px 11px 0px 0px;width: 100%;">
 	
 <!-- Welcome_box_start -->
      <!--   <table border="0" width="100%" cellspacing="0" cellpadding="0">
@@ -353,7 +354,13 @@ switch ($_GET['exec']) {
 	
 	case "cos":
 		include('cos_de_cumparaturi.php');
-
+        break;
+        
+        case "finalizare_comanda":
+                include('finalizare_comanda.php');
+        break;
+    
+    
 	case "contact":
         include('contact_us.php');
 	break;
