@@ -72,33 +72,41 @@ xmlhttp.send();
 
 
 <form name="add_carte" method="post" enctype="multipart/form-data" action="index.php?exec=adauga_carte&salveaza">
-	<pre>ISBN: <input name="isbn" type="text"/></pre>   
-        
-        <pre><input type="file" name="poza"/></pre>
-	<pre>Titlu: <input name="titlu" value="" type="text"/></pre>
-	<pre>Autor: </pre> 
-
-<div id="txtHint"> </div>
-
-<?php $select_autor = mysql_query("SELECT * FROM `baza_librarie`.`autor`");	?>
+	<table border=2>
+	<tr>
+		<td><pre>ISBN: <input name="isbn" type="text"/></pre>
+		</td>
+        <td rowspan=3>Autor: 
+			<div id="txtHint"> </div>
+			<?php $select_autor = mysql_query("SELECT * FROM `baza_librarie`.`autor`");	?>
 			<select name="autor" id="autor" multiple="multiple" size="10" style="float:left;width:200px">
 			<?php while($autor = mysql_fetch_array($select_autor)){?>
 			<?php var_dump($autor)?>
 				<option><?php echo  $autor['prenume'].' '.$autor['nume']?></option>
 			<?php }?>
 			</select>
-<div style="float:left;width:100px;" class="add_del">
+			<div style="float:left;width:100px;" class="add_del">
 			<input id="add" value=">>" type="button"/>
 			<input id="delete" value="<<" type="button"/>
                         </div>
-<div style="float:left;width:200px;">
+			<div style="float:left;width:200px;">
 			<select name="selected_autor[]" id="selected_autor" multiple="multiple" size="10" style="width:200px;float:left;display:inline;">
 			</select>
-    </div>
-<div style="clear:both"></div>
-	<a href="index.php?exec=adauga_autor">Adauga autor</a>
-	<br><br>
-		Editura: <?php $select_editura = mysql_query("SELECT * FROM `baza_librarie`.`editura`");	?>
+			</div>
+			<div style="clear:both"></div>
+			<a href="index.php?exec=adauga_autor">Adauga autor</a>
+		</td>
+	</tr>
+	<tr>
+		<td><pre>Titlu: <input name="titlu" value="" type="text"/></pre>
+		</td>
+	</tr>
+	<tr>	
+		<td><pre><input type="file" name="poza"/></pre>
+		</td>
+	</tr>
+	<tr>
+		<td>Editura: <?php $select_editura = mysql_query("SELECT * FROM `baza_librarie`.`editura`");	?>
 			<select name="editura" >
 			<?php while($editura = mysql_fetch_array($select_editura)){?>
 				<option <?php if(isset($_POST['denumire']) && $_POST['denumire'] == $editura['denumire']){ echo "selected='selected'"; }?>>
@@ -110,52 +118,105 @@ xmlhttp.send();
 				</option>
 			<?php }?>
 			</select><a href="index.php?exec=adauga_editura">Adauga editura</a><br>
-
-    
-    
-    <br><br><br>
-     Domeniu:
-            <?php $qry = mysql_query("SELECT * FROM `baza_librarie`.`domeniu` ORDER BY denumire");	?>
-			<select name="domeniu" id="domeniu" onchange="showSubdomenii(this.value)" size="10" onclick="showSubdomenii(this.value)">
-            <?php while($row = mysql_fetch_array($qry)){?>
-				<option value="<?php echo $row['id'];	?>">
-                    <?php echo $row['denumire']; ?>
-				</option>
-			<?php }?>
-			</select>        
-    Subdomeniu:
-            <?php $qry = mysql_query("SELECT * FROM `baza_librarie`.`subdomeniu` WHERE 
+		</td>
+		<td rowspan=4>    
+			<table>
+				<tr>
+					<td>Domeniu:
+					</td>
+					
+					<td>Subdomeniu:
+					</td>
+					<td>bbb
+					</td>
+					<td>cccc
+					</td>
+		         <tr>
+					<td>
+						<?php $qry = mysql_query("SELECT * FROM `baza_librarie`.`domeniu` ORDER BY denumire");	?>
+						<select name="domeniu" id="domeniu" onchange="showSubdomenii(this.value)" size="7" onclick="showSubdomenii(this.value)">
+						<?php while($row = mysql_fetch_array($qry)){?>
+						<option value="<?php echo $row['id'];	?>">
+						<?php echo $row['denumire']; ?>
+						</option>
+						<?php }?>
+						</select>  
+					</td>
+					
+					<td><?php $qry = mysql_query("SELECT * FROM `baza_librarie`.`subdomeniu` WHERE 
                                  iddomeniu=(SELECT id FROM domeniu ORDER BY denumire LIMIT 1) ORDER BY denumire"  );	
                   if(! $qry )
                       echo "QUERY ERROR: ". mysql_error();
                   
             ?>
     
-            <select name="subdomeniu" id="subdomeniu" size="10">
+            <select name="subdomeniu" id="subdomeniu" size="7">
                 <?php while($row = mysql_fetch_array($qry)){?>
                 <option value="<?php echo $row['id'];	?>">
                     <?php echo $row['denumire']; ?>
 				</option>
                 <?php }?>
             </select>
-            <input id="addsubdom" onclick="addSubdomeniu()" value="+" type="button">    
-    <select name="subdom" id="subdom" size="5" style="width: 250px;"></select>
-    <input id="delsubdom" onclick="delSubdomeniu()" value="-" type="button">    </br>
-    <br><br><br>
-    
-    Pret: <input name="pret" type="text"/> <br>
-	Reducere(procente): <input name="reducere" type="text"/><br>
+					</td>
+					<td><input id="addsubdom" onclick="addSubdomeniu()" value="+" type="button"> 
+					</td>
+					<td><select name="subdom" id="subdom" size="5" style="width: 200px;"></select>
+					</td>
+					<td><input id="delsubdom" onclick="delSubdomeniu()" value="-" type="button">  
+					</td>
+			<tr>
+				<td>Adauga domeniu:
+				</td>
+				<td>Adauga subdomeniu:
+				</td>
+				<td>
+				</td>
+				<td>
+				</td>
+			</tr>
+        	</table>
+		</td>
+	</tr>
+    <tr>
+		<td>Pret: <input name="colectie" type="text"/>
+		</td>
+	</tr>
+	<tr>
+		<td>Anul aparitiei: <input name="anaparitie" type="text"/>
+		</td>
+	</tr>
+	<tr>
+		<td>Limba: <input name="limba" type="text"/>
+		</td>
+	</tr>
+	<tr>
+		<td>Numar de pagini: <input name="nrpag" type="text"/>
+		</td>
+		<td rowspan=4>Descriere: <br>
+		<textarea name="descriere"  rows="3" cols="8" style="resize:none"> </textarea>
+		</td>
+	</tr>
+	<tr>
+		<td>Numar de bucati: <input name="nrbuc" type="text"/>
+		</td>
+	</tr>
+	<tr>
+		<td>Pret: <input name="pret" type="text"/>
+		</td>
+	</tr>
+	<tr>
+		<td>Reducere(procente): <input name="reducere" type="text"/>
+		</td>
+	</tr>
+</table>
+	
+	
 
-	Numar de pagini: <input name="nrpag" type="text"/><br>
+	
 
-	Numar de bucati: <input name="nrbuc" type="text"/><br>
+	
 
-	Anul aparitiei: <input name="anaparitie" type="text"/><br>
-
-	Limba: <input name="limba" type="text"/><br>
-
-	Descriere: <br>
-    <textarea name="descriere"  rows="3" cols="8" style="resize:none"> </textarea>
+	
 	
 	
 	<input onclick='$("#selected_autor option").attr("selected","selected");' type="submit" value="Salveaza"/>

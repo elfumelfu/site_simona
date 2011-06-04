@@ -1,30 +1,13 @@
 <?php
 session_start();
 
-   
-
-
-
-
-
-
 include '../admin/connect.php';
-
-
-
-
-
-
-
-
-
 
    if(isset($_POST['id'])){
      foreach($_POST['id'] as $id){
       // echo $id;
-     
+    
        if((int)$_POST[$id] == $_SESSION['cart'][$id]){
-           
           
        }else{
           
@@ -39,10 +22,6 @@ foreach($_POST['sterge'] as $sterge){
   
 }
 };
-
-
-
-
 
 include('inregistrare.php');
 ?>
@@ -139,6 +118,7 @@ if(isset($_SESSION['is_logged_in'])) {
     echo "Buna ziua,".$obj_us->nume.' '.$obj_us->prenume.'<br/>';
     //echo  $_SESSION['is_logged_in'];
     ?>
+	
 <form method="post">
     <input type="hidden" name="logout" value="logout"/>
     <input type="submit" value="Logout"/>
@@ -147,8 +127,11 @@ if(isset($_SESSION['is_logged_in'])) {
     <?php
 if(!isset($_SESSION['is_logged_in'])) {
     ?>
+	<?php  echo'User:           Parola: ';?><br>
     <form method="post">
+	<?php// echo'User: ';?>
         <input type="text" name="username"/>
+		<?php //echo'Parola: ';?>
         <input type="password" name="password"/>
         <input type="submit" value="Autentificare"/>
     </form>
