@@ -37,6 +37,12 @@ $url = (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER
 <xbasehref="http://osc3.template-help.com/osc_23506/">
 <script type="text/javascript" src="iepngfix_tilebg.js"></script>
 <link rel="stylesheet" type="text/css" href="stylesheet.css" >
+<script type="text/javascript" src="scripts/ajaxupload.js"></script>
+<style type="text/css">
+			iframe {
+				display:none;
+			}
+		</style>
 <style type="text/css">
 .ie6_png 			{behavior: url("iepngfix.htc"/*tpa=http://osc3.template-help.com/osc_23506/iepngfix.htc*//*tpa=http://osc3.template-help.com/osc_23506/iepngfix.htc*/) }
 .ie6_png img		{behavior: url("iepngfix.htc"/*tpa=http://osc3.template-help.com/osc_23506/iepngfix.htc*//*tpa=http://osc3.template-help.com/osc_23506/iepngfix.htc*/) }

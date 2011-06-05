@@ -107,7 +107,24 @@ xmlhttp.send();
 	</tr>
         
 	<tr>	
-		<td><div class="input-box right"><input type="file" name="poza"/></div></pre>
+		<td>
+            <div class="input-box right">
+                
+					Imagine
+						<form action="scripts/ajaxupload.php" method="post" name="unobtrusive" id="unobtrusive" enctype="multipart/form-data">
+							
+							<p><input type="file" name="filename" id="filename" value="filename" onchange="ajaxUpload(this.form,'scripts/ajaxupload.php','upload_area','File Uploading Please Wait...&lt;br /&gt;&lt;img src=\'images/loader_light_blue.gif\' width=\'128\' height=\'15\' border=\'0\' /&gt;','&lt;img src=\'images/error.gif\' width=\'16\' height=\'16\' border=\'0\' /&gt; Error in Upload, check settings and path info in source code.'); return false;" /></p>
+							<noscript><p><input type="submit" name="submit" value="Upload Image" /></p></noscript>
+                            
+						</form>
+					
+					
+				
+					<div type="hidden" id="upload_area">
+						
+					</div>
+             
+            </div>
 		</td>
 	</tr>
 	<tr>
