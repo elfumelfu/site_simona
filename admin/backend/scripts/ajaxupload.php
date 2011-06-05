@@ -45,6 +45,9 @@ $new_img="NULL";
 ?>
 <?php
 	if($imgUploaded){
-		echo '<img src="poze_carti/'.$new_img.'" border="2" height="141" width="100"/>';
-	}
+        echo '<img src="images/success.gif" width="16" height="16" border="0" style="marin-bottom: -4px;" /> Success!<br />';        
+        echo '<img src="poze_carti/'.$new_img.'" border="1" height="141" width="100"/>';
+    }else{
+    echo '<img src="images/error.gif" width="16" height="16px" border="0" style="marin-bottom: -3px;" /> Error(s) Found: ';
+    }
 ?>
