@@ -17,7 +17,7 @@
 		$sel_domeniu = $_GET['domeniu'];
 	else
 		$sel_domeniu = '';
-	$lista_categorii = "SELECT denumire from `baza_librarie`.`domeniu`
+	$lista_categorii = "SELECT denumire from `domeniu`
 						WHERE denumire<>'Colectie'
 						ORDER BY denumire ";
 		$test = mysql_query($lista_categorii);
@@ -29,7 +29,7 @@
 				{
 				echo '<li class="bg_list"><a href="'.$_SERVER['PHP_SELF'].'?domeniu='.$domeniu['denumire'].'">'.$domeniu['denumire'].'</a></li>';
 				
-				$lista_subcategorii = "SELECT sub.denumire as denumire from `baza_librarie`.`domeniu` as dom,`baza_librarie`.`subdomeniu` as sub 
+				$lista_subcategorii = "SELECT sub.denumire as denumire from `domeniu` as dom,`subdomeniu` as sub 
 				                      WHERE sub.idDomeniu=dom.id and dom.denumire='".$sel_domeniu."' and sub.denumire<>'-'  
 									  ORDER BY denumire";
 				$testsub = mysql_query($lista_subcategorii);

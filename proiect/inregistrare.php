@@ -18,7 +18,7 @@ if(isset($_POST['username'])){
 
 //login
 function login($user,$pass){
-        $result = mysql_query("SELECT * FROM `baza_librarie`.`user` where email = '".$user."'  and parola = '".$pass."'");
+        $result = mysql_query("SELECT * FROM `user` where email = '".$user."'  and parola = '".$pass."'");
       //  var_dump(mysql_num_rows($result));
         $re = mysql_fetch_array($result);
      if(mysql_num_rows($result) > 0){
@@ -64,8 +64,8 @@ if(!isset($_SESSION['is_logged_in'])) {
 
 
 if(isset($_POST['nume'])){
-   // echo "SELECT * FROM `baza_librarie`.`user` where email = '".$_POST['email']."'";
-    $select = mysql_query("SELECT * FROM `baza_librarie`.`user` where email = '".$_POST['email']."'");
+   // echo "SELECT * FROM `user` where email = '".$_POST['email']."'";
+    $select = mysql_query("SELECT * FROM `user` where email = '".$_POST['email']."'");
   
 //    var_dump(mysql_num_rows$($select));
     if(mysql_num_rows($select) != 0){
@@ -74,7 +74,7 @@ if(isset($_POST['nume'])){
         }else{
         
         
-        $insert_user="INSERT INTO `baza_librarie`.`user` (`id`, `nume`, `prenume`, `email`, `parola`, `adresa`, `oras`) VALUES (NULL, '".$_POST['nume']."', '".$_POST['prenume']."', '".$_POST['email']."', '".md5($_POST['parola'])."', '', '');";
+        $insert_user="INSERT INTO `user` (`id`, `nume`, `prenume`, `email`, `parola`, `adresa`, `oras`) VALUES (NULL, '".$_POST['nume']."', '".$_POST['prenume']."', '".$_POST['email']."', '".md5($_POST['parola'])."', '', '');";
 //echo $insert_user;
 mysql_query($insert_user);
         //echo '!!!';

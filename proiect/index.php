@@ -111,9 +111,9 @@ include('inregistrare.php');
 if(isset($_SESSION['is_logged_in'])) {
     
     
-    $sel_user = mysql_query("SELECT * FROM `baza_librarie`.`user` where id=".$_SESSION['is_logged_in']);
+    $sel_user = mysql_query("SELECT * FROM `user` where id=".$_SESSION['is_logged_in']);
    // var_dump($sel_user);
-    //echo "SELECT * FROM `baza_librarie`.`user` where id=".$_SESSION['is_logged_in'];
+    //echo "SELECT * FROM `user` where id=".$_SESSION['is_logged_in'];
     $obj_us = mysql_fetch_object($sel_user);
     echo "Buna ziua,".$obj_us->nume.' '.$obj_us->prenume.'<br/>';
     //echo  $_SESSION['is_logged_in'];

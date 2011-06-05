@@ -21,7 +21,7 @@ if (isset($_GET['mod']))
 
 if ($mod > 0) {
 	$id = $mod;
-	$get_domeniu = "SELECT * from baza_librarie.domeniu where id=". $id;
+	$get_domeniu = "SELECT * from domeniu where id=". $id;
 	$rc = mysql_query($get_domeniu);
 	$row = mysql_fetch_array($rc);
 	$denumire = $row['denumire'];

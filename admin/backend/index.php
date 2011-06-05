@@ -12,7 +12,7 @@ function open_link(url){
 
 <?php 
 function sterge_inregistrare($id, $tabela) {
-	$rem = "DELETE FROM baza_librarie.".$tabela." WHERE id = ".$id."";
+	$rem = "DELETE FROM ".$tabela." WHERE id = ".$id."";
 	var_dump($rem);
 	mysql_query($rem);
 ?>
@@ -204,7 +204,7 @@ $url = (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER
 //start list utilizatori
 if(isset($_GET['listare_user'])){
     
-	$qry = "SELECT id, nume, prenume, email, parola from baza_librarie.user";
+	$qry = "SELECT id, nume, prenume, email, parola from user";
 	$res = mysql_query($qry);
 	if (! $res) {
 		echo 'invalid query : "'.$res.'"';
@@ -249,7 +249,7 @@ if(isset($_GET['salveaza_user']) && $_POST){
 	$id = $_GET['id'];
         echo "id = ".$id;
 
-        $modifica_user = "UPDATE baza_librarie.user SET 
+        $modifica_user = "UPDATE user SET 
                             nume='".$_POST['nume']."',
                             prenume='".$_POST['prenume']."',
                             email='".$_POST['email']."',
@@ -258,7 +258,7 @@ if(isset($_GET['salveaza_user']) && $_POST){
         if (!$rc) echo "ERROR".  mysql_error();
         
  } else {
-	$insert_user = "INSERT INTO `baza_librarie`.`user` ( `nume`,`prenume`, email, parola) VALUES (
+	$insert_user = "INSERT INTO `user` ( `nume`,`prenume`, email, parola) VALUES (
 					'".$_POST['nume']."', 
                     '".$_POST['prenume']."', 
                     '".$_POST['email']."', 
@@ -336,7 +336,7 @@ if(isset($_GET['listare_carti'])){
 
 //listare autori
 if(isset($_GET['listare_autor'])){
-	$list_autor = "SELECT id, nume, prenume, origine FROM baza_librarie.autor ";
+	$list_autor = "SELECT id, nume, prenume, origine FROM autor ";
 	if(!isset($_SESSION['order'])) {
 		$_SESSION['order'] = "id";
 		}
@@ -395,10 +395,10 @@ if(isset($_GET['salveaza_autor']) && $_POST){
  
   if (isset($_GET['id'])) {
 	$id = $_GET['id'];			
-	$modifica_autor = "UPDATE baza_librarie.autor SET nume='".$_POST['nume']."', prenume='"	.$_POST['prenume']."', origine='" .$_POST['origine']."' WHERE id=".$id;
+	$modifica_autor = "UPDATE autor SET nume='".$_POST['nume']."', prenume='"	.$_POST['prenume']."', origine='" .$_POST['origine']."' WHERE id=".$id;
 	$rc = mysql_query($modifica_autor);
  } else {
-	$insert_autor = "INSERT INTO `baza_librarie`.`autor` ( `nume` , `prenume` , `origine`  ) VALUES (
+	$insert_autor = "INSERT INTO `autor` ( `nume` , `prenume` , `origine`  ) VALUES (
 					'".$_POST['nume']."', '".$_POST['prenume']."', '".$_POST['origine']."');";
 	$test = mysql_query($insert_autor);
  }
@@ -409,7 +409,7 @@ if(isset($_GET['salveaza_autor']) && $_POST){
 
 //listare editura
 if(isset($_GET['listare_editura'])){
-	$list_editura = "SELECT id, denumire, localitate, nrtelefon, email FROM baza_librarie.editura ";
+	$list_editura = "SELECT id, denumire, localitate, nrtelefon, email FROM editura ";
 	if(!isset($_SESSION['order'])) {
 		$_SESSION['order'] = "id";
 	}
@@ -466,7 +466,7 @@ if(isset($_GET['listare_editura'])){
 }
 //listare domeniu
 if(isset($_GET['listare_domeniu'])){
-	$list_domeniu = "SELECT id, denumire FROM baza_librarie.domeniu ";
+	$list_domeniu = "SELECT id, denumire FROM domeniu ";
 	if(!isset($_SESSION['order'])) {
 		$_SESSION['order'] = "id";
 	}
@@ -538,15 +538,15 @@ if(isset($_GET['salveaza_domeniu']) && $_POST){
   if (isset($_GET['id'])) {
 	$id = $_GET['id'];
         echo "id = ".$id;
-        $modifica_domeniu = "UPDATE baza_librarie.domeniu SET denumire='".$_POST['denumire']."' WHERE id=".$id;
+        $modifica_domeniu = "UPDATE domeniu SET denumire='".$_POST['denumire']."' WHERE id=".$id;
 	$rc = mysql_query($modifica_domeniu);
         if (!$rc) echo "ERROR".  mysql_error();
         
  } else {
-	$insert_domeniu = "INSERT INTO `baza_librarie`.`domeniu` ( `denumire`) VALUES (
+	$insert_domeniu = "INSERT INTO `domeniu` ( `denumire`) VALUES (
 					'".$_POST['denumire']."');";
 	$test = mysql_query($insert_domeniu);
-    $insert_subdomeniu = "INSERT INTO `baza_librarie`.`subdomeniu` ( `denumire`, iddomeniu) VALUES (
+    $insert_subdomeniu = "INSERT INTO `subdomeniu` ( `denumire`, iddomeniu) VALUES (
 					'-', (SELECT id from domeniu where denumire='".$_POST['denumire']."'));";
 	$test = mysql_query($insert_subdomeniu);
  }
@@ -564,7 +564,7 @@ if(isset($_GET['salveaza_editura']) && isset($_POST)){
 
     if (isset($_GET['id'])) {
 	$id = $_GET['id'];			
-	$modifica_editura = "UPDATE baza_librarie.editura SET denumire='".$_POST['denumire'].
+	$modifica_editura = "UPDATE editura SET denumire='".$_POST['denumire'].
 	                       "', localitate='".$_POST['localitate'].
 						   "', nrtelefon='" .$_POST['numar_telefon'].
 						   "', email='".$_POST['email']."' WHERE id=".$id;
@@ -572,7 +572,7 @@ if(isset($_GET['salveaza_editura']) && isset($_POST)){
        
         
     } else {
-	echo $inserare_editura="INSERT INTO `baza_librarie`.`editura` ( `denumire` , `localitate` , `nrtelefon` , `email` ) VALUES (
+	echo $inserare_editura="INSERT INTO `editura` ( `denumire` , `localitate` , `nrtelefon` , `email` ) VALUES (
 				'".$_POST['denumire']."', '".$_POST['localitate']."', '".$_POST['numar_telefon']."', '".$_POST['email']."')";
 	$ts = mysql_query($inserare_editura);
 
@@ -586,7 +586,7 @@ if(isset($_GET['salveaza_editura']) && isset($_POST)){
 //listare subdomeniu
 if(isset($_GET['listare_subdomeniu'])){
 	$list_domeniu = "SELECT subdomeniu.id, domeniu.denumire as dom, subdomeniu.denumire as den 
-                         FROM baza_librarie.domeniu, baza_librarie.subdomeniu WHERE subdomeniu.iddomeniu=domeniu.id AND subdomeniu.denumire<>'-'";
+                         FROM domeniu, subdomeniu WHERE subdomeniu.iddomeniu=domeniu.id AND subdomeniu.denumire<>'-'";
 	if(!isset($_SESSION['order'])) {
 		$_SESSION['order'] = "id";
 	}
@@ -665,14 +665,14 @@ if(isset($_GET['salveaza_subdomeniu']) && $_POST){
 	$id = $_GET['id'];
         echo "id = ".$id;
 
-        $modifica_subdomeniu = "UPDATE baza_librarie.subdomeniu SET 
+        $modifica_subdomeniu = "UPDATE subdomeniu SET 
                             denumire='".$_POST['denumire']."',
                             idDomeniu=".$_POST['iddomeniu']."    WHERE id=".$id;
 	$rc = mysql_query($modifica_subdomeniu);
         if (!$rc) echo "ERROR".  mysql_error();
         
  } else {
-	$insert_subdomeniu = "INSERT INTO `baza_librarie`.`subdomeniu` ( `denumire`,`idDomeniu`) VALUES (
+	$insert_subdomeniu = "INSERT INTO `subdomeniu` ( `denumire`,`idDomeniu`) VALUES (
 					'".$_POST['denumire']."', ".$_POST['iddomeniu'].");";
 	$test = mysql_query($insert_subdomeniu);
 

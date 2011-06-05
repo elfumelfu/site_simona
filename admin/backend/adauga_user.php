@@ -21,7 +21,7 @@ if (isset($_GET['mod']))
 
 if ($mod > 0) {
 	$id = $mod;
-	$get_user = "SELECT * from baza_librarie.user where id=". $id;
+	$get_user = "SELECT * from user where id=". $id;
 	$rc = mysql_query($get_user);
 	$row = mysql_fetch_array($rc);
 	$nume = $row['nume'];

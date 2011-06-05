@@ -144,7 +144,7 @@
 <?php 
 $array_k = array_keys($_SESSION['cart']);
 foreach($array_k as $cart_key){
-    $select=mysql_query("SELECT * FROM `baza_librarie`.`carte` where isbn = ".$cart_key);
+    $select=mysql_query("SELECT * FROM `carte` where isbn = ".$cart_key);
     $cart_obj = mysql_fetch_object($select);
 ?>
 

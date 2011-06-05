@@ -25,7 +25,7 @@ if (isset($_GET['mod']))
 
 if ($mod > 0) {
 	$id = $mod;
-	$get_autor = "SELECT * from baza_librarie.editura where id=". $id;
+	$get_autor = "SELECT * from editura where id=". $id;
 	$rc = mysql_query($get_autor);
 	$row = mysql_fetch_array($rc);
 	$denumire = $row['denumire'];

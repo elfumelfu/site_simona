@@ -28,9 +28,10 @@ if(isset($_GET['pag'])){
  $pagina = 0;
 }
 		  
-  mysql_connect("localhost", "root", "") or die(mysql_error());
+  //mysql_connect("localhost", "root", "") or die(mysql_error());
+  include ('../admin/connect.php');
   
-  $sel = "SELECT * FROM `baza_librarie`.`carte` ";
+  $sel = "SELECT * FROM `carte` ";
   
   
   

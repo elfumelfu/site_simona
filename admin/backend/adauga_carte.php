@@ -81,7 +81,7 @@ xmlhttp.send();
 		</td>
         <td  rowspan=3><label class="label_right">Autor: </label>
            <div id="txtHint"> </div>
-			<?php $select_autor = mysql_query("SELECT * FROM `baza_librarie`.`autor`");	?>
+			<?php $select_autor = mysql_query("SELECT * FROM `autor`");	?>
 			<select name="autor" id="autor" multiple="multiple" size="10" style="float:left;width:200px">
 			<?php while($autor = mysql_fetch_array($select_autor)){?>
 			<?php var_dump($autor)?>
@@ -128,7 +128,7 @@ xmlhttp.send();
 		</td>
 	</tr>
 	<tr>
-		<td>Editura: <?php $select_editura = mysql_query("SELECT * FROM `baza_librarie`.`editura`");	?>
+		<td>Editura: <?php $select_editura = mysql_query("SELECT * FROM `editura`");	?>
 			<select name="editura" >
 			<?php while($editura = mysql_fetch_array($select_editura)){?>
 				<option <?php if(isset($_POST['denumire']) && $_POST['denumire'] == $editura['denumire']){ echo "selected='selected'"; }?>>
@@ -155,7 +155,7 @@ xmlhttp.send();
 					</td>
 		         <tr>
 					<td>
-						<?php $qry = mysql_query("SELECT * FROM `baza_librarie`.`domeniu` ORDER BY denumire");	?>
+						<?php $qry = mysql_query("SELECT * FROM `domeniu` ORDER BY denumire");	?>
 						<select name="domeniu" id="domeniu" onchange="showSubdomenii(this.value)" size="7" onclick="showSubdomenii(this.value)">
 						<?php while($row = mysql_fetch_array($qry)){?>
 						<option value="<?php echo $row['id'];	?>">
@@ -165,7 +165,7 @@ xmlhttp.send();
 						</select>  
 					</td>
 					
-					<td><?php $qry = mysql_query("SELECT * FROM `baza_librarie`.`subdomeniu` WHERE 
+					<td><?php $qry = mysql_query("SELECT * FROM `subdomeniu` WHERE 
                                  iddomeniu=(SELECT id FROM domeniu ORDER BY denumire LIMIT 1) ORDER BY denumire"  );	
                   if(! $qry )
                       echo "QUERY ERROR: ". mysql_error();
@@ -249,7 +249,7 @@ xmlhttp.send();
 
 	if(isset($_GET['salveaza'])){
 	
-	$select_editura_insert = mysql_query("SELECT * FROM `baza_librarie`.`editura` where `denumire` = '".$_POST['editura']."' ");
+	$select_editura_insert = mysql_query("SELECT * FROM `editura` where `denumire` = '".$_POST['editura']."' ");
 while($editura_insert = mysql_fetch_array($select_editura_insert)){
 $editura =  $editura_insert['id'];
 
@@ -324,7 +324,7 @@ $correct_type = array( 'png', 'jpg', 'jpeg');
 
 
 $insert_carte ="
-		INSERT INTO `baza_librarie`.`carte` 
+		INSERT INTO `carte` 
 		(`isbn`, `titlu`, `ideditura`, `nrpag`, `pret`, `reducere`, `nrbuc`, `limba`, `anaparitie`, `descriere`, `imagine`) 
 		VALUES  
 
@@ -341,7 +341,7 @@ foreach($_POST['selected_autor'] as $aut){
 $nume_prenume = explode(' ',$aut);
 
 
-$autor_insert =  "SELECT * FROM `baza_librarie`.`autor` where `nume` = '".$nume_prenume[1]."' and `prenume` = '".$nume_prenume[0]."' ";
+$autor_insert =  "SELECT * FROM `autor` where `nume` = '".$nume_prenume[1]."' and `prenume` = '".$nume_prenume[0]."' ";
 $select_autor_insert = mysql_query($autor_insert);
 
 if (!$select_autor_insert) {
@@ -354,7 +354,7 @@ while($autor_insert = mysql_fetch_array($select_autor_insert)){
 $autor =  $autor_insert['id'];
 
 //var_dump($_POST['isbn']);
-$insert_autor_carte = "INSERT INTO `baza_librarie`.`autorcarte` (`idautor` ,`idcarte`)VALUES ('".$autor."', '".$_POST['isbn']."');";
+$insert_autor_carte = "INSERT INTO `autorcarte` (`idautor` ,`idcarte`)VALUES ('".$autor."', '".$_POST['isbn']."');";
 $result = mysql_query($insert_autor_carte);
 if (!$result) {
     $message  = 'Invalid query: ' . mysql_error() . "\n";

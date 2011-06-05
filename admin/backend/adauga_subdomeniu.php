@@ -21,7 +21,7 @@ if (isset($_GET['mod']))
 
 if ($mod > 0) {
 	$id = $mod;
-	$get_subdomeniu = "SELECT * from baza_librarie.subdomeniu where id=". $id;
+	$get_subdomeniu = "SELECT * from subdomeniu where id=". $id;
 	$rc = mysql_query($get_subdomeniu);
 	$row = mysql_fetch_array($rc);
 	$denumire = $row['denumire'];
@@ -35,7 +35,7 @@ if ($mod > 0) {
  
 	Denumire: 	<input type="text" name="denumire" <?php if(isset($denumire)) echo 'value="'.$denumire.'"';?> /><br/>
 	Domeniu: 	<select name="iddomeniu" >
-			<?php $select_domeniu = mysql_query("SELECT * FROM `baza_librarie`.`domeniu` ORDER BY denumire");	?>
+			<?php $select_domeniu = mysql_query("SELECT * FROM `domeniu` ORDER BY denumire");	?>
                         <?php while($domeniu = mysql_fetch_array($select_domeniu)){?>
 				<option value="<?php echo $domeniu['id']?>"<?php if(isset($idDomeniu) && $idDomeniu == $domeniu['id']){
                                                 echo "selected='selected'"; }?>>
